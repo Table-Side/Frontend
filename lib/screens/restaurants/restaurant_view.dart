@@ -5,8 +5,12 @@ class RestaurantView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text("RESTAURANT VIEW"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Restaurant Name"),
+        backgroundColor: Colors.blue,
+      ),
+      body: const Text("RESTAURANT VIEW"),
     );
   }
 }
