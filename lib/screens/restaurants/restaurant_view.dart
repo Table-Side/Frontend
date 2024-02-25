@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:table_side/components/CustomAppBar.dart';
 
 // TODO: ALL VALUES HARDCODED ATM NEEDS TO BE CHANGED TO USE VALUES FROM DB
 
@@ -8,42 +9,7 @@ class RestaurantView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Restaurant Name",
-          style: TextStyle(
-              fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-        backgroundColor: const Color(0xff5603AD),
-        toolbarHeight: 100,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 50.0),
-            child: MaterialButton(
-              onPressed: () {
-                // TODO: Redirect to profile screen
-              },
-              child: const Row(
-                children: [
-                  Text(
-                    "Profile",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                  SizedBox(width: 15),
-                  Icon(
-                    Icons.person,
-                    color: Colors.white,
-                    size: 30,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(text: "Restaurant Name"),
       body: Scrollbar(
         child: SingleChildScrollView(
           child: Column(
@@ -109,7 +75,7 @@ class RestaurantView extends StatelessWidget {
                             children: [
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 20.0, top: 20),
+                                const EdgeInsets.only(left: 20.0, top: 20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -124,13 +90,13 @@ class RestaurantView extends StatelessWidget {
                                       width: MediaQuery.of(context).size.width *
                                           0.3,
                                       height:
-                                          MediaQuery.of(context).size.height *
-                                              0.4,
+                                      MediaQuery.of(context).size.height *
+                                          0.4,
                                       child: const Text(
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
-                                        "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                                        "Aliquet risus feugiat in ante metus dictum at tempor. Lobortis "
-                                        "elementum nibh tellus molestie nunc non blandit massa.",
+                                            "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                                            "Aliquet risus feugiat in ante metus dictum at tempor. Lobortis "
+                                            "elementum nibh tellus molestie nunc non blandit massa.",
                                         style: TextStyle(fontSize: 25),
                                       ),
                                     ),
@@ -145,7 +111,7 @@ class RestaurantView extends StatelessWidget {
                                     color: const Color(0xff5603AD)
                                         .withOpacity(0.2),
                                     width:
-                                        MediaQuery.of(context).size.width * 0.4,
+                                    MediaQuery.of(context).size.width * 0.4,
                                     height: MediaQuery.of(context).size.height *
                                         0.55,
                                     child: const Padding(
