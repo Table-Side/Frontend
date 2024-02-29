@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:table_side/components/auth_shared.dart';
 
-class LoginButton extends StatelessWidget {
+class AuthButton extends StatelessWidget {
   final String text;
   final Function()? onTap;
 
-  const LoginButton({
+  const AuthButton({
     super.key,
     required this.text,
     required this.onTap,
@@ -13,7 +14,7 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: const Color(0xff5603AD),
+      color: AuthShared.color1,
       onPressed: () {
         onTap!();
       },

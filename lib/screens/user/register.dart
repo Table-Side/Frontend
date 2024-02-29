@@ -3,22 +3,23 @@ import 'package:table_side/components/auth_button.dart';
 import 'package:table_side/components/auth_input_field.dart';
 import 'package:table_side/components/auth_shared.dart';
 
-class LoginScreen extends StatefulWidget {
-  final Function()? onTapRegister; 
-  const LoginScreen({super.key, required this.onTapRegister});
+class RegisterScreen extends StatefulWidget {
+  final Function()? onTapLogin; 
+  const RegisterScreen({super.key, required this.onTapLogin});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   //Controllers
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   //Methods
-  void userSignIn() async {
+  void userSignUp() async {
     //Progress indicator
     showDialog(
       context: context,
@@ -37,12 +38,14 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pop(context);
       AuthShared.errorMessage(context, "Password field cannot be empty");
     }
-    else //Try to sign in
+    else if (passwordController.text != confirmPasswordController.text) { //Password fields not matching
+      Navigator.pop(context);
+      AuthShared.errorMessage(context, "Passwords must match");
+    }
+    else //Try to create account
     {
-      //TODO: Sign in function using emailController.text and passwordController.text
-        // - Hide the progress indicator once logged in or when login failed - Navigator.pop(context);
-        // - If wrong email     - AuthShared.errorMessage(context, "Incorrect Email");
-        // - If wrong password  - AuthShared.errorMessage(context, "Sorry, that's not the right password");
+      //TODO: Sign up function using emailController.text and passwordController.text
+        // - Hide the progress indicator once signed in or when sign in failed - Navigator.pop(context);
     }
   }
 
@@ -62,8 +65,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       const SizedBox(height: 50),
               
-                      //Welcome message
-                      Text('Welcome back to Table Side', style: AuthShared.textTitle2),
+                      //Title
+                      Text('Create an Account', style: AuthShared.textTitle1),
               
                       const SizedBox(height: 25),
               
@@ -85,26 +88,19 @@ class _LoginScreenState extends State<LoginScreen> {
               
                       const SizedBox(height: 10),
               
-                      //Forgot Password
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              'Forgot Password?',
-                              style: AuthShared.textDefault,
-                            ),
-                          ],
-                        ),
+                      //Conform password input
+                      AuthInputField(
+                        controller: confirmPasswordController,
+                        hintText: 'Confirm Password',
+                        obscureText: true,
                       ),
               
                       const SizedBox(height: 25),
               
                       //Sign In Button
                       AuthButton(
-                        text: "Login",
-                        onTap: userSignIn,
+                        text: "Register",
+                        onTap: userSignUp,
                       ),
               
                       const SizedBox(height: 50),
@@ -115,11 +111,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             AuthShared.divider,
                             const SizedBox(width: 4),
-                            Text('Don\'t have an account?', style: AuthShared.textDefault),
+                            Text('Already have an account?', style: AuthShared.textDefault),
                             const SizedBox(width: 4),
                             GestureDetector(
-                              onTap: widget.onTapRegister,
-                              child: Text('Register now', style: AuthShared.textLink)
+                              onTap: widget.onTapLogin,
+                              child: Text('Login now', style: AuthShared.textLink)
                               ),
                             const SizedBox(width: 4),
                             AuthShared.divider,
