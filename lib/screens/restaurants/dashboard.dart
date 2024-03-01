@@ -17,15 +17,29 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  final TextEditingController searchController = TextEditingController(); // for search bar
+  final TextEditingController searchController =
+      TextEditingController(); // for search bar
 
   bool showCuisines = false; // show cuisine options
   bool showRatings = false; // show rating options
   bool showPrices = false; // show price options
 
-  List<String> typesOfCuisines = ["American", "Asian", "British", "Chinese",
-    "Greek", "Grocery", "Indian", "Italian", "Japanese", "Korean", "Mediterranean",
-    "Mexican", "Thai", "Turkish"]; // fetch from db
+  List<String> typesOfCuisines = [
+    "American",
+    "Asian",
+    "British",
+    "Chinese",
+    "Greek",
+    "Grocery",
+    "Indian",
+    "Italian",
+    "Japanese",
+    "Korean",
+    "Mediterranean",
+    "Mexican",
+    "Thai",
+    "Turkish"
+  ]; // fetch from db
   List<double> typesOfRatings = [3.0, 3.5, 4.0, 4.5, 5.0];
   List<String> typesOfPrices = ["£", "££", "£££"];
 
@@ -33,31 +47,30 @@ class _DashboardState extends State<Dashboard> {
   Map<double, bool> ratingsValue = {}; // stores rating -> checked?
   Map<String, bool> pricesValue = {}; // stores price -> checked?
 
-
   double? currentRating;
 
   @override
   void initState() {
     super.initState();
 
-    cuisinesValue = { for (var cuisine in typesOfCuisines) cuisine : false };
-    ratingsValue = { for (var rating in typesOfRatings) rating : false };
-    pricesValue = { for (var price in typesOfPrices) price : false };
+    cuisinesValue = {for (var cuisine in typesOfCuisines) cuisine: false};
+    ratingsValue = {for (var rating in typesOfRatings) rating: false};
+    pricesValue = {for (var price in typesOfPrices) price: false};
   }
 
-  void changeShowCuisines(){
+  void changeShowCuisines() {
     setState(() {
       showCuisines = !showCuisines;
     });
   }
 
-  void changeShowRatings(){
+  void changeShowRatings() {
     setState(() {
       showRatings = !showRatings;
     });
   }
 
-  void changeShowPrices(){
+  void changeShowPrices() {
     setState(() {
       showPrices = !showPrices;
     });
@@ -74,7 +87,7 @@ class _DashboardState extends State<Dashboard> {
             children: [
               // side bar
               Expanded(
-                  flex:2,
+                  flex: 2,
                   child: SingleChildScrollView(
                     child: Container(
                       color: Colors.white,
@@ -82,12 +95,13 @@ class _DashboardState extends State<Dashboard> {
                         children: [
                           // search bar
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20.0, horizontal: 20.0),
                             child: SearchBar(
                               hintText: "Search for a restaurant...",
                               leading: const Icon(Icons.search),
                               controller: searchController,
-                              onSubmitted: (text){
+                              onSubmitted: (text) {
                                 /*
                                 TODO: how do we want to do the search?
                                */
@@ -99,147 +113,167 @@ class _DashboardState extends State<Dashboard> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10.0),
                             child: GestureDetector(
-                                onTap: () {setState(() {
-                                  showCuisines = !showCuisines;
-                                });},
+                                onTap: () {
+                                  setState(() {
+                                    showCuisines = !showCuisines;
+                                  });
+                                },
                                 child: Column(
                                   children: [
                                     Row(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(left: 20.0),
+                                          padding:
+                                              const EdgeInsets.only(left: 20.0),
                                           child: Container(
                                             color: Colors.white,
-                                            child:const Text("Cuisines", style: TextStyle(fontWeight: FontWeight.bold),),
+                                            child: const Text(
+                                              "Cuisines",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ),
                                         )
                                       ],
                                     ),
                                     showCuisines
                                         ? Column(
-                                      children:
-                                      typesOfCuisines.map((cuisine) =>
-                                          MyCheckbox(
-                                            checkboxText: cuisine,
-                                            value: cuisinesValue[cuisine],
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                cuisinesValue[cuisine] = value ?? false;
-                                              });
-                                            },  ))
-                                          .toList(),
-                                    )
+                                            children: typesOfCuisines
+                                                .map((cuisine) => MyCheckbox(
+                                                      checkboxText: cuisine,
+                                                      value: cuisinesValue[
+                                                          cuisine],
+                                                      onChanged: (bool? value) {
+                                                        setState(() {
+                                                          cuisinesValue[
+                                                                  cuisine] =
+                                                              value ?? false;
+                                                        });
+                                                      },
+                                                    ))
+                                                .toList(),
+                                          )
                                         : const SizedBox.shrink(),
                                     const Divider(),
                                   ],
-                                )
-                            ),
+                                )),
                           ),
 
                           // price
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10.0),
                             child: GestureDetector(
-                                onTap: () {setState(() {
-                                  showPrices = !showPrices;
-                                });},
+                                onTap: () {
+                                  setState(() {
+                                    showPrices = !showPrices;
+                                  });
+                                },
                                 child: Column(
                                   children: [
                                     Row(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(left: 20.0),
+                                          padding:
+                                              const EdgeInsets.only(left: 20.0),
                                           child: Container(
                                             color: Colors.white,
-                                            child:const Text("Prices", style: TextStyle(fontWeight: FontWeight.bold),),
+                                            child: const Text(
+                                              "Prices",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ),
                                         )
                                       ],
                                     ),
                                     showPrices
                                         ? Column(
-                                      children:
-                                      typesOfPrices.map((price) =>
-                                          MyCheckbox(
-                                            // title: Text(cuisine),
-                                            checkboxText: price,
-                                            value: pricesValue[price],
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                pricesValue[price] = value ?? false;
-                                              });
-                                            },  ))
-                                          .toList(),
-                                    )
+                                            children: typesOfPrices
+                                                .map((price) => MyCheckbox(
+                                                      // title: Text(cuisine),
+                                                      checkboxText: price,
+                                                      value: pricesValue[price],
+                                                      onChanged: (bool? value) {
+                                                        setState(() {
+                                                          pricesValue[price] =
+                                                              value ?? false;
+                                                        });
+                                                      },
+                                                    ))
+                                                .toList(),
+                                          )
                                         : const SizedBox.shrink(),
                                     const Divider(),
                                   ],
-                                )
-                            ),
+                                )),
                           ),
 
                           // rating
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10.0),
                             child: GestureDetector(
-                                onTap: () {setState(() {
-                                  showRatings = !showRatings;
-                                });},
+                                onTap: () {
+                                  setState(() {
+                                    showRatings = !showRatings;
+                                  });
+                                },
                                 child: Column(
                                   children: [
                                     Row(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(left: 20.0),
+                                          padding:
+                                              const EdgeInsets.only(left: 20.0),
                                           child: Container(
                                             color: Colors.white,
-                                            child:const Text("Ratings", style: TextStyle(fontWeight: FontWeight.bold),),
+                                            child: const Text(
+                                              "Ratings",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ),
                                         )
                                       ],
                                     ),
                                     showRatings
                                         ? Column(
-                                      children:
-                                      typesOfRatings.map((rating) =>
-                                          ListTile(
-                                              title: Text("$rating+"),
-                                              leading: Radio(
-                                                value: rating,
-                                                groupValue: currentRating,
-                                                onChanged: (value){
-                                                  setState(() {
-                                                    currentRating = value;
-                                                  });
-                                                },
-                                              )
-                                          ))
-                                          .toList(),
-                                    )
+                                            children: typesOfRatings
+                                                .map((rating) => ListTile(
+                                                    title: Text("$rating+"),
+                                                    leading: Radio(
+                                                      value: rating,
+                                                      groupValue: currentRating,
+                                                      onChanged: (value) {
+                                                        setState(() {
+                                                          currentRating = value;
+                                                        });
+                                                      },
+                                                    )))
+                                                .toList(),
+                                          )
                                         : const SizedBox.shrink(),
                                     const Divider(),
                                   ],
-                                )
-                            ),
+                                )),
                           ),
                         ],
                       ),
                     ),
-                  )
-              ),
+                  )),
 
               // main column for restaurants
               Expanded(
-                flex:8,
+                flex: 8,
                 child: Column(
                   children: [
                     Expanded(
-                        flex:3,
+                        flex: 3,
                         child: Container(
                           // color: Colors.purple,
                           color: Colors.white,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
@@ -247,35 +281,41 @@ class _DashboardState extends State<Dashboard> {
                                   "Recent Restaurants",
                                   style: TextStyle(fontSize: 40),
                                 ),
-                                const SizedBox(height: 10,),
+                                const SizedBox(
+                                  height: 10,
+                                ),
                                 SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                      children: [
-                                        for(var i = 0; i < 30; i++) //todo: for all restaurants, display option card
-                                          RestaurantCard(
-                                            label: "McDonalds",
-                                            cuisine: "American", // can probably just use restaurant object instead of splitting it up here
-                                            rating:4.5,
-                                            onTap: (){}, //TODO: navigate to restaurant specific page
-                                            height: 165,
-                                            width: 200,
-                                          ), //TODO: need to pass in restaurant details
-                                      ]
-                                  ),
+                                  child: Row(children: [
+                                    for (var i = 0;
+                                        i < 30;
+                                        i++) //todo: for all restaurants, display option card
+                                      RestaurantCard(
+                                        label: "McDonalds",
+                                        cuisine:
+                                            "American", // can probably just use restaurant object instead of splitting it up here
+                                        rating: 4.5,
+                                        onTap: () {
+                                          Navigator.pushNamed(
+                                              context, '/restaurant_view');
+                                        }, //TODO: navigate to restaurant specific page
+                                        height: 165,
+                                        width: 200,
+                                      ), //TODO: need to pass in restaurant details
+                                  ]),
                                 )
                               ],
                             ),
                           ),
-                        )
-                    ),
+                        )),
                     Expanded(
                         flex: 7,
                         child: Container(
                           // color: Colors.orange,
                           color: Colors.white,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
@@ -285,7 +325,9 @@ class _DashboardState extends State<Dashboard> {
                                   style: TextStyle(fontSize: 40),
                                 ),
 
-                                const SizedBox(height: 10,),
+                                const SizedBox(
+                                  height: 10,
+                                ),
 
                                 // list of restaurants
                                 Expanded(
@@ -293,17 +335,22 @@ class _DashboardState extends State<Dashboard> {
                                     scrollDirection: Axis.vertical,
                                     child: Wrap(
                                       children: [
-                                        for(var i = 0; i < 30; i++) Padding(
-                                          padding: const EdgeInsets.symmetric(vertical: 10),
-                                          child: RestaurantCard(
-                                            label: "McDonalds",
-                                            cuisine: "American",
-                                            rating:4.5,
-                                            onTap: (){}, //TODO: navigate to restaurant specific page
-                                            height: 250,
-                                            width: 350,
-                                          ), //TODO: need to pass in restaurant details
-                                        ),
+                                        for (var i = 0; i < 30; i++)
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 10),
+                                            child: RestaurantCard(
+                                              label: "McDonalds",
+                                              cuisine: "American",
+                                              rating: 4.5,
+                                              onTap: () {
+                                                Navigator.pushNamed(context,
+                                                    '/restaurant_view');
+                                              }, //TODO: navigate to restaurant specific page
+                                              height: 250,
+                                              width: 350,
+                                            ), //TODO: need to pass in restaurant details
+                                          ),
                                       ],
                                     ),
                                   ),
@@ -311,14 +358,12 @@ class _DashboardState extends State<Dashboard> {
                               ],
                             ),
                           ),
-                        )
-                    )
+                        ))
                   ],
                 ),
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 }
