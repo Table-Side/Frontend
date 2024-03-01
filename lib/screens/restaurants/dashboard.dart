@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_side/components/CustomAppBar.dart';
 import 'package:table_side/components/restaurant_card.dart';
-import 'package:table_side/components/dropdown_checkbox.dart';
 
 /*
   TODO: fetch restaurants from db
@@ -119,15 +118,24 @@ class _DashboardState extends State<Dashboard> {
                                         ? Column(
                                       children:
                                       typesOfCuisines.map((cuisine) =>
-                                          MyCheckbox(
-                                            checkboxText: cuisine,
-                                            value: cuisinesValue[cuisine],
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                cuisinesValue[cuisine] = value ?? false;
-                                              });
-                                            },  ))
-                                          .toList(),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 20.0),
+                                            child: CheckboxListTile(
+                                              controlAffinity: ListTileControlAffinity.leading,
+                                              contentPadding: EdgeInsets.zero,
+                                              title: Text(
+                                                cuisine,
+                                                textAlign: TextAlign.left,
+                                                style: const TextStyle(fontSize: 14),
+                                              ), // Display checkboxText as the title
+                                              value: cuisinesValue[cuisine],
+                                              onChanged: (bool? value){
+                                                setState(() {
+                                                  cuisinesValue[cuisine] = value ?? false;
+                                                });
+                                              },
+                                            ),
+                                          )).toList(),
                                     )
                                         : const SizedBox.shrink(),
                                     const Divider(),
@@ -160,16 +168,25 @@ class _DashboardState extends State<Dashboard> {
                                         ? Column(
                                       children:
                                       typesOfPrices.map((price) =>
-                                          MyCheckbox(
-                                            // title: Text(cuisine),
-                                            checkboxText: price,
-                                            value: pricesValue[price],
-                                            onChanged: (bool? value) {
-                                              setState(() {
-                                                pricesValue[price] = value ?? false;
-                                              });
-                                            },  ))
-                                          .toList(),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 20.0),
+                                            child: CheckboxListTile(
+                                              controlAffinity: ListTileControlAffinity.leading,
+                                              contentPadding: EdgeInsets.zero,
+                                              title: Text(
+                                                price,
+                                                textAlign: TextAlign.left,
+                                                style: const TextStyle(fontSize: 14),
+                                              ), // Display checkboxText as the title
+                                              value: pricesValue[price],
+                                              onChanged: (bool? value){
+                                                setState(() {
+                                                  pricesValue[price] = value ?? false;
+                                                });
+                                              },
+                                            ),
+                                          )).toList(),
+
                                     )
                                         : const SizedBox.shrink(),
                                     const Divider(),
