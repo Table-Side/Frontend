@@ -49,7 +49,7 @@ class RestaurantCard extends StatelessWidget {
               Expanded(
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  child: Image(image: AssetImage("assets/burger.jpg"), fit: BoxFit.fill,), // remove this if we don't want an image
+                  child: const Image(image: AssetImage("assets/burger.jpg"), fit: BoxFit.fill,), // remove this if we don't want an image
                 ),
               ),
 
@@ -57,15 +57,16 @@ class RestaurantCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // name - need to get from db
-                    Text(label, textAlign: TextAlign.center, style: const TextStyle( fontWeight: FontWeight.bold), ), // TODO: fix indentation
+                    Text(label, textAlign: TextAlign.center, style: const TextStyle( fontWeight: FontWeight.bold), ),
 
                     // type of cuisine - need to get from db
-                    Text(cuisine, textAlign: TextAlign.center,), // TODO: fix indentation
+                    Text(cuisine, textAlign: TextAlign.center,),
 
                     // rating - need to get from db
-                    Text(rating.toString(), textAlign: TextAlign.center, style: const TextStyle(color: Colors.green),), // TODO: fix indentation
+                    Text(rating.toString(), textAlign: TextAlign.center, style: const TextStyle(color: Colors.green),),
                   ],
                 ),
               )
