@@ -34,10 +34,10 @@ class _RestaurantViewState extends State<RestaurantView> {
   // display calendar
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101),
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2015, 8),
+      lastDate: DateTime(2101),
       initialEntryMode: DatePickerEntryMode.calendarOnly,
     );
     if (picked != null && picked != selectedDate) {
@@ -66,8 +66,7 @@ class _RestaurantViewState extends State<RestaurantView> {
                       // TODO: Redirect to book a table form/screen
                       showDialog(
                           context: context,
-                          builder: (final context) =>
-                              AlertDialog(
+                          builder: (final context) => AlertDialog(
                                 title: const Text("Book a table"),
                                 content: Column(
                                   mainAxisSize: MainAxisSize.min,
@@ -77,35 +76,38 @@ class _RestaurantViewState extends State<RestaurantView> {
                                         _selectDate(context);
                                       },
                                       child: const Padding(
-                                        padding: EdgeInsets.symmetric(vertical: 10.0),
-                                        child: Text("Select the date", style: TextStyle(fontSize: 20)),
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 10.0),
+                                        child: Text("Select the date",
+                                            style: TextStyle(fontSize: 20)),
                                       ),
                                     ),
-
-
                                     MaterialButton(
                                       onPressed: () {
                                         _selectTime(context);
                                       },
                                       child: const Padding(
-                                        padding: EdgeInsets.symmetric(vertical: 10.0),
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 10.0),
                                         child: Text(
                                           "Select the time",
                                           style: TextStyle(fontSize: 20),
                                         ),
                                       ),
                                     ),
-
                                     SizedBox(
                                         height: 50.0,
                                         width: 200.0,
                                         child: DropdownButton(
                                           value: numberOfPeople,
-                                          icon: const Icon(Icons.arrow_downward),
+                                          icon:
+                                              const Icon(Icons.arrow_downward),
                                           iconSize: 24,
                                           elevation: 16,
                                           isExpanded: true,
-                                          style: const TextStyle(color: Colors.deepPurple, fontSize: 20.0),
+                                          style: const TextStyle(
+                                              color: Colors.deepPurple,
+                                              fontSize: 20.0),
                                           underline: Container(
                                             height: 2,
                                             color: Colors.deepPurpleAccent,
@@ -115,48 +117,63 @@ class _RestaurantViewState extends State<RestaurantView> {
                                               numberOfPeople = newValue ?? "1";
                                             });
                                           },
-                                          items: <String>['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-                                              .map<DropdownMenuItem<String>>((String value) {
+                                          items: <String>[
+                                            '1',
+                                            '2',
+                                            '3',
+                                            '4',
+                                            '5',
+                                            '6',
+                                            '7',
+                                            '8',
+                                            '9',
+                                            '10'
+                                          ].map<DropdownMenuItem<String>>(
+                                              (String value) {
                                             return DropdownMenuItem<String>(
                                               value: value,
                                               child: Text(value),
                                             );
                                           }).toList(),
-                                        )
-                                    ),
-
+                                        )),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 10.0),
                                           child: MaterialButton(
                                             height: 60,
                                             color: const Color(0xff5603AD),
-                                            onPressed: (){
+                                            onPressed: () {
                                               Navigator.of(context).pop();
                                             },
-                                            child: const Text("Cancel", style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white),
+                                            child: const Text(
+                                              "Cancel",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
                                             ),
                                           ),
                                         ),
-
                                         Padding(
-                                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 10.0),
                                           child: MaterialButton(
                                             height: 60,
                                             color: const Color(0xff5603AD),
-                                            onPressed: (){
+                                            onPressed: () {
                                               // TODO: API call with date, time, number of people, and user name
                                               // POST request
                                             },
-                                            child: const Text("Book!", style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white),
+                                            child: const Text(
+                                              "Book!",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
                                             ),
                                           ),
                                         ),
@@ -164,8 +181,7 @@ class _RestaurantViewState extends State<RestaurantView> {
                                     )
                                   ],
                                 ),
-                              )
-                      );
+                              ));
                     },
                     minWidth: MediaQuery.of(context).size.width * 0.2,
                     child: const Padding(
@@ -218,7 +234,7 @@ class _RestaurantViewState extends State<RestaurantView> {
                             children: [
                               Padding(
                                 padding:
-                                const EdgeInsets.only(left: 20.0, top: 20),
+                                    const EdgeInsets.only(left: 20.0, top: 20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -233,13 +249,13 @@ class _RestaurantViewState extends State<RestaurantView> {
                                       width: MediaQuery.of(context).size.width *
                                           0.3,
                                       height:
-                                      MediaQuery.of(context).size.height *
-                                          0.4,
+                                          MediaQuery.of(context).size.height *
+                                              0.4,
                                       child: const Text(
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
-                                            "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                                            "Aliquet risus feugiat in ante metus dictum at tempor. Lobortis "
-                                            "elementum nibh tellus molestie nunc non blandit massa.",
+                                        "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                                        "Aliquet risus feugiat in ante metus dictum at tempor. Lobortis "
+                                        "elementum nibh tellus molestie nunc non blandit massa.",
                                         style: TextStyle(fontSize: 25),
                                       ),
                                     ),
@@ -254,7 +270,7 @@ class _RestaurantViewState extends State<RestaurantView> {
                                     color: const Color(0xff5603AD)
                                         .withOpacity(0.2),
                                     width:
-                                    MediaQuery.of(context).size.width * 0.4,
+                                        MediaQuery.of(context).size.width * 0.4,
                                     height: MediaQuery.of(context).size.height *
                                         0.55,
                                     child: const Padding(

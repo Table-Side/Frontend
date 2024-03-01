@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String text;
   const CustomAppBar({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      iconTheme: const IconThemeData(color: Colors.white),
       title: Text(
         text,
         style: const TextStyle(
@@ -26,9 +27,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
                 Text(
                   "Profile",
                   style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
                 SizedBox(width: 15),
                 Icon(
