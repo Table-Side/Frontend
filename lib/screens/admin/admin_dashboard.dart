@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_side/components/CustomAppBar.dart';
+import 'package:table_side/screens/admin/add_new_menu_item.dart';
+import 'package:table_side/screens/admin/menu_view.dart';
 
 // TODO: ALL VALUES HARDCODED ATM NEEDS TO BE CHANGED TO USE VALUES FROM DB
 
@@ -265,6 +267,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -272,112 +275,137 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         child: Container(
                           color: Colors.grey.withOpacity(0.2),
                           width: MediaQuery.of(context).size.width * 0.8,
-                          height: MediaQuery.of(context).size.height * 0.6,
+                          height: MediaQuery.of(context).size.height * 0.4,
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, top: 20),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        "Menu",
-                                        style: TextStyle(
-                                            fontSize: 35,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      const SizedBox(height: 15),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 80,
-                                            right: 80,
-                                            top: 20,
-                                            bottom: 20),
-                                        child: Row(
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () {
-                                                // TODO: OPEN MENU TO VIEW ITEMS AND EDIT/REMOVE INDIVIDUAL ITEMS
-                                              },
-                                              child: Material(
-                                                color: Colors.white,
-                                                child: Center(
-                                                  child: Ink(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.2,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.4,
-                                                    decoration: ShapeDecoration(
-                                                      color: const Color(
-                                                          0xff5603AD),
-                                                      shape: Border.all(
-                                                        color: const Color(
-                                                            0xff5603AD),
-                                                        width: 5.0,
-                                                      ),
-                                                    ),
-                                                    child: const Icon(
-                                                      Icons.menu_book_outlined,
-                                                      color: Colors.white,
-                                                      size: 70,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(width: 50),
-                                            GestureDetector(
-                                              onTap: () {
-                                                // TODO: OPEN FORM TO ADD NEW MENU ITEM
-                                              },
-                                              child: Material(
-                                                color: Colors.white,
-                                                child: Center(
-                                                  child: Ink(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.2,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.4,
-                                                    decoration: ShapeDecoration(
-                                                      color: const Color(
-                                                          0xff5603AD),
-                                                      shape: Border.all(
-                                                        color: const Color(
-                                                            0xff5603AD),
-                                                        width: 5.0,
-                                                      ),
-                                                    ),
-                                                    child: const Icon(
-                                                      Icons.edit_note_outlined,
-                                                      color: Colors.white,
-                                                      size: 70,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 30.0),
+                                  child: Text(
+                                    "Menu",
+                                    style: TextStyle(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold),
                                   ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20.0, top: 20),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const SizedBox(height: 15),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 80,
+                                                right: 80,
+                                                top: 20,
+                                                bottom: 20),
+                                            child: Row(
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    // Open menu to view items and edit/remove individual items
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const MenuView()),
+                                                    );
+                                                  },
+                                                  child: Material(
+                                                    color: Colors.white,
+                                                    child: Center(
+                                                      child: Ink(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.2,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.2,
+                                                        decoration:
+                                                            ShapeDecoration(
+                                                          color: const Color(
+                                                              0xff5603AD),
+                                                          shape: Border.all(
+                                                            color: const Color(
+                                                                0xff5603AD),
+                                                            width: 5.0,
+                                                          ),
+                                                        ),
+                                                        child: const Icon(
+                                                          Icons
+                                                              .menu_book_outlined,
+                                                          color: Colors.white,
+                                                          size: 70,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                const SizedBox(width: 50),
+                                                GestureDetector(
+                                                  onTap: () async {
+                                                    // TODO: OPEN FORM TO ADD NEW MENU ITEM
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const AddNewMenuItem()),
+                                                    );
+                                                  },
+                                                  child: Material(
+                                                    color: Colors.white,
+                                                    child: Center(
+                                                      child: Ink(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.2,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.2,
+                                                        decoration:
+                                                            ShapeDecoration(
+                                                          color: const Color(
+                                                              0xff5603AD),
+                                                          shape: Border.all(
+                                                            color: const Color(
+                                                                0xff5603AD),
+                                                            width: 5.0,
+                                                          ),
+                                                        ),
+                                                        child: const Icon(
+                                                          Icons
+                                                              .edit_note_outlined,
+                                                          color: Colors.white,
+                                                          size: 70,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),

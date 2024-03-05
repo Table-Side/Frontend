@@ -15,19 +15,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Table Side',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const ProfilePages(),
-        routes: {
-          "/auth": (context) => const AuthPages(),
-          "/profile": (context) => const ProfilePages(),
-          "/dashboard": (context) => const Dashboard(),
-          "/restaurant_view": (context) => const RestaurantView(),
-          "/admin_dashboard": (context) => const AdminDashboard(),
-        });
+      title: 'Table Side',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const AdminDashboard(),
+      routes: {
+        "/auth": (context) => const AuthPages(),
+        "/profile": (context) => const ProfilePages(),
+        "/dashboard": (context) => const Dashboard(),
+        "/restaurant_view": (context) => const RestaurantView(),
+        "/admin_dashboard": (context) => const AdminDashboard(),
+      },
+    );
   }
 }
