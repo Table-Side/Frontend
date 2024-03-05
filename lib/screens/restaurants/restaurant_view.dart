@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:table_side/components/CustomAppBar.dart';
+import 'package:table_side/screens/restaurants/order.dart';
 
 // TODO: ALL VALUES HARDCODED ATM NEEDS TO BE CHANGED TO USE VALUES FROM DB
 
@@ -199,7 +200,11 @@ class _RestaurantViewState extends State<RestaurantView> {
                   MaterialButton(
                     color: const Color(0xff5603AD),
                     onPressed: () {
-                      // TODO: Redirect to order form/screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const OrderForm()),
+                      );
                     },
                     // minWidth: 300,
                     minWidth: MediaQuery.of(context).size.width * 0.2,

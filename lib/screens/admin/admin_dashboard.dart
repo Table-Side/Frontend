@@ -357,7 +357,6 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                 const SizedBox(width: 50),
                                                 GestureDetector(
                                                   onTap: () async {
-                                                    // TODO: OPEN FORM TO ADD NEW MENU ITEM
                                                     Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
