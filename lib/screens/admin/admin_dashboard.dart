@@ -48,7 +48,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        "About Us",
+                                        "Edit About Us",
                                         style: TextStyle(
                                             fontSize: 35,
                                             fontWeight: FontWeight.bold),
