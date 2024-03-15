@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AdminDashboard(),
+      home: const RestaurantView(),
       routes: {
         "/auth": (context) => const AuthPages(),
         "/profile": (context) => const ProfilePages(),
