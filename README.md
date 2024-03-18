@@ -1,6 +1,6 @@
-# table_side
+# Tableside: Frontend
 
-A new Flutter project.
+The frontend for the Tableside application.
 
 ## Getting Started
 
