@@ -12,6 +12,8 @@ import 'package:table_side/main.dart';
 
 void main() {
   testWidgets('Widget renders test', (WidgetTester tester) async {
+    await tester.binding.setSurfaceSize(const Size(2560, 1440));
+
     // Build our app and trigger a frame.
     await tester.pumpWidget(const TablesideApp());
 

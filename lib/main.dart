@@ -49,7 +49,7 @@ class TablesideApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const RestaurantView(),
+      home: const AdminDashboard(),
       routes: {
         "/auth": (context) => const AuthPages(),
         "/profile": (context) => const ProfilePages(),
