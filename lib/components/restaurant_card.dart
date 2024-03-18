@@ -47,7 +47,7 @@ class RestaurantCard extends StatelessWidget {
             children: [
               // restaurant image
               Expanded(
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: const Image(image: AssetImage("assets/burger.jpg"), fit: BoxFit.fill,), // remove this if we don't want an image
                 ),

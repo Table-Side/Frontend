@@ -2,6 +2,8 @@ import 'dart:ffi';
 
 import 'package:table_side/models/user.dart';
 
+// TODO: WILL PROBABLY CHANGE
+
 class Restaurant {
   final String id;
   final User restaurantOwner;
