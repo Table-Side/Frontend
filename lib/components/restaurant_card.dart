@@ -12,7 +12,6 @@ class RestaurantCard extends StatelessWidget {
     required this.onTap,
     required this.height,
     required this.width,
-
     required this.cuisine,
     required this.rating,
   });
@@ -49,7 +48,10 @@ class RestaurantCard extends StatelessWidget {
               Expanded(
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  child: const Image(image: AssetImage("assets/burger.jpg"), fit: BoxFit.fill,), // remove this if we don't want an image
+                  child: const Image(
+                    image: AssetImage("assets/burger.jpg"),
+                    fit: BoxFit.fill,
+                  ), // remove this if we don't want an image
                 ),
               ),
 
@@ -60,17 +62,27 @@ class RestaurantCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // name - need to get from db
-                    Text(label, textAlign: TextAlign.center, style: const TextStyle( fontWeight: FontWeight.bold), ),
+                    Text(
+                      label,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
 
                     // type of cuisine - need to get from db
-                    Text(cuisine, textAlign: TextAlign.center,),
+                    Text(
+                      cuisine,
+                      textAlign: TextAlign.center,
+                    ),
 
                     // rating - need to get from db
-                    Text(rating.toString(), textAlign: TextAlign.center, style: const TextStyle(color: Colors.green),),
+                    Text(
+                      rating.toString(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(color: Colors.green),
+                    ),
                   ],
                 ),
               )
-
             ],
           ),
         ),

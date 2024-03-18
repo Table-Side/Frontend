@@ -3,12 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:table_side/network/authentication.dart';
 import 'package:table_side/network/network.dart';
+import 'package:table_side/screens/admin/add_new_menu_item.dart';
 import 'package:table_side/screens/admin/admin_dashboard.dart';
+import 'package:table_side/screens/admin/menu_view.dart';
 import 'package:table_side/screens/restaurants/dashboard.dart';
+import 'package:table_side/screens/restaurants/order.dart';
 import 'package:table_side/screens/restaurants/restaurant_view.dart';
 import 'package:table_side/screens/user/auth_pages.dart';
+import 'package:table_side/screens/user/login.dart';
+import 'package:table_side/screens/user/profile.dart';
+import 'package:table_side/screens/user/profile_editor.dart';
 import 'package:table_side/screens/user/profile_pages.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:table_side/screens/user/register.dart';
 
 const FlutterSecureStorage storage = FlutterSecureStorage(
   aOptions: AndroidOptions(
@@ -49,7 +56,7 @@ class TablesideApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AdminDashboard(),
+      home: const Dashboard(),
       routes: {
         "/auth": (context) => const AuthPages(),
         "/profile": (context) => const ProfilePages(),

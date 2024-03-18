@@ -3,7 +3,7 @@ import 'package:table_side/components/auth_shared.dart';
 import 'package:table_side/components/CustomAppBar.dart';
 
 class ProfileScreen extends StatefulWidget {
-  final Function()? onTapEditProfile; 
+  final Function()? onTapEditProfile;
   const ProfileScreen({super.key, required this.onTapEditProfile});
 
   @override
@@ -15,11 +15,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void userSignOut() async {
     //Progress indicator
     showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(child: CircularProgressIndicator());
-      }
-    );
+        context: context,
+        builder: (context) {
+          return const Center(child: CircularProgressIndicator());
+        });
 
     //TODO: Sign out function
   }
@@ -27,14 +26,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void userDeleteAccount() async {
     //Progress indicator
     showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(child: CircularProgressIndicator());
-      }
-    );
+        context: context,
+        builder: (context) {
+          return const Center(child: CircularProgressIndicator());
+        });
 
     //TODO: Delete account function
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,46 +50,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(height: 50),
-              
+
                       //Name and email
                       Text('<Name>', style: AuthShared.textTitle0),
                       Text('<Email>', style: AuthShared.textTitle2),
-              
+
                       const SizedBox(height: 50),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: Row(
+                        child: Wrap(
+                          alignment: WrapAlignment.center,
                           children: [
                             AuthShared.divider,
                             const SizedBox(width: 4),
                             GestureDetector(
-                              onTap: userSignOut,
-                              child: Text('Log out', style: AuthShared.textLinkBig)
-                            ),
+                                onTap: userSignOut,
+                                child: Text('Log out',
+                                    style: AuthShared.textLinkBig)),
                             const SizedBox(width: 4),
                             AuthShared.divider,
                             const SizedBox(width: 4),
                             GestureDetector(
-                              onTap: widget.onTapEditProfile,
-                              child: Text('Edit details', style: AuthShared.textLinkBig)
-                            ),
+                                onTap: widget.onTapEditProfile,
+                                child: Text('Edit details',
+                                    style: AuthShared.textLinkBig)),
                             const SizedBox(width: 4),
                             AuthShared.divider,
                             const SizedBox(width: 4),
                             GestureDetector(
-                              onTap: userDeleteAccount,
-                              child: Text('Delete account', style: AuthShared.textLinkBig)
-                            ),
+                                onTap: userDeleteAccount,
+                                child: Text('Delete account',
+                                    style: AuthShared.textLinkBig)),
                             const SizedBox(width: 4),
                             AuthShared.divider,
                           ],
                         ),
                       ),
-              
+
                       const SizedBox(height: 50),
-                      
-                      Text('<restaurants and orders go here>', style: AuthShared.textDefault),
+
+                      Text('<restaurants and orders go here>',
+                          style: AuthShared.textDefault),
                     ]),
               ),
             ),

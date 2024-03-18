@@ -19,7 +19,8 @@ class AddNewMenuItem extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.2),
                 width: MediaQuery.of(context).size.width * 0.4,
                 height: MediaQuery.of(context).size.height * 0.4,
-                child: Column(
+                child: Wrap(
+                  alignment: WrapAlignment.center,
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(20.0),
@@ -46,7 +47,7 @@ class AddNewMenuItem extends StatelessWidget {
                                         border: UnderlineInputBorder(),
                                       ),
                                     ),
-                                    const SizedBox(height: 100),
+                                    const SizedBox(height: 60),
                                     MaterialButton(
                                       color: const Color(0xff5603AD),
                                       onPressed: () {

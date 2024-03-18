@@ -115,73 +115,68 @@ class OrderForm extends StatelessWidget {
                                 fontSize: 30, fontWeight: FontWeight.bold),
                           ),
                           // TODO: FOR LOOP WILL BE ADJUSTED TO GO THROUGH THE LIST OF MENU ITEMS FROM DB
-                          for (int i = 0; i < 15; i++)
+                          for (int i = 0; i < 5; i++)
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const Column(
-                                            children: [
-                                              SizedBox(height: 15),
-                                              // name - need to get from db
-                                              Text(
-                                                "Item Name",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Column(
+                                          children: [
+                                            SizedBox(height: 15),
+                                            // name - need to get from db
+                                            Text(
+                                              "Item Name",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
 
-                                              // price - need to get from db
-                                              Text(
-                                                "Item Price",
-                                                textAlign: TextAlign.center,
-                                              ),
-                                              SizedBox(height: 15),
-                                            ],
-                                          ),
-                                          Column(
-                                            children: [
-                                              Material(
-                                                color: Colors.white,
-                                                child: Center(
-                                                  child: Ink(
-                                                    width: 30,
-                                                    height: 30,
-                                                    decoration: ShapeDecoration(
-                                                      color: Colors.white,
-                                                      shape: Border.all(
-                                                        color: Colors.black,
-                                                        width: 2,
-                                                      ),
+                                            // price - need to get from db
+                                            Text(
+                                              "Item Price",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            SizedBox(height: 15),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            Material(
+                                              color: Colors.white,
+                                              child: Center(
+                                                child: Ink(
+                                                  width: 30,
+                                                  height: 30,
+                                                  decoration: ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape: Border.all(
+                                                      color: Colors.black,
+                                                      width: 2,
                                                     ),
-                                                    // TODO: VALUE WILL CHANGE BASED ON HOW MANY OF ITEM ADDED
-                                                    child: const Center(
-                                                        child: Text("1")),
                                                   ),
+                                                  // TODO: VALUE WILL CHANGE BASED ON HOW MANY OF ITEM ADDED
+                                                  child: const Center(
+                                                      child: Text("1")),
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      const Divider(
-                                        color: Colors.grey,
-                                        height: 0,
-                                        thickness: 1,
-                                      ),
-                                    ],
-                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    const Divider(
+                                      color: Colors.grey,
+                                      height: 0,
+                                      thickness: 1,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

@@ -37,253 +37,264 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         color: Colors.grey.withOpacity(0.2),
                         width: MediaQuery.of(context).size.width * 0.8,
                         height: MediaQuery.of(context).size.height * 0.6,
-                        child: LayoutBuilder(builder: (context, constraints) {
-                          return Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 20.0, top: 20),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const Text(
-                                          "Edit About Us",
-                                          style: TextStyle(
-                                              fontSize: 35,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const SizedBox(height: 15),
-                                        Expanded(
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.3,
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.4,
-                                            child: ListView(
-                                              shrinkWrap: true,
-                                              children: const [
-                                                Text(
-                                                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
-                                                  "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                                                  "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                                  "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                                  "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                                  "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                                  "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                                  "elementum nibh tellus molestie nunc non blandit massa.",
-                                                  style:
-                                                      TextStyle(fontSize: 25),
-                                                ),
-                                              ],
-                                            ),
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            return Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20.0, top: 20),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            "Edit About Us",
+                                            style: TextStyle(
+                                                fontSize: 35,
+                                                fontWeight: FontWeight.bold),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 20),
-                                          child: MaterialButton(
-                                            color: const Color(0xff5603AD),
-                                            minWidth: 200,
-                                            onPressed: () {
-                                              showDialog(
-                                                context: context,
-                                                builder: (final context) =>
-                                                    AlertDialog(
-                                                  title: const Text(
-                                                      "Edit About Us"),
-                                                  content: TextFormField(
-                                                    decoration:
-                                                        const InputDecoration(
-                                                      labelText:
-                                                          "Enter About Us",
-                                                      border:
-                                                          UnderlineInputBorder(),
-                                                    ),
-                                                  ),
-                                                  actions: [
-                                                    OutlinedButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child:
-                                                          const Text("Cancel"),
-                                                    ),
-                                                    OutlinedButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: const Text("Save"),
-                                                    )
-                                                  ],
-                                                ),
-                                              );
-                                            },
-                                            child: const Padding(
-                                              padding: EdgeInsets.all(10.0),
-                                              child: Text(
-                                                "Edit Text",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 30,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      color: const Color(0xff5603AD)
-                                          .withOpacity(0.2),
-                                      width: constraints.maxWidth * 0.45,
-                                      height: constraints.maxHeight * 0.85,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(20),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Expanded(
+                                          const SizedBox(height: 15),
+                                          Expanded(
+                                            child: SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.3,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.4,
                                               child: ListView(
-                                                shrinkWrap: false,
+                                                shrinkWrap: true,
                                                 children: const [
                                                   Text(
-                                                    "Opening Times",
-                                                    style: TextStyle(
-                                                        fontSize: 25,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
+                                                    "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                                                    "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                                    "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                                    "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                                    "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                                    "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                                    "elementum nibh tellus molestie nunc non blandit massa.",
+                                                    style:
+                                                        TextStyle(fontSize: 25),
                                                   ),
-                                                  Text(
-                                                      "this will be the times"),
-                                                  SizedBox(height: 15),
-                                                  Text(
-                                                    "Location",
-                                                    style: TextStyle(
-                                                        fontSize: 25,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  Text(
-                                                      "this will be the location"),
-                                                  SizedBox(height: 15),
-                                                  Text(
-                                                    "Type of Cuisine",
-                                                    style: TextStyle(
-                                                        fontSize: 25,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  Text(
-                                                      "this will be the type of cuisine served"),
                                                 ],
                                               ),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 20),
-                                              child: MaterialButton(
-                                                color: const Color(0xff5603AD),
-                                                minWidth: 200,
-                                                onPressed: () {
-                                                  showDialog(
-                                                    context: context,
-                                                    builder: (final context) =>
-                                                        AlertDialog(
-                                                      title: const Text(
-                                                          "Edit Details"),
-                                                      content: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: [
-                                                          TextFormField(
-                                                            decoration:
-                                                                const InputDecoration(
-                                                              labelText:
-                                                                  "Opening Times",
-                                                              border:
-                                                                  UnderlineInputBorder(),
-                                                            ),
-                                                          ),
-                                                          TextFormField(
-                                                            decoration:
-                                                                const InputDecoration(
-                                                              labelText:
-                                                                  "Location",
-                                                              border:
-                                                                  UnderlineInputBorder(),
-                                                            ),
-                                                          ),
-                                                          TextFormField(
-                                                            // TODO: CAN MAKE THIS INTO A DROPDOWN MENU
-                                                            decoration:
-                                                                const InputDecoration(
-                                                              labelText:
-                                                                  "Type of Cuisine Available",
-                                                              border:
-                                                                  UnderlineInputBorder(),
-                                                            ),
-                                                          ),
-                                                        ],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 20),
+                                            child: MaterialButton(
+                                              color: const Color(0xff5603AD),
+                                              minWidth: 200,
+                                              onPressed: () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (final context) =>
+                                                      AlertDialog(
+                                                    title: const Text(
+                                                        "Edit About Us"),
+                                                    content: TextFormField(
+                                                      decoration:
+                                                          const InputDecoration(
+                                                        labelText:
+                                                            "Enter About Us",
+                                                        border:
+                                                            UnderlineInputBorder(),
                                                       ),
-                                                      actions: [
-                                                        OutlinedButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: const Text(
-                                                              "Cancel"),
-                                                        ),
-                                                        OutlinedButton(
-                                                          onPressed: () {
-                                                            // TODO: PATCH/PUT REQUEST
-                                                          },
-                                                          child: const Text(
-                                                              "Save"),
-                                                        )
-                                                      ],
                                                     ),
-                                                  );
-                                                },
-                                                child: const Padding(
-                                                  padding: EdgeInsets.all(10.0),
-                                                  child: Text(
-                                                    "Edit Details",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 30,
-                                                        color: Colors.white),
+                                                    actions: [
+                                                      OutlinedButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: const Text(
+                                                            "Cancel"),
+                                                      ),
+                                                      OutlinedButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child:
+                                                            const Text("Save"),
+                                                      )
+                                                    ],
                                                   ),
+                                                );
+                                              },
+                                              child: const Padding(
+                                                padding: EdgeInsets.all(10.0),
+                                                child: Text(
+                                                  "Edit Text",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 30,
+                                                      color: Colors.white),
                                                 ),
                                               ),
-                                            )
-                                          ],
-                                        ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
-                        }),
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        color: const Color(0xff5603AD)
+                                            .withOpacity(0.2),
+                                        width: constraints.maxWidth * 0.45,
+                                        height: constraints.maxHeight * 0.85,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Expanded(
+                                                child: ListView(
+                                                  shrinkWrap: false,
+                                                  children: const [
+                                                    Text(
+                                                      "Opening Times",
+                                                      style: TextStyle(
+                                                          fontSize: 25,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    Text(
+                                                        "this will be the times"),
+                                                    SizedBox(height: 15),
+                                                    Text(
+                                                      "Location",
+                                                      style: TextStyle(
+                                                          fontSize: 25,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    Text(
+                                                        "this will be the location"),
+                                                    SizedBox(height: 15),
+                                                    Text(
+                                                      "Type of Cuisine",
+                                                      style: TextStyle(
+                                                          fontSize: 25,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    Text(
+                                                        "this will be the type of cuisine served"),
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 20),
+                                                child: MaterialButton(
+                                                  color:
+                                                      const Color(0xff5603AD),
+                                                  minWidth: 200,
+                                                  onPressed: () {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (final context) =>
+                                                              AlertDialog(
+                                                        title: const Text(
+                                                            "Edit Details"),
+                                                        content: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          children: [
+                                                            TextFormField(
+                                                              decoration:
+                                                                  const InputDecoration(
+                                                                labelText:
+                                                                    "Opening Times",
+                                                                border:
+                                                                    UnderlineInputBorder(),
+                                                              ),
+                                                            ),
+                                                            TextFormField(
+                                                              decoration:
+                                                                  const InputDecoration(
+                                                                labelText:
+                                                                    "Location",
+                                                                border:
+                                                                    UnderlineInputBorder(),
+                                                              ),
+                                                            ),
+                                                            TextFormField(
+                                                              // TODO: CAN MAKE THIS INTO A DROPDOWN MENU
+                                                              decoration:
+                                                                  const InputDecoration(
+                                                                labelText:
+                                                                    "Type of Cuisine Available",
+                                                                border:
+                                                                    UnderlineInputBorder(),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        actions: [
+                                                          OutlinedButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: const Text(
+                                                                "Cancel"),
+                                                          ),
+                                                          OutlinedButton(
+                                                            onPressed: () {
+                                                              // TODO: PATCH/PUT REQUEST
+                                                            },
+                                                            child: const Text(
+                                                                "Save"),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                  child: const Padding(
+                                                    padding:
+                                                        EdgeInsets.all(10.0),
+                                                    child: Text(
+                                                      "Edit Details",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 30,
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ],
