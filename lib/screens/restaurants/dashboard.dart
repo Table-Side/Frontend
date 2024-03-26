@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:table_side/components/CustomAppBar.dart';
 import 'package:table_side/components/restaurant_card.dart';
+import 'package:table_side/screens/restaurants/restaurant_view.dart';
 
-/*
-  TODO: fetch restaurants from db
-  TODO: fetch cuisines, ratings, prices?
-  TODO: show specific restaurants if search bar or checkboxes are used
- */
+// TODO: fetch restaurants from db
+// TODO: fetch cuisines, ratings, prices?
+// TODO: show specific restaurants if search bar or checkboxes are used
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -80,10 +80,11 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(text: 'Table Side'),
-        body: Container(
-          color: Colors.white,
-          child: LayoutBuilder(builder: (context, constraints) {
+      appBar: const CustomAppBar(text: 'Table Side'),
+      body: Container(
+        color: Colors.white,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
             return SizedBox(
               height: constraints.maxHeight,
               child: Row(
@@ -341,23 +342,34 @@ class _DashboardState extends State<Dashboard> {
                                     Expanded(
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
-                                        child: Row(children: [
-                                          for (var i = 0;
-                                              i < 30;
-                                              i++) //todo: for all restaurants, display option card
-                                            RestaurantCard(
-                                              label: "McDonalds",
-                                              cuisine:
-                                                  "American", // can probably just use restaurant object instead of splitting it up here
-                                              rating: 4.5,
-                                              onTap: () {
-                                                Navigator.pushNamed(context,
-                                                    '/restaurant_view');
-                                              }, //TODO: navigate to restaurant specific page
-                                              height: 165,
-                                              width: 200,
-                                            ), //TODO: need to pass in restaurant details
-                                        ]),
+                                        child: Row(
+                                          children: [
+                                            //todo: for all restaurants, display option card
+                                            for (var i = 0; i < 30; i++)
+                                              RestaurantCard(
+                                                label: "McDonalds",
+                                                cuisine:
+                                                    "American", // can probably just use restaurant object instead of splitting it up here
+                                                rating: 4.5,
+                                                onTap: () {
+                                                  // TODO(A): FIX RESTAURANT TO ROUTE PROPERLY
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const RestaurantView()),
+                                                  );
+                                                },
+                                                // onTap: () {
+                                                // TODO(A): FIX RESTAURANT TO ROUTE PROPERLY
+                                                //   Navigator.pushNamed(context,
+                                                //       '/restaurant_view');
+                                                // },
+                                                height: 165,
+                                                width: 200,
+                                              ), //TODO: need to pass in restaurant details
+                                          ],
+                                        ),
                                       ),
                                     )
                                   ],
@@ -391,17 +403,25 @@ class _DashboardState extends State<Dashboard> {
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 10),
+                                          // TODO(A): GET DATA FROM DB
                                           child: RestaurantCard(
                                             label: "McDonalds",
                                             cuisine: "American",
                                             rating: 4.5,
+                                            // TODO(A): FIX RESTAURANT TO ROUTE PROPERLY
                                             onTap: () {
-                                              Navigator.pushNamed(
-                                                  context, '/restaurant_view');
-                                            }, //TODO: navigate to restaurant specific page
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const RestaurantView()),
+                                              );
+                                            },
+                                            // onTap: () => context.go(
+                                            //     '/restaurant/${restuarant.id}'),
                                             height: 250,
                                             width: 350,
-                                          ), //TODO: need to pass in restaurant details
+                                          ),
                                         ),
                                     ],
                                   )
@@ -416,7 +436,9 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             );
-          }),
-        ));
+          },
+        ),
+      ),
+    );
   }
 }

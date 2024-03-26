@@ -7,6 +7,7 @@ class MenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // TODO(A): GET DATA FROM DB
       appBar: const CustomAppBar(text: 'Menu'),
       body: SingleChildScrollView(
         child: Column(
@@ -44,7 +45,7 @@ class MenuView extends StatelessWidget {
                                             const Column(
                                               children: [
                                                 SizedBox(height: 15),
-                                                // name - need to get from db
+                                                // TODO(A): GET DATA FROM DB
                                                 Text(
                                                   "Item Name",
                                                   textAlign: TextAlign.center,
@@ -53,7 +54,7 @@ class MenuView extends StatelessWidget {
                                                           FontWeight.bold),
                                                 ),
 
-                                                // price - need to get from db
+                                                // TODO(A): GET DATA FROM DB
                                                 Text(
                                                   "Item Price",
                                                   textAlign: TextAlign.center,
@@ -104,7 +105,7 @@ class MenuView extends StatelessWidget {
                                                           OutlinedButton(
                                                             onPressed:
                                                                 () async {
-                                                              // TODO: MAKE PATCH/PUT REQUEST
+                                                              // TODO(A): MAKE PATCH/PUT REQUEST
                                                             },
                                                             child: const Text(
                                                                 "Save"),
@@ -125,7 +126,7 @@ class MenuView extends StatelessWidget {
                                                 ),
                                                 IconButton(
                                                   onPressed: () {
-                                                    // TODO: MAKE DELETE REQUEST
+                                                    // TODO(A): MAKE DELETE REQUEST
                                                   },
                                                   icon:
                                                       const Icon(Icons.delete),

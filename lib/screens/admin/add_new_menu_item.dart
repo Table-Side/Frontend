@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_side/components/CustomAppBar.dart';
+import 'package:table_side/const/design.dart';
 
 class AddNewMenuItem extends StatelessWidget {
   const AddNewMenuItem({super.key});
@@ -49,9 +50,9 @@ class AddNewMenuItem extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 60),
                                     MaterialButton(
-                                      color: const Color(0xff5603AD),
+                                      color: purpleColor,
                                       onPressed: () {
-                                        // TODO: MAKE POST REQUEST
+                                        // TODO(A): MAKE POST REQUEST
                                       },
                                       minWidth:
                                           MediaQuery.of(context).size.width *

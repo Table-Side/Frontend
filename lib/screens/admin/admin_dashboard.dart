@@ -2,10 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:table_side/components/CustomAppBar.dart';
+import 'package:table_side/const/design.dart';
 import 'package:table_side/screens/admin/add_new_menu_item.dart';
 import 'package:table_side/screens/admin/menu_view.dart';
-
-// TODO: ALL VALUES HARDCODED ATM NEEDS TO BE CHANGED TO USE VALUES FROM DB
 
 class AdminDashboard extends StatefulWidget {
   const AdminDashboard({super.key});
@@ -18,6 +17,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // TODO(A): GET DATA FROM DB
       appBar: const CustomAppBar(text: "Restaurant Name - Admin Dashboard"),
       body: CustomScrollView(
         slivers: [
@@ -93,7 +93,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                             padding:
                                                 const EdgeInsets.only(top: 20),
                                             child: MaterialButton(
-                                              color: const Color(0xff5603AD),
+                                              color: purpleColor,
                                               minWidth: 200,
                                               onPressed: () {
                                                 showDialog(
@@ -122,6 +122,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                       ),
                                                       OutlinedButton(
                                                         onPressed: () {
+                                                          // TODO(A): PATCH/PUT REQUEST
                                                           Navigator.pop(
                                                               context);
                                                         },
@@ -155,8 +156,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        color: const Color(0xff5603AD)
-                                            .withOpacity(0.2),
+                                        color: purpleColor.withOpacity(0.2),
                                         width: constraints.maxWidth * 0.45,
                                         height: constraints.maxHeight * 0.85,
                                         child: Padding(
@@ -176,6 +176,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
+                                                    // TODO(A): GET DATA FROM DB
                                                     Text(
                                                         "this will be the times"),
                                                     SizedBox(height: 15),
@@ -186,6 +187,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
+                                                    // TODO(A): GET DATA FROM DB
                                                     Text(
                                                         "this will be the location"),
                                                     SizedBox(height: 15),
@@ -196,6 +198,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
+                                                    // TODO(A): GET DATA FROM DB
                                                     Text(
                                                         "this will be the type of cuisine served"),
                                                   ],
@@ -205,8 +208,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                 padding: const EdgeInsets.only(
                                                     top: 20),
                                                 child: MaterialButton(
-                                                  color:
-                                                      const Color(0xff5603AD),
+                                                  color: purpleColor,
                                                   minWidth: 200,
                                                   onPressed: () {
                                                     showDialog(
@@ -239,7 +241,6 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                               ),
                                                             ),
                                                             TextFormField(
-                                                              // TODO: CAN MAKE THIS INTO A DROPDOWN MENU
                                                               decoration:
                                                                   const InputDecoration(
                                                                 labelText:
@@ -261,7 +262,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                           ),
                                                           OutlinedButton(
                                                             onPressed: () {
-                                                              // TODO: PATCH/PUT REQUEST
+                                                              // TODO(A): PATCH/PUT REQUEST
                                                             },
                                                             child: const Text(
                                                                 "Save"),
@@ -309,125 +310,130 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         color: Colors.grey.withOpacity(0.2),
                         width: MediaQuery.of(context).size.width * 0.8,
                         height: MediaQuery.of(context).size.height * 0.4,
-                        child: LayoutBuilder(builder: (context, constraints) {
-                          return Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(left: 30.0),
-                                  child: Text(
-                                    "Menu",
-                                    style: TextStyle(
-                                        fontSize: 35,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 20.0, top: 20),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              GestureDetector(
-                                                onTap: () {
-                                                  // Open menu to view items and edit/remove individual items
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const MenuView()),
-                                                  );
-                                                },
-                                                child: Material(
-                                                  color: Colors.white,
-                                                  child: Center(
-                                                    child: Ink(
-                                                      width:
-                                                          constraints.maxWidth *
-                                                              0.25,
-                                                      height: constraints
-                                                              .maxHeight *
-                                                          0.5,
-                                                      decoration:
-                                                          ShapeDecoration(
-                                                        color: const Color(
-                                                            0xff5603AD),
-                                                        shape: Border.all(
-                                                          color: const Color(
-                                                              0xff5603AD),
-                                                          width: 5.0,
-                                                        ),
-                                                      ),
-                                                      child: const Icon(
-                                                        Icons
-                                                            .menu_book_outlined,
-                                                        color: Colors.white,
-                                                        size: 70,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              const SizedBox(width: 50),
-                                              GestureDetector(
-                                                onTap: () async {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const AddNewMenuItem()),
-                                                  );
-                                                },
-                                                child: Material(
-                                                  color: Colors.white,
-                                                  child: Center(
-                                                    child: Ink(
-                                                      width:
-                                                          constraints.maxWidth *
-                                                              0.25,
-                                                      height: constraints
-                                                              .maxHeight *
-                                                          0.5,
-                                                      decoration:
-                                                          ShapeDecoration(
-                                                        color: const Color(
-                                                            0xff5603AD),
-                                                        shape: Border.all(
-                                                          color: const Color(
-                                                              0xff5603AD),
-                                                          width: 5.0,
-                                                        ),
-                                                      ),
-                                                      child: const Icon(
-                                                        Icons
-                                                            .edit_note_outlined,
-                                                        color: Colors.white,
-                                                        size: 70,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            return Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.only(left: 30.0),
+                                    child: Text(
+                                      "Menu",
+                                      style: TextStyle(
+                                          fontSize: 35,
+                                          fontWeight: FontWeight.bold),
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 20.0, top: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    // Open menu to view items and edit/remove individual items
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const MenuView(),
+                                                      ),
+                                                    );
+                                                  },
+                                                  child: Material(
+                                                    color: Colors.white,
+                                                    child: Center(
+                                                      child: Ink(
+                                                        width: constraints
+                                                                .maxWidth *
+                                                            0.25,
+                                                        height: constraints
+                                                                .maxHeight *
+                                                            0.5,
+                                                        decoration:
+                                                            ShapeDecoration(
+                                                          color: const Color(
+                                                              0xff5603AD),
+                                                          shape: Border.all(
+                                                            color: const Color(
+                                                                0xff5603AD),
+                                                            width: 5.0,
+                                                          ),
+                                                        ),
+                                                        child: const Icon(
+                                                          Icons
+                                                              .menu_book_outlined,
+                                                          color: Colors.white,
+                                                          size: 70,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                const SizedBox(width: 50),
+                                                GestureDetector(
+                                                  onTap: () async {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const AddNewMenuItem(),
+                                                      ),
+                                                    );
+                                                  },
+                                                  child: Material(
+                                                    color: Colors.white,
+                                                    child: Center(
+                                                      child: Ink(
+                                                        width: constraints
+                                                                .maxWidth *
+                                                            0.25,
+                                                        height: constraints
+                                                                .maxHeight *
+                                                            0.5,
+                                                        decoration:
+                                                            ShapeDecoration(
+                                                          color: const Color(
+                                                              0xff5603AD),
+                                                          shape: Border.all(
+                                                            color: const Color(
+                                                                0xff5603AD),
+                                                            width: 5.0,
+                                                          ),
+                                                        ),
+                                                        child: const Icon(
+                                                          Icons
+                                                              .edit_note_outlined,
+                                                          color: Colors.white,
+                                                          size: 70,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ],

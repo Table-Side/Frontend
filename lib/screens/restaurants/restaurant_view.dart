@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_side/components/CustomAppBar.dart';
+import 'package:table_side/const/design.dart';
 import 'package:table_side/screens/restaurants/order.dart';
-
-// TODO: ALL VALUES HARDCODED ATM NEEDS TO BE CHANGED TO USE VALUES FROM DB
 
 class RestaurantView extends StatefulWidget {
   const RestaurantView({super.key});
@@ -49,6 +48,7 @@ class _RestaurantViewState extends State<RestaurantView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // TODO(A): GET DATA FROM DB
       appBar: const CustomAppBar(text: "Restaurant Name"),
       body: Scrollbar(
         child: SingleChildScrollView(
@@ -59,17 +59,16 @@ class _RestaurantViewState extends State<RestaurantView> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // const SizedBox(width: 100),
                   MaterialButton(
-                    color: const Color(0xff5603AD),
+                    color: purpleColor,
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const OrderForm()),
+                          builder: (context) => const OrderForm(),
+                        ),
                       );
                     },
-                    // minWidth: 300,
                     minWidth: MediaQuery.of(context).size.width * 0.2,
                     child: const Padding(
                       padding: EdgeInsets.all(10.0),
@@ -130,13 +129,10 @@ class _RestaurantViewState extends State<RestaurantView> {
                                             child: ListView(
                                               shrinkWrap: true,
                                               children: const [
+                                                // TODO(A): GET DATA FROM DB
                                                 Text(
                                                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
                                                   "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                                                  "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                                  "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                                  "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                                  "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
                                                   "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
                                                   "elementum nibh tellus molestie nunc non blandit massa.",
                                                   style:
@@ -155,8 +151,7 @@ class _RestaurantViewState extends State<RestaurantView> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      color: const Color(0xff5603AD)
-                                          .withOpacity(0.2),
+                                      color: purpleColor.withOpacity(0.2),
                                       width: constraints.maxWidth * 0.45,
                                       height: constraints.maxHeight * 0.85,
                                       child: Padding(
@@ -176,6 +171,7 @@ class _RestaurantViewState extends State<RestaurantView> {
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
+                                                  // TODO(A): GET DATA FROM DB
                                                   Text(
                                                       "this will be the times"),
                                                   SizedBox(height: 15),
@@ -186,6 +182,7 @@ class _RestaurantViewState extends State<RestaurantView> {
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
+                                                  // TODO(A): GET DATA FROM DB
                                                   Text(
                                                       "this will be the location"),
                                                   SizedBox(height: 15),
@@ -196,6 +193,7 @@ class _RestaurantViewState extends State<RestaurantView> {
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
+                                                  // TODO(A): GET DATA FROM DB
                                                   Text(
                                                       "this will be the type of cuisine served"),
                                                 ],

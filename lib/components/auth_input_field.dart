@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_side/components/auth_shared.dart';
+import 'package:table_side/const/design.dart';
 
 class AuthInputField extends StatelessWidget {
   final TextEditingController controller;
@@ -21,19 +22,21 @@ class AuthInputField extends StatelessWidget {
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: AuthShared.color1),
-            ),
-            fillColor: AuthShared.color1.withOpacity(0.2),
-            filled: true,
-            hintText: hintText,
-            hintStyle:
-                TextStyle(color: AuthShared.color1.withOpacity(0.4))),
-        style: TextStyle(
-          color: AuthShared.color1,
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.transparent),
+          ),
+          focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: purpleColor),
+          ),
+          fillColor: purpleColor.withOpacity(0.2),
+          filled: true,
+          hintText: hintText,
+          hintStyle: TextStyle(
+            color: purpleColor.withOpacity(0.4),
+          ),
+        ),
+        style: const TextStyle(
+          color: purpleColor,
           fontWeight: FontWeight.bold,
         ),
       ),

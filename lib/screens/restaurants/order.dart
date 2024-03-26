@@ -67,16 +67,17 @@ class OrderForm extends StatelessWidget {
                                           ),
                                           Column(
                                             children: [
-                                              //TODO: Button for adding items to order
                                               IconButton(
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    // TODO(A): MAKE POST REQUEST FOR ITEMS
+                                                  },
                                                   icon: const Icon(Icons.add)),
-
-                                              //TODO: Button for removing items from order
                                               IconButton(
-                                                  onPressed: () {},
-                                                  icon:
-                                                      const Icon(Icons.remove)),
+                                                onPressed: () {
+                                                  // TODO(A): MAKE DELETE REQUEST
+                                                },
+                                                icon: const Icon(Icons.remove),
+                                              ),
                                             ],
                                           ),
                                         ],

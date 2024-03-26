@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:table_side/components/auth_shared.dart';
+import 'package:table_side/const/design.dart';
 
 class AuthButton extends StatelessWidget {
   final String text;
@@ -14,7 +14,7 @@ class AuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: AuthShared.color1,
+      color: purpleColor,
       onPressed: () {
         onTap!();
       },

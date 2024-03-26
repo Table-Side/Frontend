@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:table_side/components/auth_button.dart';
 import 'package:table_side/components/auth_input_field.dart';
 import 'package:table_side/components/auth_shared.dart';
+import 'package:table_side/const/design.dart';
+import 'package:table_side/screens/user/register.dart';
 
 class LoginScreen extends StatefulWidget {
-  final Function()? onTapRegister;
-  const LoginScreen({super.key, required this.onTapRegister});
+  // final Function()? onTapRegister;
+  // const LoginScreen({super.key, required this.onTapRegister});
+
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -18,30 +22,30 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
 
   //Methods
-  void userSignIn() async {
-    //Progress indicator
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(child: CircularProgressIndicator());
-        });
-
-    if (emailController.text == "") //Empty field email
-    {
-      Navigator.pop(context);
-      AuthShared.errorMessage(context, "Email field cannot be empty");
-    } else if (passwordController.text == "") //Empty field password
-    {
-      Navigator.pop(context);
-      AuthShared.errorMessage(context, "Password field cannot be empty");
-    } else //Try to sign in
-    {
-      //TODO: Sign in function using emailController.text and passwordController.text
-      // - Hide the progress indicator once logged in or when login failed - Navigator.pop(context);
-      // - If wrong email     - AuthShared.errorMessage(context, "Incorrect Email");
-      // - If wrong password  - AuthShared.errorMessage(context, "Sorry, that's not the right password");
-    }
-  }
+  // void userSignIn() async {
+  //   //Progress indicator
+  //   showDialog(
+  //       context: context,
+  //       builder: (context) {
+  //         return const Center(child: CircularProgressIndicator());
+  //       });
+  //
+  //   if (emailController.text == "") //Empty field email
+  //   {
+  //     Navigator.pop(context);
+  //     AuthShared.errorMessage(context, "Email field cannot be empty");
+  //   } else if (passwordController.text == "") //Empty field password
+  //   {
+  //     Navigator.pop(context);
+  //     AuthShared.errorMessage(context, "Password field cannot be empty");
+  //   } else //Try to sign in
+  //   {
+  //     //TODO: Sign in function using emailController.text and passwordController.text
+  //     // - Hide the progress indicator once logged in or when login failed - Navigator.pop(context);
+  //     // - If wrong email     - AuthShared.errorMessage(context, "Incorrect Email");
+  //     // - If wrong password  - AuthShared.errorMessage(context, "Sorry, that's not the right password");
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     const SizedBox(height: 10),
 
+                    // TODO(A): THIS ISN'T BEING USED REMOVE IT?
                     //Forgot Password
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -101,9 +106,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     //Sign In Button
                     AuthButton(
-                      text: "Login",
-                      onTap: userSignIn,
-                    ),
+                        text: "Login",
+                        // onTap: userSignIn,
+                        onTap: () {
+                          // TODO(A): AUTHENTICATE AND LOG USER IN
+                        }),
 
                     const SizedBox(height: 50),
 
@@ -112,18 +119,33 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Wrap(
                         alignment: WrapAlignment.center,
                         children: [
-                          AuthShared.divider,
+                          Divider(
+                            thickness: 0.5,
+                            color: purpleColor.withOpacity(0.6),
+                          ),
                           const SizedBox(width: 4),
                           Text('Don\'t have an account?',
                               style: AuthShared.textDefault),
                           const SizedBox(width: 4),
                           GestureDetector(
-                            onTap: widget.onTapRegister,
+                            // onTap: widget.onTapRegister,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (final context) =>
+                                      const RegisterScreen(),
+                                ),
+                              );
+                            },
                             child: Text('Register now',
                                 style: AuthShared.textLink),
                           ),
                           const SizedBox(width: 4),
-                          AuthShared.divider,
+                          Divider(
+                            thickness: 0.5,
+                            color: purpleColor.withOpacity(0.6),
+                          ),
                         ],
                       ),
                     ),

@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-/*
-Todo: Pass in restaurant details, e.g. name, picture, rating
-TODO: fix weird text indentation
- */
-
 class RestaurantCard extends StatelessWidget {
   const RestaurantCard({
     super.key,
@@ -31,7 +26,6 @@ class RestaurantCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Container(
-          // height: kOptionCardHeight,
           width: width,
           height: height,
           decoration: BoxDecoration(
@@ -61,6 +55,7 @@ class RestaurantCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // TODO(A): GET DATA FROM DB
                     // name - need to get from db
                     Text(
                       label,
@@ -68,12 +63,14 @@ class RestaurantCard extends StatelessWidget {
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
 
+                    // TODO(A): GET DATA FROM DB
                     // type of cuisine - need to get from db
                     Text(
                       cuisine,
                       textAlign: TextAlign.center,
                     ),
 
+                    // TODO(A): GET DATA FROM DB
                     // rating - need to get from db
                     Text(
                       rating.toString(),

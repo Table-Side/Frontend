@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:table_side/const/design.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String text;
   const CustomAppBar({super.key, required this.text});
+  @override
+  Size get preferredSize => const Size.fromHeight(56);
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +17,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: const TextStyle(
             fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
       ),
-      backgroundColor: const Color(0xff5603AD),
+      backgroundColor: purpleColor,
       toolbarHeight: 100,
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 50.0),
           child: MaterialButton(
-            onPressed: () {
-              // TODO: Redirect to profile screen
-            },
+            onPressed: () => context.go('/profile'),
             child: const Row(
               children: [
                 Text(
@@ -45,7 +47,4 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ],
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(56);
 }
