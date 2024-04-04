@@ -1,7 +1,20 @@
 version: "3.8"
 
 services:
+  nginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+    environment:
+      - FLUTTER_HOST
+      - FLUTTER_PORT
+      - DOMAIN
+      - LE_EMAIL
+      - LE_OPTIONS
+      - LE_RENEW_OPTIONS
+      - LE_RENEW_CRON_COMMAND
+    ports:
+      - "80:80"
+      - "443:443"
   frontend:
     build: "ghcr.io/Table-Side/frontend:main"
-    ports:
-    - "8080:8080"
