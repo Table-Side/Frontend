@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.only(right: 50.0),
           child: MaterialButton(
-            onPressed: () => context.go('/profile'),
+            onPressed: () => context.push('/profile'),
             child: const Row(
               children: [
                 Text(

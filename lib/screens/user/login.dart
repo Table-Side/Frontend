@@ -6,9 +6,6 @@ import 'package:table_side/const/design.dart';
 import 'package:table_side/screens/user/register.dart';
 
 class LoginScreen extends StatefulWidget {
-  // final Function()? onTapRegister;
-  // const LoginScreen({super.key, required this.onTapRegister});
-
   const LoginScreen({super.key});
 
   @override
@@ -20,32 +17,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
-
-  //Methods
-  // void userSignIn() async {
-  //   //Progress indicator
-  //   showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return const Center(child: CircularProgressIndicator());
-  //       });
-  //
-  //   if (emailController.text == "") //Empty field email
-  //   {
-  //     Navigator.pop(context);
-  //     AuthShared.errorMessage(context, "Email field cannot be empty");
-  //   } else if (passwordController.text == "") //Empty field password
-  //   {
-  //     Navigator.pop(context);
-  //     AuthShared.errorMessage(context, "Password field cannot be empty");
-  //   } else //Try to sign in
-  //   {
-  //     //TODO: Sign in function using emailController.text and passwordController.text
-  //     // - Hide the progress indicator once logged in or when login failed - Navigator.pop(context);
-  //     // - If wrong email     - AuthShared.errorMessage(context, "Incorrect Email");
-  //     // - If wrong password  - AuthShared.errorMessage(context, "Sorry, that's not the right password");
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +34,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const SizedBox(height: 50),
+
+                    // TODO: ADD LOGO
 
                     //Welcome message
                     Text(
@@ -93,14 +66,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     // TODO(A): THIS ISN'T BEING USED REMOVE IT?
                     //Forgot Password
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                      child: Text(
-                        'Forgot Password?',
-                        style: AuthShared.textDefault,
-                        textAlign: TextAlign.end,
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    //   child: Text(
+                    //     'Forgot Password?',
+                    //     style: AuthShared.textDefault,
+                    //     textAlign: TextAlign.end,
+                    //   ),
+                    // ),
 
                     const SizedBox(height: 25),
 

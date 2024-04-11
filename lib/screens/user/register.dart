@@ -21,36 +21,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-
-  // TODO(A): REMOVE?
-  //Methods
-  // void userSignUp() async {
-  //   //Progress indicator
-  //   showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return const Center(child: CircularProgressIndicator());
-  //       });
-  //
-  //   if (emailController.text == "") //Empty field email
-  //   {
-  //     Navigator.pop(context);
-  //     AuthShared.errorMessage(context, "Email field cannot be empty");
-  //   } else if (passwordController.text == "") //Empty field password
-  //   {
-  //     Navigator.pop(context);
-  //     AuthShared.errorMessage(context, "Password field cannot be empty");
-  //   } else if (passwordController.text != confirmPasswordController.text) {
-  //     //Password fields not matching
-  //     Navigator.pop(context);
-  //     AuthShared.errorMessage(context, "Passwords must match");
-  //   } else //Try to create account
-  //   {
-  //     //TODO: Sign up function using emailController.text and passwordController.text
-  //     // - Hide the progress indicator once signed in or when sign in failed - Navigator.pop(context);
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +36,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 50),
+
+                  // TODO: ADD LOGO
 
                   //Title
                   Text('Create an Account', style: AuthShared.textTitle1),
@@ -124,8 +96,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       } else //Try to create account
                       {
                         // TODO(A): MAKE POST REQUEST TO CREATE USER
-                        //TODO: Sign up function using emailController.text and passwordController.text
-                        // - Hide the progress indicator once signed in or when sign in failed - Navigator.pop(context);
                       }
                     },
                   ),

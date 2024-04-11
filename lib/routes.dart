@@ -12,10 +12,11 @@ import 'package:table_side/screens/user/profile_editor.dart';
 part 'routes.g.dart';
 
 GoRouter router(final RouterRef ref) {
-  final isAuthenticatedState = ref.watch(isAuthenticatedProvider);
+  // final isAuthenticatedState = ref.watch(isAuthenticatedProvider);
   // const isAuthenticatedState = true;
-  const isAdmin = true;
+  const isAdmin = false;
   const isAuthenticated = true;
+  const requiresAuth = true;
 
   return GoRouter(
     routes: <RouteBase>[
@@ -31,7 +32,7 @@ GoRouter router(final RouterRef ref) {
         },
       ),
 
-      // Authentication
+      // login
       GoRoute(
         path: '/login',
         builder: (final BuildContext context, final GoRouterState state) {
@@ -39,34 +40,16 @@ GoRouter router(final RouterRef ref) {
         },
       ),
 
-      // Admin Dashboard
-      GoRoute(
-        path: '/admin',
-        builder: (final BuildContext context, final GoRouterState state) {
-          return const AdminDashboard();
-        },
-        redirect: (final BuildContext context, final GoRouterState state) {
-          if (!isAdmin) {
-            return '/login';
-          }
-          return null;
-        },
-      ),
-
-      // Dashboard (for normal users)
+      //dashboard
       GoRoute(
         path: '/',
         builder: (final BuildContext context, final GoRouterState state) {
+          if (isAdmin) {
+            return const AdminDashboard();
+          }
           return const Dashboard();
         },
-        redirect: (final BuildContext context, final GoRouterState state) {
-          if (!isAdmin) {
-            return '/login';
-          }
-          return null;
-        },
         routes: <RouteBase>[
-          // Profile page
           GoRoute(
             path: 'profile',
             builder: (final BuildContext context, final GoRouterState state) {
@@ -74,7 +57,7 @@ GoRouter router(final RouterRef ref) {
             },
             routes: [
               GoRoute(
-                path: 'profile/editProfile',
+                path: 'editProfile',
                 builder:
                     (final BuildContext context, final GoRouterState state) {
                   return const ProfileEditorScreen();
@@ -100,7 +83,7 @@ GoRouter router(final RouterRef ref) {
     redirect: (final context, final routerState) {
       // if (isAuthenticatedState.isLoading) return '/_loading';
 
-      final bool requiresAuth = routerState.fullPath! != '/login';
+      // final bool requiresAuth = routerState.fullPath! != '/login';
       // final bool isAuthenticated = isAuthenticatedState.requireValue;
 
       if (isAuthenticated) {
@@ -109,11 +92,6 @@ GoRouter router(final RouterRef ref) {
         if (requiresAuth != isAuthenticated) return '/login';
       }
 
-      if (isAdmin && isAuthenticated) {
-        if (requiresAuth == isAuthenticated) return '/admin';
-      } else {
-        if (requiresAuth != isAuthenticated) return '/login';
-      }
       return null;
     },
   );

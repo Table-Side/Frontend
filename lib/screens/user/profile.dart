@@ -6,8 +6,6 @@ import 'package:table_side/const/design.dart';
 import 'package:table_side/screens/user/profile_editor.dart';
 
 class ProfileScreen extends StatefulWidget {
-  // final Function()? onTapEditProfile;
-  // const ProfileScreen({super.key, required this.onTapEditProfile});
   const ProfileScreen({super.key});
 
   @override
@@ -15,30 +13,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  // TODO(A): Remove these functions and add functionality where relevant
-  // //Methods
-  // void userSignOut() async {
-  //   //Progress indicator
-  //   showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return const Center(child: CircularProgressIndicator());
-  //       });
-  //
-  //   //TODO: Sign out function
-  // }
-  //
-  // void userDeleteAccount() async {
-  //   //Progress indicator
-  //   showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return const Center(child: CircularProgressIndicator());
-  //       });
-  //
-  //   //TODO: Delete account function
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +29,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 50),
+
+                  // TODO: ADD LOGO
 
                   // TODO(A): GET DATA FROM DB
                   //Name and email
@@ -74,8 +50,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         const SizedBox(width: 4),
                         GestureDetector(
-                          // onTap: userSignOut,
-                          // TODO(A): MAKE LOGOUT REQUEST
+                          onTap: () {
+                            // TODO(A): MAKE LOGOUT REQUEST
+                          },
                           child: Text('Log out', style: AuthShared.textLinkBig),
                         ),
                         const SizedBox(width: 4),
@@ -85,18 +62,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         const SizedBox(width: 4),
                         GestureDetector(
-                            // onTap: widget.onTapEditProfile,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (final context) =>
-                                      const ProfileEditorScreen(),
-                                ),
-                              );
-                            },
-                            child: Text('Edit details',
-                                style: AuthShared.textLinkBig)),
+                          onTap: () => context.push('/profile/editProfile'),
+                          child: Text('Edit details',
+                              style: AuthShared.textLinkBig),
+                        ),
                         const SizedBox(width: 4),
                         Divider(
                           thickness: 0.5,
@@ -104,7 +73,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         const SizedBox(width: 4),
                         GestureDetector(
-                          // onTap: userDeleteAccount,
                           onTap: () {
                             // TODO(A): MAKE DELETE REQUEST
                           },

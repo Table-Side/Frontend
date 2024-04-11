@@ -18,35 +18,6 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
-  // TODO(A): Remove these functions and add functionality where relevant?
-  //Methods
-  // void userProfileSaveChanges() async {
-  //   //Progress indicator
-  //   showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return const Center(child: CircularProgressIndicator());
-  //       });
-  //
-  //   if (nameController.text == "") //Empty field name
-  //   {
-  //     Navigator.pop(context);
-  //     AuthShared.errorMessage(context, "Name field cannot be empty");
-  //   } else if (emailController.text == "") //Empty field email
-  //   {
-  //     Navigator.pop(context);
-  //     AuthShared.errorMessage(context, "Email field cannot be empty");
-  //   } else if (passwordController.text != confirmPasswordController.text) {
-  //     //Password fields not matching
-  //     Navigator.pop(context);
-  //     AuthShared.errorMessage(context, "Passwords must match");
-  //   } else //Try to save changes
-  //   {
-  //     //TODO: Save profile changes
-  //     // - Also currently it doesn't check for empty passwords as the user might not want to change it
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
