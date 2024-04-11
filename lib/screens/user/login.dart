@@ -33,9 +33,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const SizedBox(height: 50),
-
-                    // TODO: ADD LOGO
+                    //Logo
+                    const Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Image(
+                        image: AssetImage("assets/logo.png"),
+                        height: 200,
+                      ),
+                    ),
 
                     //Welcome message
                     Text(
@@ -64,25 +69,24 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     const SizedBox(height: 10),
 
-                    // TODO(A): THIS ISN'T BEING USED REMOVE IT?
+                    // TODO: THIS ISN'T BEING USED REMOVE IT?
                     //Forgot Password
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    //   child: Text(
-                    //     'Forgot Password?',
-                    //     style: AuthShared.textDefault,
-                    //     textAlign: TextAlign.end,
-                    //   ),
-                    // ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Text(
+                        'Forgot Password?',
+                        style: AuthShared.textDefault,
+                        textAlign: TextAlign.end,
+                      ),
+                    ),
 
                     const SizedBox(height: 25),
 
                     //Sign In Button
                     AuthButton(
                         text: "Login",
-                        // onTap: userSignIn,
                         onTap: () {
-                          // TODO(A): AUTHENTICATE AND LOG USER IN
+                          // TODO: AUTHENTICATE AND LOG USER IN
                         }),
 
                     const SizedBox(height: 50),

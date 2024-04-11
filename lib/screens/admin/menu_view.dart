@@ -1,13 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:table_side/components/CustomAppBar.dart';
 
-class MenuView extends StatelessWidget {
+class MenuView extends StatefulWidget {
   const MenuView({super.key});
+
+  @override
+  State<MenuView> createState() => _MenuViewState();
+}
+
+class _MenuViewState extends State<MenuView> {
+  late final TextEditingController _itemNameController;
+  late final TextEditingController _itemPriceController;
+
+  @override
+  void initState() {
+    _itemNameController = TextEditingController();
+    _itemPriceController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _itemNameController.dispose();
+    _itemPriceController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO(A): GET DATA FROM DB
       appBar: const CustomAppBar(text: 'Menu'),
       body: SingleChildScrollView(
         child: Column(
@@ -26,7 +47,7 @@ class MenuView extends StatelessWidget {
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
                           children: [
-                            // TODO: FOR LOOP WILL BE ADJUSTED TO GO THROUGH THE LIST OF MENU ITEMS FROM DB
+                            // TODO: Will loop through the list of menu items from db
                             for (int i = 0; i < 15; i++)
                               Padding(
                                 padding:
@@ -45,7 +66,7 @@ class MenuView extends StatelessWidget {
                                             const Column(
                                               children: [
                                                 SizedBox(height: 15),
-                                                // TODO(A): GET DATA FROM DB
+                                                // TODO: Get data from db
                                                 Text(
                                                   "Item Name",
                                                   textAlign: TextAlign.center,
@@ -54,7 +75,7 @@ class MenuView extends StatelessWidget {
                                                           FontWeight.bold),
                                                 ),
 
-                                                // TODO(A): GET DATA FROM DB
+                                                // TODO: Get data from db
                                                 Text(
                                                   "Item Price",
                                                   textAlign: TextAlign.center,
@@ -73,31 +94,35 @@ class MenuView extends StatelessWidget {
                                                               AlertDialog(
                                                         title: const Text(
                                                             "Edit Menu Item"),
-                                                        content: const Column(
+                                                        content: Column(
                                                           mainAxisSize:
                                                               MainAxisSize.min,
                                                           children: [
                                                             TextField(
+                                                              controller:
+                                                                  _itemNameController,
                                                               decoration:
-                                                                  InputDecoration(
+                                                                  const InputDecoration(
                                                                 label: Text(
                                                                     "Item Name"),
                                                                 border:
                                                                     UnderlineInputBorder(),
                                                               ),
                                                             ),
-                                                            SizedBox(
+                                                            const SizedBox(
                                                                 height: 20),
                                                             TextField(
+                                                              controller:
+                                                                  _itemPriceController,
                                                               decoration:
-                                                                  InputDecoration(
+                                                                  const InputDecoration(
                                                                 label: Text(
                                                                     "Item Price"),
                                                                 border:
                                                                     UnderlineInputBorder(),
                                                               ),
                                                             ),
-                                                            SizedBox(
+                                                            const SizedBox(
                                                                 height: 20),
                                                           ],
                                                         ),
@@ -105,7 +130,8 @@ class MenuView extends StatelessWidget {
                                                           OutlinedButton(
                                                             onPressed:
                                                                 () async {
-                                                              // TODO(A): MAKE PATCH/PUT REQUEST
+                                                              // TODO: Make patch request to update menu item
+                                                              // make request with _itemNameController.text and _itemPriceController.text
                                                             },
                                                             child: const Text(
                                                                 "Save"),
@@ -126,7 +152,7 @@ class MenuView extends StatelessWidget {
                                                 ),
                                                 IconButton(
                                                   onPressed: () {
-                                                    // TODO(A): MAKE DELETE REQUEST
+                                                    // TODO: Make delete request to delete menu item
                                                   },
                                                   icon:
                                                       const Icon(Icons.delete),

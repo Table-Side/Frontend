@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_side/components/CustomAppBar.dart';
+import 'package:table_side/const/design.dart';
 
 class OrderForm extends StatelessWidget {
   const OrderForm({super.key});
@@ -29,7 +30,7 @@ class OrderForm extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.bold),
                           ),
-                          // TODO: FOR LOOP WILL BE ADJUSTED TO GO THROUGH THE LIST OF MENU ITEMS FROM DB
+                          // TODO: Will loop through the list of menu items from db
                           for (int i = 0; i < 15; i++)
                             Padding(
                               padding:
@@ -48,7 +49,7 @@ class OrderForm extends StatelessWidget {
                                           const Column(
                                             children: [
                                               SizedBox(height: 15),
-                                              // name - need to get from db
+                                              // TODO: Get from db
                                               Text(
                                                 "Item Name",
                                                 textAlign: TextAlign.center,
@@ -57,7 +58,7 @@ class OrderForm extends StatelessWidget {
                                                         FontWeight.bold),
                                               ),
 
-                                              // price - need to get from db
+                                              // TODO: Get from db
                                               Text(
                                                 "Item Price",
                                                 textAlign: TextAlign.center,
@@ -69,12 +70,12 @@ class OrderForm extends StatelessWidget {
                                             children: [
                                               IconButton(
                                                   onPressed: () {
-                                                    // TODO(A): MAKE POST REQUEST FOR ITEMS
+                                                    // TODO(A): MAKE POST REQUEST FOR ITEMS?
                                                   },
                                                   icon: const Icon(Icons.add)),
                                               IconButton(
                                                 onPressed: () {
-                                                  // TODO(A): MAKE DELETE REQUEST
+                                                  // TODO(A): MAKE DELETE REQUEST?
                                                 },
                                                 icon: const Icon(Icons.remove),
                                               ),
@@ -115,7 +116,7 @@ class OrderForm extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.bold),
                           ),
-                          // TODO: FOR LOOP WILL BE ADJUSTED TO GO THROUGH THE LIST OF MENU ITEMS FROM DB
+                          // TODO: Will loop through the list of menu items from db
                           for (int i = 0; i < 5; i++)
                             Padding(
                               padding:
@@ -163,6 +164,7 @@ class OrderForm extends StatelessWidget {
                                                     ),
                                                   ),
                                                   // TODO: VALUE WILL CHANGE BASED ON HOW MANY OF ITEM ADDED
+                                                  // TODO: NEED TO FIGURE OUT HOW THIS WILL WORK!!
                                                   child: const Center(
                                                       child: Text("1")),
                                                 ),
@@ -187,9 +189,9 @@ class OrderForm extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20),
                       child: MaterialButton(
-                        color: const Color(0xff5603AD),
+                        color: purpleColor,
                         onPressed: () {
-                          // TODO: MAKE POST REQUEST WITH ORDER
+                          // TODO: Make post request with order
                         },
                         child: const Padding(
                           padding: EdgeInsets.all(10.0),

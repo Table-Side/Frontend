@@ -14,7 +14,7 @@ part 'routes.g.dart';
 GoRouter router(final RouterRef ref) {
   // final isAuthenticatedState = ref.watch(isAuthenticatedProvider);
   // const isAuthenticatedState = true;
-  const isAdmin = false;
+  const isAdmin = true;
   const isAuthenticated = true;
   const requiresAuth = true;
 

@@ -53,16 +53,18 @@ class _DashboardState extends State<Dashboard> {
                                       height: 10,
                                     ),
                                     Expanded(
+                                      // TODO: NEED TO CHECK IF THIS CAN BE DONE - if yes get data from db else remove
+                                      // Recent restaurants
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
                                         child: Row(
                                           children: [
-                                            //todo: for all restaurants, display option card
+                                            // TODO: Get data from db
                                             for (var i = 0; i < 30; i++)
                                               RestaurantCard(
                                                 label: "McDonalds",
                                                 onTap: () {
-                                                  // TODO(A): FIX RESTAURANT TO ROUTE PROPERLY
+                                                  // TODO: Fix route
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
@@ -72,7 +74,7 @@ class _DashboardState extends State<Dashboard> {
                                                 },
                                                 height: 165,
                                                 width: 200,
-                                              ), //TODO: need to pass in restaurant details
+                                              ),
                                           ],
                                         ),
                                       ),
@@ -108,10 +110,10 @@ class _DashboardState extends State<Dashboard> {
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 10),
-                                          // TODO(A): GET DATA FROM DB
+                                          // TODO: Get data from db
                                           child: RestaurantCard(
                                             label: "McDonalds",
-                                            // TODO(A): FIX RESTAURANT TO ROUTE PROPERLY
+                                            // TODO: Fix route
                                             onTap: () {
                                               Navigator.push(
                                                 context,

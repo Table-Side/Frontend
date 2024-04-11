@@ -14,10 +14,26 @@ class AdminDashboard extends StatefulWidget {
 }
 
 class _AdminDashboardState extends State<AdminDashboard> {
+  final TextEditingController _aboutUsController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: Get about us text from db
+    // i.e. -> _nameController.text = widget.user.name;
+    // _aboutUsController.text =
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _aboutUsController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO(A): GET DATA FROM DB
+      // TODO: Get restaurant name from db
       appBar: const CustomAppBar(text: "Restaurant Name - Admin Dashboard"),
       body: CustomScrollView(
         slivers: [
@@ -60,16 +76,24 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                               0.4,
                                       child: ListView(
                                         shrinkWrap: true,
-                                        children: const [
-                                          Text(
-                                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
-                                            "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                                            "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                            "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                            "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                            "elementum nibh tellus molestie nunc non blandit massa.",
-                                            style: TextStyle(fontSize: 25),
+                                        children: [
+                                          // TODO: Get about us text from db
+                                          TextFormField(
+                                            controller: _aboutUsController,
+                                            decoration: const InputDecoration(
+                                              labelText: "About Us",
+                                              border: UnderlineInputBorder(),
+                                            ),
                                           ),
+                                          // Text(
+                                          //   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
+                                          //   "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                                          //   "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                          //   "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                          //   "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                          //   "elementum nibh tellus molestie nunc non blandit massa.",
+                                          //   style: TextStyle(fontSize: 25),
+                                          // ),
                                         ],
                                       ),
                                     ),
@@ -100,7 +124,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                               ),
                                               OutlinedButton(
                                                 onPressed: () {
-                                                  // TODO(A): PATCH/PUT REQUEST
+                                                  // TODO: Make patch request to update about us text
+                                                  // make request with _aboutUsController.text
                                                   Navigator.pop(context);
                                                 },
                                                 child: const Text("Save"),
@@ -193,11 +218,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                                             0.5,
                                                         decoration:
                                                             ShapeDecoration(
-                                                          color: const Color(
-                                                              0xff5603AD),
+                                                          color: purpleColor,
                                                           shape: Border.all(
-                                                            color: const Color(
-                                                                0xff5603AD),
+                                                            color: purpleColor,
                                                             width: 5.0,
                                                           ),
                                                         ),

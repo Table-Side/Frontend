@@ -14,7 +14,7 @@ class _RestaurantViewState extends State<RestaurantView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO(A): GET DATA FROM DB
+      // TODO: Get data from db
       appBar: const CustomAppBar(text: "Restaurant Name"),
       body: Scrollbar(
         child: SingleChildScrollView(
@@ -55,7 +55,7 @@ class _RestaurantViewState extends State<RestaurantView> {
                                     child: ListView(
                                       shrinkWrap: true,
                                       children: const [
-                                        // TODO(A): GET DATA FROM DB
+                                        // TODO: Get data from db
                                         Text(
                                           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
                                           "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "

@@ -2,8 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:table_side/components/CustomAppBar.dart';
 import 'package:table_side/const/design.dart';
 
-class AddNewMenuItem extends StatelessWidget {
+class AddNewMenuItem extends StatefulWidget {
   const AddNewMenuItem({super.key});
+
+  @override
+  State<AddNewMenuItem> createState() => _AddNewMenuItemState();
+}
+
+class _AddNewMenuItemState extends State<AddNewMenuItem> {
+  late final TextEditingController _itemNameController;
+  late final TextEditingController _itemPriceController;
+
+  @override
+  void initState() {
+    _itemNameController = TextEditingController();
+    _itemPriceController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _itemNameController.dispose();
+    _itemPriceController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +58,7 @@ class AddNewMenuItem extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     TextFormField(
+                                      controller: _itemNameController,
                                       decoration: const InputDecoration(
                                         labelText: "Item Name",
                                         border: UnderlineInputBorder(),
@@ -43,6 +66,7 @@ class AddNewMenuItem extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 50),
                                     TextFormField(
+                                      controller: _itemPriceController,
                                       decoration: const InputDecoration(
                                         labelText: "Item Price",
                                         border: UnderlineInputBorder(),
@@ -52,7 +76,8 @@ class AddNewMenuItem extends StatelessWidget {
                                     MaterialButton(
                                       color: purpleColor,
                                       onPressed: () {
-                                        // TODO(A): MAKE POST REQUEST
+                                        // TODO: Make post request to add new menu item
+                                        // make request with _itemNameController.text and _itemPriceController.text
                                       },
                                       minWidth:
                                           MediaQuery.of(context).size.width *

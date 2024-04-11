@@ -79,7 +79,6 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
                   //Save changes button
                   AuthButton(
                     text: "Save Changes",
-                    // onTap: userProfileSaveChanges,
                     onTap: () {
                       if (nameController.text == "") //Empty field name
                       {
@@ -99,7 +98,7 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
                             context, "Passwords must match");
                       } else //Try to save changes
                       {
-                        // TODO(A): MAKE PUT/PATCH REQUEST
+                        // TODO: Make put/patch request
                         // TODO(A): MAKE INTO A FORM TO MAKE VALIDATION WORK BETTER?
                         // - Also currently it doesn't check for empty passwords as the user might not want to change it
                       }

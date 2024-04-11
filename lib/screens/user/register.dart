@@ -37,7 +37,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 children: [
                   const SizedBox(height: 50),
 
-                  // TODO: ADD LOGO
+                  //Logo
+                  const Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Image(
+                      image: AssetImage("assets/logo.png"),
+                      height: 200,
+                    ),
+                  ),
 
                   //Title
                   Text('Create an Account', style: AuthShared.textTitle1),
@@ -95,7 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             context, "Passwords must match");
                       } else //Try to create account
                       {
-                        // TODO(A): MAKE POST REQUEST TO CREATE USER
+                        // TODO: Make request to create user
                       }
                     },
                   ),

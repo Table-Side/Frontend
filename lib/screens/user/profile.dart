@@ -28,11 +28,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 50),
+                  // const SizedBox(height: 50),
 
-                  // TODO: ADD LOGO
+                  //Logo
+                  const Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Image(
+                      image: AssetImage("assets/logo.png"),
+                      height: 200,
+                    ),
+                  ),
 
-                  // TODO(A): GET DATA FROM DB
+                  // TODO: Get user data from db
                   //Name and email
                   Text('<Name>', style: AuthShared.textTitle0),
                   Text('<Email>', style: AuthShared.textTitle2),
@@ -51,7 +58,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const SizedBox(width: 4),
                         GestureDetector(
                           onTap: () {
-                            // TODO(A): MAKE LOGOUT REQUEST
+                            // TODO: Make log out request
                           },
                           child: Text('Log out', style: AuthShared.textLinkBig),
                         ),
@@ -74,7 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const SizedBox(width: 4),
                         GestureDetector(
                           onTap: () {
-                            // TODO(A): MAKE DELETE REQUEST
+                            // TODO: Make delete request
                           },
                           child: Text('Delete account',
                               style: AuthShared.textLinkBig),
@@ -90,8 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                   const SizedBox(height: 50),
 
-                  // TODO(A): NEED TO CHECK IF THIS CAN BE DONE
-                  // TODO(A): GET DATA FROM DB
+                  // TODO: NEED TO CHECK IF THIS CAN BE DONE - if yes get data from db else remove
                   Text('<restaurants and orders go here>',
                       style: AuthShared.textDefault),
                 ],
