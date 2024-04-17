@@ -76,24 +76,24 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                               0.4,
                                       child: ListView(
                                         shrinkWrap: true,
-                                        children: [
+                                        children: const [
                                           // TODO: Get about us text from db
-                                          TextFormField(
-                                            controller: _aboutUsController,
-                                            decoration: const InputDecoration(
-                                              labelText: "About Us",
-                                              border: UnderlineInputBorder(),
-                                            ),
-                                          ),
-                                          // Text(
-                                          //   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
-                                          //   "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                                          //   "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                          //   "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                          //   "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
-                                          //   "elementum nibh tellus molestie nunc non blandit massa.",
-                                          //   style: TextStyle(fontSize: 25),
+                                          // TextFormField(
+                                          //   controller: _aboutUsController,
+                                          //   decoration: const InputDecoration(
+                                          //     labelText: "About Us",
+                                          //     border: UnderlineInputBorder(),
+                                          //   ),
                                           // ),
+                                          Text(
+                                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed "
+                                            "do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                                            "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                            "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                            "Aliquet rises feugiat in ante metus dictum at tempor. Lobortis "
+                                            "elementum nibh tellus molestie nunc non blandit massa.",
+                                            style: TextStyle(fontSize: 25),
+                                          ),
                                         ],
                                       ),
                                     ),

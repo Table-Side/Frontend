@@ -7,8 +7,6 @@ import 'package:table_side/const/design.dart';
 import 'package:table_side/screens/user/login.dart';
 
 class RegisterScreen extends StatefulWidget {
-  // final Function()? onTapLogin;
-  // const RegisterScreen({super.key, required this.onTapLogin});
   const RegisterScreen({super.key});
 
   @override

@@ -1,10 +1,10 @@
 import 'dart:ffi';
 
-import 'package:table_side/models/user.dart';
+import 'package:table_side/models/user_details.dart';
 
 class Restaurant {
   final String id;
-  final User restaurantOwner;
+  final UserDetails restaurantOwner;
   final String restaurantName;
   final String description;
   final DateTime openingHours;
@@ -52,7 +52,7 @@ class Menu {
 
 class RestaurantTable {
   final String id;
-  final User user;
+  final UserDetails user;
   final Int amountGuest;
   final Restaurant restaurant;
 

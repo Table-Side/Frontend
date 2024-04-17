@@ -98,8 +98,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(height: 50),
 
                   // TODO: NEED TO CHECK IF THIS CAN BE DONE - if yes get data from db else remove
-                  Text('<restaurants and orders go here>',
-                      style: AuthShared.textDefault),
+                  // Text('<restaurants and orders go here>',
+                  //     style: AuthShared.textDefault),
                 ],
               ),
             ),

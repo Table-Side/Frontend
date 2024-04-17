@@ -11,13 +11,22 @@ ChopperClient setUpClient({required final Iterable<ChopperService> services}) {
       (final Request request) async {
         if (request.uri.path == '/authenticate/login') return request;
 
-        final currentUser = await Authentication.readFromStorage();
+        final currentSession = Authentication.instance.getCurrentSession();
 
-        if (currentUser != null) {
+        if (currentSession != null) {
+          // Check if the token is expired
+          if (currentSession.isExpired()) {
+            print("Token expired. Refreshing...");
+
+            // Todo: Refresh session
+            await Authentication.instance.refreshSession();
+          }
+
+          // Add the access token to the request header
           return applyHeader(
             request,
             "Authorization",
-            'Bearer ${currentUser.sessionToken}',
+            'Bearer ${currentSession.accessToken}',
             override: false,
           );
         }

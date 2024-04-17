@@ -11,12 +11,15 @@ import 'package:table_side/screens/user/profile_editor.dart';
 
 part 'routes.g.dart';
 
+final GlobalKey<NavigatorState> _routerKey = GlobalKey<NavigatorState>();
+
+GlobalKey<NavigatorState> get routerKey => _routerKey;
+
 GoRouter router(final RouterRef ref) {
-  // final isAuthenticatedState = ref.watch(isAuthenticatedProvider);
-  // const isAuthenticatedState = true;
-  const isAdmin = true;
-  const isAuthenticated = true;
-  const requiresAuth = true;
+  final isAuthenticatedState = ref.watch(isAuthenticatedProvider);
+  const isAdmin = false;
+
+  // print(isAuthenticatedState);
 
   return GoRouter(
     routes: <RouteBase>[
@@ -81,10 +84,10 @@ GoRouter router(final RouterRef ref) {
 
     // Authentication
     redirect: (final context, final routerState) {
-      // if (isAuthenticatedState.isLoading) return '/_loading';
+      if (isAuthenticatedState.isLoading) return '/_loading';
 
-      // final bool requiresAuth = routerState.fullPath! != '/login';
-      // final bool isAuthenticated = isAuthenticatedState.requireValue;
+      final bool requiresAuth = routerState.fullPath! != '/login';
+      final bool isAuthenticated = isAuthenticatedState.requireValue;
 
       if (isAuthenticated) {
         if (requiresAuth != isAuthenticated) return '/';

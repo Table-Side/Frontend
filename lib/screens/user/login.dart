@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:table_side/components/auth_button.dart';
 import 'package:table_side/components/auth_input_field.dart';
-import 'package:table_side/components/auth_shared.dart';
 import 'package:table_side/const/design.dart';
-import 'package:table_side/screens/user/register.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:table_side/provider/authentication_provider.dart';
+import 'package:table_side/routes.dart';
 
-class LoginScreen extends StatefulWidget {
+import '../../domain/exception.dart';
+
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   //Controllers
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
+
+  // final baseUrl = 'https://auth.tableside.site';
+  final realm = 'Tableside';
+  final clientId = 'apisix';
+  final grantType = 'password';
+  final scope = 'openid';
+  final clientSecret = '97WttOkNUXpZ9syENIBNhkXssmMKUUzd';
 
   @override
   Widget build(BuildContext context) {
@@ -69,25 +79,58 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     const SizedBox(height: 10),
 
-                    // TODO: THIS ISN'T BEING USED REMOVE IT?
                     //Forgot Password
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                      child: Text(
-                        'Forgot Password?',
-                        style: AuthShared.textDefault,
-                        textAlign: TextAlign.end,
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    //   child: Text(
+                    //     'Forgot Password?',
+                    //     style: AuthShared.textDefault,
+                    //     textAlign: TextAlign.end,
+                    //   ),
+                    // ),
 
                     const SizedBox(height: 25),
 
                     //Sign In Button
                     AuthButton(
-                        text: "Login",
-                        onTap: () {
-                          // TODO: AUTHENTICATE AND LOG USER IN
-                        }),
+                      text: "Login",
+                      // onTap: () {
+                      //   // TODO: AUTHENTICATE AND LOG USER IN
+                      // },
+
+                      onTap: () async {
+                        try {
+                          // Trigger login action
+                          await ref.read(authenticationProvider.notifier).login(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                // realm: realm,
+                                clientId: clientId,
+                                grantType: grantType,
+                                scope: scope,
+                                clientSecret: clientSecret,
+                              );
+                        } on TableSideException catch (ex) {
+                          print("hello: ${ex}");
+                          print("hello message: ${ex.message}");
+                          if (routerKey.currentContext?.mounted ?? false) {
+                            await showDialog<String>(
+                              context: routerKey.currentContext!,
+                              builder: (final context) => AlertDialog(
+                                title: const Text("An error has occurred"),
+                                content: Text(ex.message),
+                                actions: [
+                                  OutlinedButton(
+                                    onPressed: () => Navigator.pop(context),
+                                    child: const Text("Try Again"),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        }
+                      },
+                    ),
 
                     const SizedBox(height: 50),
 
@@ -105,16 +148,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: AuthShared.textDefault),
                           const SizedBox(width: 4),
                           GestureDetector(
-                            // onTap: widget.onTapRegister,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (final context) =>
-                                      const RegisterScreen(),
-                                ),
-                              );
-                            },
+                            onTap: () {},
+                            // onTap: () {
+                            //   Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (final context) =>
+                            //           const RegisterScreen(),
+                            //     ),
+                            //   );
+                            // },
                             child: Text('Register now',
                                 style: AuthShared.textLink),
                           ),

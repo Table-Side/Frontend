@@ -3,22 +3,6 @@
 part of 'authentication_provider.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-_$CurrentUserImpl _$$CurrentUserImplFromJson(Map<String, dynamic> json) =>
-    _$CurrentUserImpl(
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
-      sessionToken: json['sessionToken'] as String,
-    );
-
-Map<String, dynamic> _$$CurrentUserImplToJson(_$CurrentUserImpl instance) =>
-    <String, dynamic>{
-      'user': instance.user,
-      'sessionToken': instance.sessionToken,
-    };
-
-// **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
@@ -37,12 +21,12 @@ final isAuthenticatedProvider = AutoDisposeProvider<AsyncValue<bool>>.internal(
 );
 
 typedef IsAuthenticatedRef = AutoDisposeProviderRef<AsyncValue<bool>>;
-String _$authenticationHash() => r'de2e202b9d9fbbdfc9f0df0466b5fc5c22c8b00f';
+String _$authenticationHash() => r'82132c330d4e36d1ff3458e55d079d9b44cddf91';
 
 /// See also [Authentication].
 @ProviderFor(Authentication)
 final authenticationProvider =
-    AutoDisposeAsyncNotifierProvider<Authentication, CurrentUser?>.internal(
+    AutoDisposeAsyncNotifierProvider<Authentication, User?>.internal(
   Authentication.new,
   name: r'authenticationProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -52,6 +36,6 @@ final authenticationProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$Authentication = AutoDisposeAsyncNotifier<CurrentUser?>;
+typedef _$Authentication = AutoDisposeAsyncNotifier<User?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
