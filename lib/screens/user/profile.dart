@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:table_side/components/auth_shared.dart';
 import 'package:table_side/components/CustomAppBar.dart';
 import 'package:table_side/const/design.dart';
+import 'package:table_side/provider/authentication_provider.dart';
 import 'package:table_side/screens/user/profile_editor.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    final user = ref.watch(authenticationProvider).requireValue!.user;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const CustomAppBar(text: "Table Side"),
@@ -28,8 +32,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // const SizedBox(height: 50),
-
                   //Logo
                   const Padding(
                     padding: EdgeInsets.all(20.0),
@@ -39,10 +41,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
 
-                  // TODO: Get user data from db
                   //Name and email
-                  Text('<Name>', style: AuthShared.textTitle0),
-                  Text('<Email>', style: AuthShared.textTitle2),
+                  Text(user.name,
+                      style: AuthShared.textTitle0.copyWith(fontSize: 40)),
+                  Text(user.email,
+                      style: AuthShared.textTitle2.copyWith(fontSize: 30)),
 
                   const SizedBox(height: 50),
 
@@ -58,7 +61,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const SizedBox(width: 4),
                         GestureDetector(
                           onTap: () {
-                            // TODO: Make log out request
+                            ref.read(authenticationProvider.notifier).logout();
+                            if (user == null) context.push('/login');
                           },
                           child: Text('Log out', style: AuthShared.textLinkBig),
                         ),

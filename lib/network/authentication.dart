@@ -10,10 +10,12 @@ const grantType = 'password';
 const scope = 'openid';
 const clientSecret = '97WttOkNUXpZ9syENIBNhkXssmMKUUzd';
 
-@ChopperApi(baseUrl: "https://auth.tableside.site/realms/Tableside")
+// @ChopperApi(baseUrl: "https://auth.tableside.site/realms/Tableside")
+@ChopperApi()
 abstract class AuthenticationService extends ChopperService {
   @Get(
-    path: '/protocol/openid-connect/userinfo',
+    path:
+        'https://auth.tableside.site/realms/Tableside/protocol/openid-connect/userinfo',
   )
   @formUrlEncoded
   Future<Response<Map<String, dynamic>>> getCurrentUser(
@@ -21,7 +23,9 @@ abstract class AuthenticationService extends ChopperService {
   );
 
   // Define a method to obtain access token
-  @Post(path: '/protocol/openid-connect/token')
+  @Post(
+      path:
+          'https://auth.tableside.site/realms/Tableside/protocol/openid-connect/token')
   @formUrlEncoded
   Future<Response<Map<String, dynamic>>> login(
       @Body() Map<String, String> fields);
@@ -30,7 +34,6 @@ abstract class AuthenticationService extends ChopperService {
   static AuthenticationService create() {
     final client = ChopperClient(
       services: [_$AuthenticationService()],
-      // baseUrl: baseUrl,
       // Set the FormUrlEncodedConverter here
       converter: const FormUrlEncodedConverter(),
     );
@@ -38,6 +41,6 @@ abstract class AuthenticationService extends ChopperService {
   }
 
   // Logout
-  @Post(path: '/logout', optionalBody: true)
+  @Post(path: '', optionalBody: true)
   Future<Response<void>> logout();
 }

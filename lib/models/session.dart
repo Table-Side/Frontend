@@ -1,5 +1,3 @@
-// part 'session.g.dart';
-
 class Session {
   final int iat;
   final int exp;

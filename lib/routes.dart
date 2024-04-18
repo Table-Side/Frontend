@@ -19,8 +19,6 @@ GoRouter router(final RouterRef ref) {
   final isAuthenticatedState = ref.watch(isAuthenticatedProvider);
   const isAdmin = false;
 
-  // print(isAuthenticatedState);
-
   return GoRouter(
     routes: <RouteBase>[
       // Loading

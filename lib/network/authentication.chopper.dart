@@ -54,8 +54,7 @@ final class _$AuthenticationService extends AuthenticationService {
 
   @override
   Future<Response<void>> logout() {
-    final Uri $url =
-        Uri.parse('https://auth.tableside.site/realms/Tableside/logout');
+    final Uri $url = Uri.parse('');
     final Request $request = Request(
       'POST',
       $url,

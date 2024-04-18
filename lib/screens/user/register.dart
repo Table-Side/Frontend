@@ -100,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             context, "Passwords must match");
                       } else //Try to create account
                       {
-                        // TODO: Make request to create user
+                        // Make request to create user
                       }
                     },
                   ),

@@ -1,12 +1,13 @@
 import 'dart:convert';
-
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:table_side/main.dart';
-import 'package:table_side/models/api.dart';
 import 'package:table_side/models/user.dart';
 import 'package:table_side/models/session.dart';
 import 'package:table_side/models/user_details.dart';
 import 'package:table_side/network/authentication.dart';
+import 'package:table_side/screens/user/login.dart';
 
 part 'authentication_provider.g.dart';
 
@@ -128,40 +129,21 @@ class Authentication extends _$Authentication {
   // Logout
   Future<void> logout() async {
     state = const AsyncLoading();
-    await getApiService<AuthenticationService>().logout();
-    // await writeToStorage(null);
-    state = const AsyncData(null);
+    currentUser = null;
+    try {
+      if (currentUser == null) {
+        state = const AsyncData(null);
+        return;
+      }
+    } catch (e) {
+      print('Logout failed: $e');
+    }
   }
-
-  // static Future<void> writeToStorage(final User? user) async {
-  //   if (user != null) {
-  //     await storage.write(
-  //       key: "user",
-  //       value: jsonEncode(user.toJson()),
-  //     );
-  //   } else {
-  //     await storage.delete(key: "user");
-  //   }
-  // }
-
-  // Read the current user from storage
-//   static Future<User?> readFromStorage() async {
-//     final String? userString = await storage.read(key: "user");
-//
-//     if (userString == null) {
-//       return null;
-//     }
-//
-//     final userMap = jsonDecode(userString) as Map<String, dynamic>;
-//     return User.fromJson(userMap);
-//   }
 }
 
 @riverpod
 AsyncValue<bool> isAuthenticated(final IsAuthenticatedRef ref) {
   final currentUser = ref.watch(authenticationProvider);
-
-  // print(currentUser);
 
   if (currentUser.hasError) return const AsyncData(false);
   if (currentUser.isLoading) return const AsyncLoading();

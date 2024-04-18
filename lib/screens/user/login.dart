@@ -94,25 +94,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     //Sign In Button
                     AuthButton(
                       text: "Login",
-                      // onTap: () {
-                      //   // TODO: AUTHENTICATE AND LOG USER IN
-                      // },
-
                       onTap: () async {
                         try {
                           // Trigger login action
                           await ref.read(authenticationProvider.notifier).login(
                                 email: emailController.text,
                                 password: passwordController.text,
-                                // realm: realm,
                                 clientId: clientId,
                                 grantType: grantType,
                                 scope: scope,
                                 clientSecret: clientSecret,
                               );
                         } on TableSideException catch (ex) {
-                          print("hello: ${ex}");
-                          print("hello message: ${ex.message}");
                           if (routerKey.currentContext?.mounted ?? false) {
                             await showDialog<String>(
                               context: routerKey.currentContext!,
