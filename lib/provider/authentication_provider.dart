@@ -1,13 +1,10 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:table_side/main.dart';
 import 'package:table_side/models/user.dart';
 import 'package:table_side/models/session.dart';
 import 'package:table_side/models/user_details.dart';
 import 'package:table_side/network/authentication.dart';
-import 'package:table_side/screens/user/login.dart';
 
 part 'authentication_provider.g.dart';
 

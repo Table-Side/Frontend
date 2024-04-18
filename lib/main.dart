@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:table_side/network/authentication.dart';
 import 'package:table_side/network/network.dart';
+import 'package:table_side/network/restaurants.dart';
 import 'package:table_side/routes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,6 +17,7 @@ const FlutterSecureStorage storage = FlutterSecureStorage(
 final _apiClient = setUpClient(
   services: [
     AuthenticationService.create(),
+    RestaurantsService.create(),
   ],
 );
 
