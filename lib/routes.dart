@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:table_side/models/user.dart';
+import 'package:table_side/models/user_details.dart';
 import 'package:table_side/provider/authentication_provider.dart';
 import 'package:table_side/screens/admin/admin_dashboard.dart';
 import 'package:table_side/screens/restaurants/dashboard.dart';
@@ -17,7 +19,18 @@ GlobalKey<NavigatorState> get routerKey => _routerKey;
 
 GoRouter router(final RouterRef ref) {
   final isAuthenticatedState = ref.watch(isAuthenticatedProvider);
-  const isAdmin = false;
+
+  final currentUser = ref
+      .watch(authenticationProvider)
+      .maybeWhen(data: (user) => user, orElse: () {});
+
+  bool isAdmin = false;
+
+  if (currentUser != null && currentUser.user.roles.contains('restaurant')) {
+    isAdmin = true;
+  }
+
+  // print("here: ${currentUser?.user.roles}");
 
   return GoRouter(
     routes: <RouteBase>[

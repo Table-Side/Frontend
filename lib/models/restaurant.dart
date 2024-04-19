@@ -1,5 +1,3 @@
-import 'package:table_side/models/user_details.dart';
-
 class RestaurantDetails {
   final String id;
   // final UserDetails restaurantOwner;

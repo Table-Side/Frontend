@@ -1,9 +1,5 @@
-import 'dart:convert';
-
-import 'package:chopper/src/response.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:table_side/main.dart';
-import 'package:table_side/models/api.dart';
 import 'package:table_side/models/restaurant.dart';
 import 'package:table_side/network/restaurants.dart';
 
@@ -15,7 +11,7 @@ class Restaurants extends _$Restaurants {
   Future<List<RestaurantDetails>?> build() async {
     final response =
         await getApiService<RestaurantsService>().getAllRestaurants();
-    print(response.body);
+    // print(response.body);
 
     return parseRestaurants(response.body!['data']);
   }
