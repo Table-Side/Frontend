@@ -9,8 +9,6 @@ import 'package:table_side/components/restaurant_card.dart';
 import 'package:table_side/provider/restaurant_provider.dart';
 import 'package:table_side/screens/restaurants/restaurant_view.dart';
 
-// TODO: fetch restaurants from db
-
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
 

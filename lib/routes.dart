@@ -67,13 +67,10 @@ GoRouter router(final RouterRef ref) {
             ],
           ),
           GoRoute(
-            path: 'restaurant/:restaurantId',
+            path: 'restaurant/:restaurantId/details',
             builder: (final BuildContext context, final GoRouterState state) {
-              // final String restaurantID = state.pathParameters['restaurantId']!;
-              // TODO(A): NEED TO GET CORRECT RESTAURANT ID
-              // TODO(A): RESTAURANT VIEW
-              // TODO(A): MAKE REQUEST TO GET INFO ABOUT RESTAURANT
-              return const RestaurantView();
+              final String restaurantId = state.pathParameters['restaurantId']!;
+              return RestaurantView(restaurantId: restaurantId);
             },
           ),
         ],

@@ -32,45 +32,12 @@ List<RestaurantDetails> parseRestaurants(dynamic responseBody) {
       .toList();
 }
 
-// @riverpod
-// Future<List<RestaurantDetails>?> getAllRestaurants(
-//     final GetAllRestaurantsRef ref) async {
-//   // state = const AsyncLoading();
-//   // print("Fetching all restaurants...");
-//
-//   try {
-//     final response =
-//         await getApiService<RestaurantsService>().getAllRestaurants();
-//
-//     print(response);
-//
-//     if (!response.isSuccessful) {
-//       print("Error fetching restaurants: ${response.error}");
-//       return null;
-//     }
-//
-//     return Api.unwrapList(extractRestaurantDetails, response)?.payload;
-//
-//     // List<RestaurantDetails> restaurants = extractAllRestaurants(response.body);
-//
-//     // print(restaurants);
-//
-//     // return restaurants;
-//   } catch (e) {
-//     print("Exception caught: $e");
-//     return null;
-//   }
-// }
-//
-// List<RestaurantDetails> extractAllRestaurants(Map<String, dynamic>? response) {
-//   return List<RestaurantDetails>.from(response!['data']
-//       .map((restaurant) => extractRestaurantDetails(restaurant)));
-// }
-//
-// RestaurantDetails extractRestaurantDetails(Map<String, dynamic> response) {
-//   return RestaurantDetails(
-//     id: response['id'],
-//     name: response['name'],
-//     description: response['description'],
-//   );
-// }
+// Selects the selected restaurant from the list of restaurants
+@riverpod
+Future<RestaurantDetails> restaurantInfo(
+    final RestaurantInfoRef ref, final String restaurantId) async {
+  return await ref.watch(restaurantsProvider.selectAsync((final value) => value!
+      .where(
+          (final RestaurantDetails restaurant) => restaurant.id == restaurantId)
+      .first));
+}
