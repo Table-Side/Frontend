@@ -6,7 +6,22 @@ part of 'restaurant_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$restaurantInfoHash() => r'd48d92f635a040ff3c6a1ca243f2ee4e2a138e87';
+String _$restaurantsHash() => r'ebb732ee2108894d624b36780158a14ecdc6f93b';
+
+/// See also [restaurants].
+@ProviderFor(restaurants)
+final restaurantsProvider =
+    AutoDisposeFutureProvider<List<Restaurant>>.internal(
+  restaurants,
+  name: r'restaurantsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$restaurantsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef RestaurantsRef = AutoDisposeFutureProviderRef<List<Restaurant>>;
+String _$restaurantInfoHash() => r'960a76a6f1334c293cc9ad5df2463ad133bdf955';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,7 +49,7 @@ class _SystemHash {
 const restaurantInfoProvider = RestaurantInfoFamily();
 
 /// See also [restaurantInfo].
-class RestaurantInfoFamily extends Family<AsyncValue<RestaurantDetails>> {
+class RestaurantInfoFamily extends Family<AsyncValue<Restaurant>> {
   /// See also [restaurantInfo].
   const RestaurantInfoFamily();
 
@@ -72,8 +87,7 @@ class RestaurantInfoFamily extends Family<AsyncValue<RestaurantDetails>> {
 }
 
 /// See also [restaurantInfo].
-class RestaurantInfoProvider
-    extends AutoDisposeFutureProvider<RestaurantDetails> {
+class RestaurantInfoProvider extends AutoDisposeFutureProvider<Restaurant> {
   /// See also [restaurantInfo].
   RestaurantInfoProvider(
     String restaurantId,
@@ -108,7 +122,7 @@ class RestaurantInfoProvider
 
   @override
   Override overrideWith(
-    FutureOr<RestaurantDetails> Function(RestaurantInfoRef provider) create,
+    FutureOr<Restaurant> Function(RestaurantInfoRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -125,7 +139,7 @@ class RestaurantInfoProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<RestaurantDetails> createElement() {
+  AutoDisposeFutureProviderElement<Restaurant> createElement() {
     return _RestaurantInfoProviderElement(this);
   }
 
@@ -144,13 +158,13 @@ class RestaurantInfoProvider
   }
 }
 
-mixin RestaurantInfoRef on AutoDisposeFutureProviderRef<RestaurantDetails> {
+mixin RestaurantInfoRef on AutoDisposeFutureProviderRef<Restaurant> {
   /// The parameter `restaurantId` of this provider.
   String get restaurantId;
 }
 
 class _RestaurantInfoProviderElement
-    extends AutoDisposeFutureProviderElement<RestaurantDetails>
+    extends AutoDisposeFutureProviderElement<Restaurant>
     with RestaurantInfoRef {
   _RestaurantInfoProviderElement(super.provider);
 
@@ -158,20 +172,39 @@ class _RestaurantInfoProviderElement
   String get restaurantId => (origin as RestaurantInfoProvider).restaurantId;
 }
 
-String _$restaurantsHash() => r'9873895fec8c6b7a47950c03a8aa6e649d0a8acf';
+String _$ownedRestaurantsHash() => r'83807688ef3323f0ad837cee9a1a1e91b462cec1';
 
-/// See also [Restaurants].
-@ProviderFor(Restaurants)
-final restaurantsProvider = AutoDisposeAsyncNotifierProvider<Restaurants,
-    List<RestaurantDetails>?>.internal(
-  Restaurants.new,
-  name: r'restaurantsProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$restaurantsHash,
+/// See also [ownedRestaurants].
+@ProviderFor(ownedRestaurants)
+final ownedRestaurantsProvider =
+    AutoDisposeFutureProvider<List<Restaurant>>.internal(
+  ownedRestaurants,
+  name: r'ownedRestaurantsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$ownedRestaurantsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Restaurants = AutoDisposeAsyncNotifier<List<RestaurantDetails>?>;
+typedef OwnedRestaurantsRef = AutoDisposeFutureProviderRef<List<Restaurant>>;
+String _$primaryOwnedRestaurantHash() =>
+    r'6ff8d49f79c5098aae066aa9e0dc3492f95cff2e';
+
+/// See also [primaryOwnedRestaurant].
+@ProviderFor(primaryOwnedRestaurant)
+final primaryOwnedRestaurantProvider =
+    AutoDisposeProvider<AsyncValue<Restaurant?>>.internal(
+  primaryOwnedRestaurant,
+  name: r'primaryOwnedRestaurantProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$primaryOwnedRestaurantHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef PrimaryOwnedRestaurantRef
+    = AutoDisposeProviderRef<AsyncValue<Restaurant?>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

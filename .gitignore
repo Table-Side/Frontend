@@ -1,3 +1,6 @@
+# Private/deployment-specific configuration
+lib/const/api.dart
+
 # Miscellaneous
 *.class
 *.log

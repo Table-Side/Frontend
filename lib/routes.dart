@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:table_side/models/user.dart';
-import 'package:table_side/models/user_details.dart';
 import 'package:table_side/provider/authentication_provider.dart';
+import 'package:table_side/provider/restaurant_provider.dart';
 import 'package:table_side/screens/admin/admin_dashboard.dart';
 import 'package:table_side/screens/restaurants/dashboard.dart';
 import 'package:table_side/screens/restaurants/restaurant_view.dart';
@@ -17,20 +16,12 @@ final GlobalKey<NavigatorState> _routerKey = GlobalKey<NavigatorState>();
 
 GlobalKey<NavigatorState> get routerKey => _routerKey;
 
+@riverpod
 GoRouter router(final RouterRef ref) {
   final isAuthenticatedState = ref.watch(isAuthenticatedProvider);
 
-  final currentUser = ref
-      .watch(authenticationProvider)
-      .maybeWhen(data: (user) => user, orElse: () {});
-
-  bool isAdmin = false;
-
-  if (currentUser != null && currentUser.user.roles.contains('restaurant')) {
-    isAdmin = true;
-  }
-
-  // print("here: ${currentUser?.user.roles}");
+  final currentUser = ref.watch(authenticationProvider).value;
+  final bool isRestaurantOwner = currentUser?.isRestaurantOwner() ?? false;
 
   return GoRouter(
     routes: <RouteBase>[
@@ -58,7 +49,7 @@ GoRouter router(final RouterRef ref) {
       GoRoute(
         path: '/',
         builder: (final BuildContext context, final GoRouterState state) {
-          if (isAdmin) {
+          if (isRestaurantOwner) {
             return const AdminDashboard();
           }
           return const Dashboard();

@@ -1,51 +1,73 @@
-class RestaurantDetails {
-  final String id;
-  // final UserDetails restaurantOwner;
-  final String name;
-  final String description;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  RestaurantDetails({
-    required this.id,
-    // required this.restaurantOwner,
-    required this.name,
-    required this.description,
-  });
+part 'restaurant.freezed.dart';
+part 'restaurant.g.dart';
 
-  factory RestaurantDetails.fromJson(Map<String, dynamic> json) {
-    return RestaurantDetails(
-      id: json['id'],
-      name: json['name'],
-      description: json['description'],
-    );
-  }
+@immutable
+@freezed
+class Restaurant with _$Restaurant {
+  const factory Restaurant({
+    required String id,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    required String name,
+    required String description,
+
+    /// The menus of the restaurant.
+    ///
+    /// This is null unless it is populated by a specific API call. If this is
+    /// ever null, it means that the menus have not been fetched. Simply use
+    /// an API call that populates this field to get the menus:
+    ///
+    /// - `/restaurants/:restaurantId` (GET: get specific restaurant)
+    List<Menu>? menus,
+  }) = _Restaurant;
+
+  factory Restaurant.fromJson(final Map<String, dynamic> json) =>
+      _$RestaurantFromJson(json);
 }
 
-class Item {
-  final String id;
-  final String itemName;
-  final String description;
-  final int price;
-  final bool availability;
+/// A [Restaurant] menu.
+@immutable
+@freezed
+class Menu with _$Menu {
+  const factory Menu({
+    required String id,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    required String name,
+    required String restaurantId,
 
-  Item({
-    required this.id,
-    required this.itemName,
-    required this.description,
-    required this.price,
-    required this.availability,
-  });
+    /// The items on the menu.
+    ///
+    /// This is null unless it is populated by a specific API call. If this is
+    /// ever null, it means that the items have not been fetched. Simply use
+    /// an API call that populates this field to get the items:
+    ///
+    /// - `/restaurants/:restaurantId/menus/:menuId` (GET: get specific menu)
+    List<Item>? items,
+  }) = _Menu;
+
+  factory Menu.fromJson(final Map<String, dynamic> json) =>
+      _$MenuFromJson(json);
 }
 
-class Menu {
-  final String id;
-  final String menuTitle;
-  final List<Item> items;
-  final RestaurantDetails restaurant;
+/// An individual, order-able, item on a [Menu].
+@immutable
+@freezed
+class Item with _$Item {
+  const factory Item({
+    required String id,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    required String displayName,
+    required String shortName,
+    required String description,
+    required String price,
+    required bool isAvailable,
+    required String menuId,
+  }) = _Item;
 
-  Menu({
-    required this.id,
-    required this.menuTitle,
-    required this.items,
-    required this.restaurant,
-  });
+  factory Item.fromJson(final Map<String, dynamic> json) =>
+      _$ItemFromJson(json);
 }

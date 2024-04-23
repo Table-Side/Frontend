@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:table_side/components/CustomAppBar.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:table_side/components/custom_app_bar.dart';
 import 'package:table_side/const/design.dart';
+import 'package:table_side/locator.dart';
+import 'package:table_side/network/item.dart';
+import 'package:table_side/provider/menu_provider.dart';
+import 'package:table_side/screens/admin/menu_view.dart';
 
-class AddNewMenuItem extends StatefulWidget {
-  const AddNewMenuItem({super.key});
+class AddNewMenuItem extends ConsumerStatefulWidget {
+  final String restaurantId;
+  final String menuId;
+
+  const AddNewMenuItem({
+    super.key,
+    required this.restaurantId,
+    required this.menuId,
+  });
 
   @override
-  State<AddNewMenuItem> createState() => _AddNewMenuItemState();
+  ConsumerState<AddNewMenuItem> createState() => _AddNewMenuItemState();
 }
 
-class _AddNewMenuItemState extends State<AddNewMenuItem> {
-  late final TextEditingController _itemNameController;
-  late final TextEditingController _itemPriceController;
-
-  @override
-  void initState() {
-    _itemNameController = TextEditingController();
-    _itemPriceController = TextEditingController();
-    super.initState();
-  }
+class _AddNewMenuItemState extends ConsumerState<AddNewMenuItem> {
+  final TextEditingController _itemShortNameController =
+      TextEditingController();
+  final TextEditingController _itemDisplayNameController =
+      TextEditingController();
+  final TextEditingController _itemDescriptionController =
+      TextEditingController();
+  final TextEditingController _itemPriceController = TextEditingController();
 
   @override
   void dispose() {
-    _itemNameController.dispose();
+    _itemShortNameController.dispose();
+    _itemDisplayNameController.dispose();
+    _itemDescriptionController.dispose();
     _itemPriceController.dispose();
     super.dispose();
   }
@@ -41,7 +54,7 @@ class _AddNewMenuItemState extends State<AddNewMenuItem> {
               child: Container(
                 color: Colors.grey.withOpacity(0.2),
                 width: MediaQuery.of(context).size.width * 0.4,
-                height: MediaQuery.of(context).size.height * 0.4,
+                height: MediaQuery.of(context).size.height * 0.6,
                 child: Wrap(
                   alignment: WrapAlignment.center,
                   children: [
@@ -58,9 +71,25 @@ class _AddNewMenuItemState extends State<AddNewMenuItem> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     TextFormField(
-                                      controller: _itemNameController,
+                                      controller: _itemShortNameController,
+                                      decoration: const InputDecoration(
+                                        labelText: "Item Short Name",
+                                        border: UnderlineInputBorder(),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 50),
+                                    TextFormField(
+                                      controller: _itemDisplayNameController,
                                       decoration: const InputDecoration(
                                         labelText: "Item Name",
+                                        border: UnderlineInputBorder(),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 50),
+                                    TextFormField(
+                                      controller: _itemDescriptionController,
+                                      decoration: const InputDecoration(
+                                        labelText: "Item Description",
                                         border: UnderlineInputBorder(),
                                       ),
                                     ),
@@ -75,9 +104,35 @@ class _AddNewMenuItemState extends State<AddNewMenuItem> {
                                     const SizedBox(height: 60),
                                     MaterialButton(
                                       color: purpleColor,
-                                      onPressed: () {
-                                        // TODO: Make post request to add new menu item
-                                        // make request with _itemNameController.text and _itemPriceController.text
+                                      onPressed: () async {
+                                        await getApiService<ItemService>()
+                                            .create(
+                                          restaurantId: widget.restaurantId,
+                                          menuId: widget.menuId,
+                                          displayName:
+                                              _itemDisplayNameController.text,
+                                          shortName:
+                                              _itemShortNameController.text,
+                                          description:
+                                              _itemDescriptionController.text,
+                                          price: _itemPriceController.text,
+                                        );
+
+                                        ref.invalidate(menuInfoProvider(
+                                            widget.restaurantId,
+                                            widget.menuId));
+
+                                        if (context.mounted) {
+                                          context.pop();
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => MenuView(
+                                                  restaurantId:
+                                                      widget.restaurantId),
+                                            ),
+                                          );
+                                        }
                                       },
                                       minWidth:
                                           MediaQuery.of(context).size.width *

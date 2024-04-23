@@ -1,37 +1,13 @@
 import 'package:chopper/chopper.dart';
-import 'package:table_side/provider/authentication_provider.dart';
+import 'package:table_side/const/api.dart';
+import 'package:table_side/models/api.dart';
 
 part 'authentication.chopper.dart';
 
-// const baseUrl = 'https://auth.tableside.site';
-const realm = 'Tableside';
-const clientId = 'apisix';
-const grantType = 'password';
-const scope = 'openid';
-const clientSecret = '97WttOkNUXpZ9syENIBNhkXssmMKUUzd';
-
-// @ChopperApi(baseUrl: "https://auth.tableside.site/realms/Tableside")
-@ChopperApi()
+@ChopperApi(baseUrl: kOIDCBaseUrl)
 abstract class AuthenticationService extends ChopperService {
-  @Get(
-    path:
-        'https://auth.tableside.site/realms/Tableside/protocol/openid-connect/userinfo',
-  )
-  @formUrlEncoded
-  Future<Response<Map<String, dynamic>>> getCurrentUser(
-    @Header('Authorization') String accessToken,
-  );
-
-  // Define a method to obtain access token
-  @Post(
-      path:
-          'https://auth.tableside.site/realms/Tableside/protocol/openid-connect/token')
-  @formUrlEncoded
-  Future<Response<Map<String, dynamic>>> login(
-      @Body() Map<String, String> fields);
-
   // Factory method to create the service instance
-  static AuthenticationService create() {
+  static AuthenticationService $create() {
     final client = ChopperClient(
       services: [_$AuthenticationService()],
       // Set the FormUrlEncodedConverter here
@@ -40,7 +16,23 @@ abstract class AuthenticationService extends ChopperService {
     return _$AuthenticationService(client);
   }
 
+  @Get(path: '/userinfo')
+  @FormUrlEncoded()
+  Future<RawResponse> getCurrentUser();
+
+  // Define a method to obtain access token
+  @Post(path: '/token')
+  @FormUrlEncoded()
+  Future<RawResponse> login({
+    @Field() required String username,
+    @Field() required String password,
+    @Field('client_id') String clientId = kOIDCClientID,
+    @Field('client_secret') String clientSecret = kOIDCClientSecret,
+    @Field('grant_type') String grantType = 'password',
+    @Field('scope') String scope = kOIDCScope,
+  });
+
   // Logout
-  @Post(path: '', optionalBody: true)
+  @Post(path: '/', optionalBody: true)
   Future<Response<void>> logout();
 }

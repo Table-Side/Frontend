@@ -11,8 +11,7 @@ _$ApiImpl<T> _$$ApiImplFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     _$ApiImpl<T>(
-      success: json['success'] as bool,
-      payload: fromJsonT(json['payload']),
+      data: fromJsonT(json['data']),
     );
 
 Map<String, dynamic> _$$ApiImplToJson<T>(
@@ -20,6 +19,5 @@ Map<String, dynamic> _$$ApiImplToJson<T>(
   Object? Function(T value) toJsonT,
 ) =>
     <String, dynamic>{
-      'success': instance.success,
-      'payload': toJsonT(instance.payload),
+      'data': toJsonT(instance.data),
     };

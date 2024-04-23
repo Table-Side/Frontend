@@ -18,11 +18,9 @@ final class _$AuthenticationService extends AuthenticationService {
   final Type definitionType = AuthenticationService;
 
   @override
-  Future<Response<Map<String, dynamic>>> getCurrentUser(String accessToken) {
-    final Uri $url = Uri.parse(
-        'https://auth.tableside.site/realms/Tableside/protocol/openid-connect/userinfo');
+  Future<Response<Map<String, dynamic>>> getCurrentUser() {
+    final Uri $url = Uri.parse('${kOIDCBaseUrl}/userinfo');
     final Map<String, String> $headers = {
-      'Authorization': accessToken,
       'content-type': 'application/x-www-form-urlencoded',
     };
     final Request $request = Request(
@@ -35,13 +33,26 @@ final class _$AuthenticationService extends AuthenticationService {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> login(Map<String, String> fields) {
-    final Uri $url = Uri.parse(
-        'https://auth.tableside.site/realms/Tableside/protocol/openid-connect/token');
+  Future<Response<Map<String, dynamic>>> login({
+    required String username,
+    required String password,
+    String clientId = kOIDCClientID,
+    String clientSecret = kOIDCClientSecret,
+    String grantType = 'password',
+    String scope = kOIDCScope,
+  }) {
+    final Uri $url = Uri.parse('${kOIDCBaseUrl}/token');
     final Map<String, String> $headers = {
       'content-type': 'application/x-www-form-urlencoded',
     };
-    final $body = fields;
+    final $body = <String, String>{
+      'username': username.toString(),
+      'password': password.toString(),
+      'client_id': clientId.toString(),
+      'client_secret': clientSecret.toString(),
+      'grant_type': grantType.toString(),
+      'scope': scope.toString(),
+    };
     final Request $request = Request(
       'POST',
       $url,
@@ -54,7 +65,7 @@ final class _$AuthenticationService extends AuthenticationService {
 
   @override
   Future<Response<void>> logout() {
-    final Uri $url = Uri.parse('');
+    final Uri $url = Uri.parse('${kOIDCBaseUrl}/');
     final Request $request = Request(
       'POST',
       $url,

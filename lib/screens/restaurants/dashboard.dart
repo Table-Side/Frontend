@@ -1,13 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:table_side/components/CustomAppBar.dart';
-import 'package:table_side/components/option_card.dart';
+import 'package:table_side/components/custom_app_bar.dart';
 import 'package:table_side/components/restaurant_card.dart';
 import 'package:table_side/provider/restaurant_provider.dart';
-import 'package:table_side/screens/restaurants/restaurant_view.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -24,9 +19,9 @@ class Dashboard extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
 
-          final restaurants = restaurantsState.requireValue;
+          final restaurants = restaurantsState.value;
 
-          if (restaurants == null) {
+          if (restaurants == null || restaurants.isEmpty) {
             return const Center(
               child: Text(
                 "No Restaurants",
@@ -34,6 +29,7 @@ class Dashboard extends StatelessWidget {
               ),
             );
           }
+
           return Container(
             color: Colors.white,
             child: LayoutBuilder(

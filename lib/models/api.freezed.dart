@@ -21,8 +21,7 @@ Api<T> _$ApiFromJson<T>(
 
 /// @nodoc
 mixin _$Api<T> {
-  bool get success => throw _privateConstructorUsedError;
-  T get payload => throw _privateConstructorUsedError;
+  T get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
@@ -35,7 +34,7 @@ abstract class $ApiCopyWith<T, $Res> {
   factory $ApiCopyWith(Api<T> value, $Res Function(Api<T>) then) =
       _$ApiCopyWithImpl<T, $Res, Api<T>>;
   @useResult
-  $Res call({bool success, T payload});
+  $Res call({T data});
 }
 
 /// @nodoc
@@ -51,17 +50,12 @@ class _$ApiCopyWithImpl<T, $Res, $Val extends Api<T>>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? success = null,
-    Object? payload = freezed,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-      payload: freezed == payload
-          ? _value.payload
-          : payload // ignore: cast_nullable_to_non_nullable
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as T,
     ) as $Val);
   }
@@ -74,7 +68,7 @@ abstract class _$$ApiImplCopyWith<T, $Res> implements $ApiCopyWith<T, $Res> {
       __$$ApiImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({bool success, T payload});
+  $Res call({T data});
 }
 
 /// @nodoc
@@ -88,17 +82,12 @@ class __$$ApiImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? success = null,
-    Object? payload = freezed,
+    Object? data = freezed,
   }) {
     return _then(_$ApiImpl<T>(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-      payload: freezed == payload
-          ? _value.payload
-          : payload // ignore: cast_nullable_to_non_nullable
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as T,
     ));
   }
@@ -107,20 +96,18 @@ class __$$ApiImplCopyWithImpl<T, $Res>
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
 class _$ApiImpl<T> implements _Api<T> {
-  const _$ApiImpl({required this.success, required this.payload});
+  const _$ApiImpl({required this.data});
 
   factory _$ApiImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
       _$$ApiImplFromJson(json, fromJsonT);
 
   @override
-  final bool success;
-  @override
-  final T payload;
+  final T data;
 
   @override
   String toString() {
-    return 'Api<$T>(success: $success, payload: $payload)';
+    return 'Api<$T>(data: $data)';
   }
 
   @override
@@ -128,14 +115,13 @@ class _$ApiImpl<T> implements _Api<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiImpl<T> &&
-            (identical(other.success, success) || other.success == success) &&
-            const DeepCollectionEquality().equals(other.payload, payload));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, success, const DeepCollectionEquality().hash(payload));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -150,17 +136,14 @@ class _$ApiImpl<T> implements _Api<T> {
 }
 
 abstract class _Api<T> implements Api<T> {
-  const factory _Api({required final bool success, required final T payload}) =
-      _$ApiImpl<T>;
+  const factory _Api({required final T data}) = _$ApiImpl<T>;
 
   factory _Api.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
       _$ApiImpl<T>.fromJson;
 
   @override
-  bool get success;
-  @override
-  T get payload;
+  T get data;
   @override
   @JsonKey(ignore: true)
   _$$ApiImplCopyWith<T, _$ApiImpl<T>> get copyWith =>

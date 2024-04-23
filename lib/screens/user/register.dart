@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:table_side/components/auth_button.dart';
 import 'package:table_side/components/auth_input_field.dart';
-import 'package:table_side/components/auth_shared.dart';
 import 'package:table_side/const/design.dart';
 import 'package:table_side/screens/user/login.dart';
 

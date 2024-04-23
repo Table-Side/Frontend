@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:table_side/components/auth_shared.dart';
 import 'package:table_side/const/design.dart';
 
 class AuthInputField extends StatelessWidget {

@@ -21,12 +21,12 @@ final isAuthenticatedProvider = AutoDisposeProvider<AsyncValue<bool>>.internal(
 );
 
 typedef IsAuthenticatedRef = AutoDisposeProviderRef<AsyncValue<bool>>;
-String _$authenticationHash() => r'c04cf0e7bfede90a2fc32c89e61ba000d0313e88';
+String _$authenticationHash() => r'1c77c1252edf0b0b52615725423aef3f956583b0';
 
 /// See also [Authentication].
 @ProviderFor(Authentication)
 final authenticationProvider =
-    AutoDisposeAsyncNotifierProvider<Authentication, User?>.internal(
+    AutoDisposeAsyncNotifierProvider<Authentication, Account?>.internal(
   Authentication.new,
   name: r'authenticationProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -36,6 +36,6 @@ final authenticationProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$Authentication = AutoDisposeAsyncNotifier<User?>;
+typedef _$Authentication = AutoDisposeAsyncNotifier<Account?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

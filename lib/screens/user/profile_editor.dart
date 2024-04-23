@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_side/components/auth_button.dart';
 import 'package:table_side/components/auth_input_field.dart';
-import 'package:table_side/components/CustomAppBar.dart';
+import 'package:table_side/components/custom_app_bar.dart';
 import 'package:table_side/const/design.dart';
 
 class ProfileEditorScreen extends StatefulWidget {

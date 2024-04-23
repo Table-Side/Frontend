@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:table_side/components/CustomAppBar.dart';
-import 'package:table_side/components/async_builder..dart';
+import 'package:table_side/components/custom_app_bar.dart';
+import 'package:table_side/components/async_builder.dart';
 import 'package:table_side/const/design.dart';
 import 'package:table_side/models/restaurant.dart';
+import 'package:table_side/provider/menu_provider.dart';
 import 'package:table_side/provider/restaurant_provider.dart';
 import 'package:table_side/screens/restaurants/order.dart';
 
@@ -16,7 +17,7 @@ class RestaurantView extends ConsumerWidget {
   Widget build(final BuildContext context, final WidgetRef ref) {
     return AsyncBuilder(
       selector: (final ref) => ref.watch(restaurantInfoProvider(restaurantId)),
-      builder: (BuildContext context, RestaurantDetails restaurant) {
+      builder: (BuildContext context, Restaurant restaurant) {
         return Scaffold(
           appBar: CustomAppBar(text: restaurant.name),
           body: Scrollbar(
@@ -79,33 +80,42 @@ class RestaurantView extends ConsumerWidget {
                     ],
                   ),
                   const SizedBox(height: 50),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      MaterialButton(
-                        color: purpleColor,
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const OrderForm(),
-                            ),
-                          );
-                        },
-                        minWidth: MediaQuery.of(context).size.width * 0.2,
-                        child: const Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text(
-                            "Order",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 35,
-                              color: Colors.white,
+                  AsyncBuilder(
+                    selector: (final ref) =>
+                        ref.watch(menusProvider(restaurantId)),
+                    builder: (context, menus) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          MaterialButton(
+                            color: purpleColor,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OrderForm(
+                                    restaurantId: restaurantId,
+                                    menuId: menus.first.id,
+                                  ),
+                                ),
+                              );
+                            },
+                            minWidth: MediaQuery.of(context).size.width * 0.2,
+                            child: const Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: Text(
+                                "Order",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 35,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ],
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),

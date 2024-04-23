@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:table_side/components/auth_shared.dart';
-import 'package:table_side/components/CustomAppBar.dart';
+import 'package:table_side/components/custom_app_bar.dart';
 import 'package:table_side/const/design.dart';
 import 'package:table_side/provider/authentication_provider.dart';
-import 'package:table_side/screens/user/profile_editor.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
@@ -17,7 +15,17 @@ class ProfileScreen extends ConsumerStatefulWidget {
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    final user = ref.watch(authenticationProvider).requireValue!.user;
+    final account = ref.watch(authenticationProvider).valueOrNull;
+
+    if (account == null) {
+      return const Scaffold(
+        backgroundColor: Colors.white,
+        appBar: CustomAppBar(text: "Table Side"),
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -42,10 +50,14 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   ),
 
                   //Name and email
-                  Text(user.name,
-                      style: AuthShared.textTitle0.copyWith(fontSize: 40)),
-                  Text(user.email,
-                      style: AuthShared.textTitle2.copyWith(fontSize: 30)),
+                  Text(
+                    account.name,
+                    style: AuthShared.textTitle0.copyWith(fontSize: 40),
+                  ),
+                  Text(
+                    account.email,
+                    style: AuthShared.textTitle2.copyWith(fontSize: 30),
+                  ),
 
                   const SizedBox(height: 50),
 
@@ -62,7 +74,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         GestureDetector(
                           onTap: () {
                             ref.read(authenticationProvider.notifier).logout();
-                            if (user == null) context.push('/login');
+                            context.push('/login');
                           },
                           child: Text('Log out', style: AuthShared.textLinkBig),
                         ),
@@ -85,7 +97,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         const SizedBox(width: 4),
                         GestureDetector(
                           onTap: () {
-                            // TODO: Make delete request
+                            // TODO: Make delete request - might not be able to do
                           },
                           child: Text('Delete account',
                               style: AuthShared.textLinkBig),

@@ -1,17 +1,18 @@
-class Session {
-  final int iat;
-  final int exp;
-  final String accessToken;
-  final String refreshToken;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Session({
-    required this.iat,
-    required this.exp,
-    required this.accessToken,
-    required this.refreshToken,
-  });
+part 'session.freezed.dart';
+part 'session.g.dart';
 
-  bool isExpired() {
-    return DateTime.now().millisecondsSinceEpoch > exp * 1000;
-  }
+@immutable
+@freezed
+class Session with _$Session {
+  const Session._();
+
+  const factory Session({
+    required String accessToken,
+    required String refreshToken,
+  }) = _Session;
+
+  factory Session.fromJson(final Map<String, dynamic> json) =>
+      _$SessionFromJson(json);
 }

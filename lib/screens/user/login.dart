@@ -3,10 +3,9 @@ import 'package:table_side/components/auth_button.dart';
 import 'package:table_side/components/auth_input_field.dart';
 import 'package:table_side/const/design.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:table_side/domain/exception.dart';
 import 'package:table_side/provider/authentication_provider.dart';
 import 'package:table_side/routes.dart';
-
-import '../../domain/exception.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -16,17 +15,15 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  //Controllers
-  final emailController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
-  final passwordController = TextEditingController();
-
-  // final baseUrl = 'https://auth.tableside.site';
-  final realm = 'Tableside';
-  final clientId = 'apisix';
-  final grantType = 'password';
-  final scope = 'openid';
-  final clientSecret = '97WttOkNUXpZ9syENIBNhkXssmMKUUzd';
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +60,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                     //Email input
                     AuthInputField(
-                      controller: emailController,
+                      controller: _emailController,
                       hintText: 'Email',
                       obscureText: false,
                     ),
@@ -72,7 +69,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                     //Password input
                     AuthInputField(
-                      controller: passwordController,
+                      controller: _passwordController,
                       hintText: 'Password',
                       obscureText: true,
                     ),
@@ -98,12 +95,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         try {
                           // Trigger login action
                           await ref.read(authenticationProvider.notifier).login(
-                                email: emailController.text,
-                                password: passwordController.text,
-                                clientId: clientId,
-                                grantType: grantType,
-                                scope: scope,
-                                clientSecret: clientSecret,
+                                email: _emailController.text,
+                                password: _passwordController.text,
                               );
                         } on TableSideException catch (ex) {
                           if (routerKey.currentContext?.mounted ?? false) {

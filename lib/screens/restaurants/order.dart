@@ -1,217 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:table_side/components/CustomAppBar.dart';
-import 'package:table_side/const/design.dart';
+import 'package:table_side/components/async_builder.dart';
+import 'package:table_side/components/custom_app_bar.dart';
+import 'package:table_side/partials/order_menu.dart';
+import 'package:table_side/provider/menu_provider.dart';
+import 'package:table_side/screens/restaurants/current_order.dart';
 
 class OrderForm extends StatelessWidget {
-  const OrderForm({super.key});
+  final String restaurantId;
+  final String menuId;
+
+  const OrderForm({
+    super.key,
+    required this.restaurantId,
+    required this.menuId,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(text: 'Order'),
-      body: SingleChildScrollView(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 40, bottom: 40),
-              child: Container(
-                color: Colors.grey.withOpacity(0.2),
-                width: MediaQuery.of(context).size.width * 0.6,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          const Text(
-                            "Menu",
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          ),
-                          // TODO: Will loop through the list of menu items from db
-                          for (int i = 0; i < 15; i++)
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const Column(
-                                            children: [
-                                              SizedBox(height: 15),
-                                              // TODO: Get from db
-                                              Text(
-                                                "Item Name",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-
-                                              // TODO: Get from db
-                                              Text(
-                                                "Item Price",
-                                                textAlign: TextAlign.center,
-                                              ),
-                                              SizedBox(height: 15),
-                                            ],
-                                          ),
-                                          Column(
-                                            children: [
-                                              IconButton(
-                                                  onPressed: () {
-                                                    // TODO(A): MAKE POST REQUEST FOR ITEMS?
-                                                  },
-                                                  icon: const Icon(Icons.add)),
-                                              IconButton(
-                                                onPressed: () {
-                                                  // TODO(A): MAKE DELETE REQUEST?
-                                                },
-                                                icon: const Icon(Icons.remove),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      const Divider(
-                                        color: Colors.grey,
-                                        height: 0,
-                                        thickness: 1,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                        ],
+      body: AsyncBuilder(
+          selector: (final ref) =>
+              ref.watch(menuInfoProvider(restaurantId, menuId)),
+          builder: (context, menu) {
+            return SingleChildScrollView(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40, bottom: 40),
+                    child: Container(
+                      color: Colors.grey.withOpacity(0.2),
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      child: OrderMenu(menu: menu),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40, bottom: 40),
+                    child: Container(
+                      color: Colors.grey.withOpacity(0.2),
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: CurrentOrder(
+                        restaurantId: restaurantId,
+                        menuId: menuId,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 40, bottom: 40),
-              child: Container(
-                color: Colors.grey.withOpacity(0.2),
-                width: MediaQuery.of(context).size.width * 0.3,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          const Text(
-                            "My Order",
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          ),
-                          // TODO: Will loop through the list of menu items from db
-                          for (int i = 0; i < 5; i++)
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Center(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Column(
-                                          children: [
-                                            SizedBox(height: 15),
-                                            // name - need to get from db
-                                            Text(
-                                              "Item Name",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-
-                                            // price - need to get from db
-                                            Text(
-                                              "Item Price",
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            SizedBox(height: 15),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            Material(
-                                              color: Colors.white,
-                                              child: Center(
-                                                child: Ink(
-                                                  width: 30,
-                                                  height: 30,
-                                                  decoration: ShapeDecoration(
-                                                    color: Colors.white,
-                                                    shape: Border.all(
-                                                      color: Colors.black,
-                                                      width: 2,
-                                                    ),
-                                                  ),
-                                                  // TODO: VALUE WILL CHANGE BASED ON HOW MANY OF ITEM ADDED
-                                                  // TODO: NEED TO FIGURE OUT HOW THIS WILL WORK!!
-                                                  child: const Center(
-                                                      child: Text("1")),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    const Divider(
-                                      color: Colors.grey,
-                                      height: 0,
-                                      thickness: 1,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: MaterialButton(
-                        color: purpleColor,
-                        onPressed: () {
-                          // TODO: Make post request with order
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text(
-                            "Checkout",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+            );
+          }),
     );
   }
 }
