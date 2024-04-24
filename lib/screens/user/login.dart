@@ -51,7 +51,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                     //Welcome message
                     Text(
-                      'Welcome back to Table Side',
+                      'Welcome to Table Side',
                       style: AuthShared.textTitle2,
                       textAlign: TextAlign.center,
                     ),
@@ -73,18 +73,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       hintText: 'Password',
                       obscureText: true,
                     ),
-
-                    const SizedBox(height: 10),
-
-                    //Forgot Password
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    //   child: Text(
-                    //     'Forgot Password?',
-                    //     style: AuthShared.textDefault,
-                    //     textAlign: TextAlign.end,
-                    //   ),
-                    // ),
 
                     const SizedBox(height: 25),
 

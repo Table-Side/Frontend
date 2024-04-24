@@ -13,12 +13,16 @@ class AuthButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      color: purpleColor,
+    return ElevatedButton(
       onPressed: () {
         onTap!();
       },
-      minWidth: MediaQuery.of(context).size.width * 0.2,
+      style: ElevatedButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+        ),
+        backgroundColor: purpleColor,
+      ),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Text(

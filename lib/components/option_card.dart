@@ -25,9 +25,10 @@ class OptionCard extends StatelessWidget {
           width: width,
           height: height,
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6),
             color: Colors.white,
             border: Border.all(
-              color: Colors.grey.shade400,
+              color: purpleColor.withOpacity(0.30),
               width: 2,
             ),
           ),

@@ -88,6 +88,8 @@ class RestaurantView extends ConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           MaterialButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)),
                             color: purpleColor,
                             onPressed: () {
                               Navigator.push(

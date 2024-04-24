@@ -18,72 +18,91 @@ class CurrentOrder extends ConsumerWidget {
 
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
-    final currentOrder = ref.watch(currentOrderProvider(restaurantId, menuId));
+    // final currentOrder = ref.watch(currentOrderProvider(restaurantId, menuId));
+
+    var currentOrder = ref.watch(currentOrderProvider(restaurantId, menuId));
 
     return AsyncBuilder(
-        selector: (final ref) =>
-            ref.watch(menuInfoProvider(restaurantId, menuId)),
-        builder: (context, itemDetails) {
-          final total = currentOrder.entries.fold(
-              0.0,
-              (previousValue, element) =>
-                  previousValue +
-                  double.parse(itemDetails.items!
-                          .firstWhere((e) => e.id == element.key)
-                          .price) *
-                      element.value);
+      selector: (final ref) =>
+          ref.watch(menuInfoProvider(restaurantId, menuId)),
+      builder: (context, itemDetails) {
+        final total = currentOrder.entries.fold(
+            0.0,
+            (previousValue, element) =>
+                previousValue +
+                double.parse(itemDetails.items!
+                        .firstWhere((e) => e.id == element.key)
+                        .price) *
+                    element.value);
 
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    const Text(
-                      "Current Order",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        return Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  const Text(
+                    "Current Order",
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
+                  for (final entry in currentOrder.entries)
+                    CurrentOrderItem(
+                      item: itemDetails.items!
+                          .firstWhere((element) => element.id == entry.key),
+                      quantity: entry.value,
                     ),
-                    for (final entry in currentOrder.entries)
-                      CurrentOrderItem(
-                        item: itemDetails.items!
-                            .firstWhere((element) => element.id == entry.key),
-                        quantity: entry.value,
+                ],
+              ),
+            ),
+            Text(
+              "Total: £${total.toStringAsFixed(2)}",
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: 20, right: 100, left: 140),
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5)),
+                    color: purpleColor,
+                    onPressed: () {
+                      // TODO: Call checkout function from order microservice
+                      print(currentOrder);
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        "Checkout",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                            color: Colors.white),
                       ),
-                  ],
-                ),
-              ),
-              Text(
-                "Total: £${total.toStringAsFixed(2)}",
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: MaterialButton(
-                  color: purpleColor,
-                  onPressed: () {
-                    // TODO: Call checkout function from order microservice
-                    print(currentOrder);
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Text(
-                      "Checkout",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Colors.white),
                     ),
                   ),
                 ),
-              ),
-            ],
-          );
-        });
+                IconButton(
+                  onPressed: () {
+                    ref
+                        .read(
+                            currentOrderProvider(restaurantId, menuId).notifier)
+                        .reset();
+                  },
+                  icon: const Icon(Icons.delete, size: 30),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 

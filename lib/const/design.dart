@@ -18,11 +18,6 @@ class AuthShared {
   static TextStyle textLinkBig = const TextStyle(
       fontSize: 16 * 1.5, color: purpleColor, fontWeight: FontWeight.bold);
 
-  // static var divider = Divider(
-  //   thickness: 0.5,
-  //   color: purpleColor.withOpacity(0.6),
-  // );
-
   static void errorMessage(BuildContext context, String message) {
     showDialog(
       context: context,

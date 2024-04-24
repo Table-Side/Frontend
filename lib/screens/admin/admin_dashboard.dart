@@ -100,6 +100,9 @@ class _AdminDashboardState extends ConsumerState<AdminDashboard> {
                                           padding:
                                               const EdgeInsets.only(top: 20),
                                           child: MaterialButton(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5)),
                                             color: purpleColor,
                                             minWidth: 200,
                                             onPressed: () {
@@ -144,7 +147,11 @@ class _AdminDashboardState extends ConsumerState<AdminDashboard> {
                                                                         .text);
                                                         ref.invalidate(
                                                             ownedRestaurantsProvider);
-                                                        Navigator.pop(context);
+
+                                                        if (context.mounted) {
+                                                          Navigator.pop(
+                                                              context);
+                                                        }
                                                       },
                                                       child: const Text("Save"),
                                                     )

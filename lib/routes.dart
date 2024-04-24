@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:table_side/provider/authentication_provider.dart';
-import 'package:table_side/provider/restaurant_provider.dart';
 import 'package:table_side/screens/admin/admin_dashboard.dart';
 import 'package:table_side/screens/restaurants/dashboard.dart';
 import 'package:table_side/screens/restaurants/restaurant_view.dart';

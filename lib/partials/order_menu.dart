@@ -63,22 +63,29 @@ class OrderMenu extends ConsumerWidget {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  const SizedBox(height: 15),
+                                  Text(item.isAvailable
+                                      ? "Available"
+                                      : "Not Available"),
+                                  const SizedBox(height: 10),
                                 ],
                               ),
                               Column(
                                 children: [
-                                  IconButton(
+                                  if (item.isAvailable)
+                                    IconButton(
+                                        onPressed: () {
+                                          order.addItem(item);
+                                        },
+                                        icon: const Icon(Icons.add)),
+                                  if (item.isAvailable)
+                                    IconButton(
                                       onPressed: () {
-                                        order.addItem(item);
+                                        order.removeItem(item);
                                       },
-                                      icon: const Icon(Icons.add)),
-                                  IconButton(
-                                    onPressed: () {
-                                      order.removeItem(item);
-                                    },
-                                    icon: const Icon(Icons.remove),
-                                  ),
+                                      icon: const Icon(Icons.remove),
+                                    ),
+                                  if (!item.isAvailable)
+                                    const Icon(Icons.block, size: 25),
                                 ],
                               ),
                             ],

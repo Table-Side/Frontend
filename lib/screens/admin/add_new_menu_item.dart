@@ -103,6 +103,9 @@ class _AddNewMenuItemState extends ConsumerState<AddNewMenuItem> {
                                     ),
                                     const SizedBox(height: 60),
                                     MaterialButton(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
                                       color: purpleColor,
                                       onPressed: () async {
                                         await getApiService<ItemService>()
