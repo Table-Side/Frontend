@@ -7,9 +7,10 @@ on:
   pull_request:
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
-  test:
+  build_test_deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -32,3 +33,7 @@ jobs:
       
       - name: Run tests
         run: exit 0 # fixme: use `flutter test`
+        
+      - name: Build web
+        uses: bluefireteam/flutter-gh-pages@v7
+
