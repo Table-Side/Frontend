@@ -18,8 +18,6 @@ class CurrentOrder extends ConsumerWidget {
 
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
-    // final currentOrder = ref.watch(currentOrderProvider(restaurantId, menuId));
-
     var currentOrder = ref.watch(currentOrderProvider(restaurantId, menuId));
 
     return AsyncBuilder(
@@ -70,10 +68,16 @@ class CurrentOrder extends ConsumerWidget {
                       const EdgeInsets.only(bottom: 20, right: 100, left: 140),
                   child: MaterialButton(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                     color: purpleColor,
-                    onPressed: () {
+                    onPressed: () async {
                       // TODO: Call checkout function from order microservice
+                      await ref
+                          .read(currentOrderProvider(restaurantId, menuId)
+                              .notifier)
+                          .createOrder(restaurantId, currentOrder);
+
                       print(currentOrder);
                     },
                     child: const Padding(

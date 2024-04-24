@@ -27,5 +27,7 @@ Future<Menu> menuInfo(
     restaurantId: restaurantId,
     menuId: menuId,
   );
+  // print(response);
+
   return Api.unwrap(Menu.fromJson, response);
 }

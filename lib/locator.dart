@@ -5,6 +5,7 @@ import 'package:table_side/network/authentication.dart';
 import 'package:table_side/network/item.dart';
 import 'package:table_side/network/menu.dart';
 import 'package:table_side/network/network.dart';
+import 'package:table_side/network/order.dart';
 import 'package:table_side/network/restaurant.dart';
 import 'package:table_side/network/user.dart';
 import 'package:table_side/utils/auth_context_interceptor.dart';
@@ -51,6 +52,7 @@ Future<void> setupLocator() async {
       MenuService.$create(),
       ItemService.$create(),
       UserService.$create(),
+      OrderService.$create(),
     ],
   ));
 }

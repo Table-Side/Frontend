@@ -1,5 +1,9 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:table_side/locator.dart';
+import 'package:table_side/models/api.dart';
+import 'package:table_side/models/order.dart';
 import 'package:table_side/models/restaurant.dart';
+import 'package:table_side/network/order.dart';
 
 part 'current_order_provider.g.dart';
 
@@ -39,4 +43,31 @@ class CurrentOrder extends _$CurrentOrder {
 
   /// Resets the order.
   void reset() => state = {};
+
+  Future<Order> createOrder(
+    String restaurantId,
+    Map<String, dynamic> items,
+  ) async {
+    // Convert items to a list of maps
+    List<Map<String, dynamic>> convertedItems = items.entries.map((entry) {
+      return {
+        'id': entry.key,
+        'quantity': entry.value,
+      };
+    }).toList();
+
+    final response = await getApiService<OrderService>()
+        .createOrder(restaurantId: restaurantId, items: convertedItems);
+
+    // print(response);
+
+    String id = response.body?['data']['id'];
+    print(id);
+
+    final response2 = await getApiService<OrderService>().checkout(orderId: id);
+
+    print(response2);
+
+    return Api.unwrap(Order.fromJson, response);
+  }
 }

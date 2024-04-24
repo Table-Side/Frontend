@@ -98,9 +98,7 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
                             context, "Passwords must match");
                       } else //Try to save changes
                       {
-                        // TODO: Make put/patch request - might not be able to do
-                        // TODO(A): MAKE INTO A FORM TO MAKE VALIDATION WORK BETTER?
-                        // - Also currently it doesn't check for empty passwords as the user might not want to change it
+                        // REQUEST TO UPDATE PROFILE DETAILS
                       }
                     },
                   ),
