@@ -23,8 +23,8 @@ abstract class KitchenService extends ChopperService {
   });
 
   /// Order is complete
-  @Put(path: '/{restaurantId}/{orderId}/done')
-  Future<RawResponse> done({
+  @Put(path: '/{restaurantId}/{orderId}/finish')
+  Future<RawResponse> finish({
     @Path('restaurantId') required String restaurantId,
     @Path('orderId') required String orderId,
   });

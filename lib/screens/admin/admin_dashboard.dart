@@ -428,7 +428,7 @@ class _AdminDashboardState extends ConsumerState<AdminDashboard> {
                                                             ),
                                                             child: const Center(
                                                               child: Text(
-                                                                "View Order History",
+                                                                "Manage Orders",
                                                                 style: TextStyle(
                                                                     fontSize:
                                                                         30,

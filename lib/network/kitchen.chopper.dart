@@ -46,12 +46,12 @@ final class _$KitchenService extends KitchenService {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> done({
+  Future<Response<Map<String, dynamic>>> finish({
     required String restaurantId,
     required String orderId,
   }) {
     final Uri $url = Uri.parse(
-        'https://api.tableside.site/kitchen/${restaurantId}/${orderId}/done');
+        'https://api.tableside.site/kitchen/${restaurantId}/${orderId}/finish');
     final Request $request = Request(
       'PUT',
       $url,

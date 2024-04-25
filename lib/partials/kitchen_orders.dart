@@ -20,7 +20,7 @@ class _KitchenOrdersState extends State<KitchenOrders> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Order History'),
+      appBar: const CustomAppBar(text: 'Manage Orders'),
       body: SingleChildScrollView(
         child: AsyncBuilder(
           selector: (final ref) =>

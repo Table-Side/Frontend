@@ -6,7 +6,7 @@ part of 'kitchen_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ordersHash() => r'b64b7cddd90c24eaf09d269dfe82bafa8f967e46';
+String _$ordersHash() => r'9e91e253c89e127de2eda46f33ba455f0c5a0094';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -154,7 +154,7 @@ class _OrdersProviderElement
   String get restaurantId => (origin as OrdersProvider).restaurantId;
 }
 
-String _$orderInfoHash() => r'c285313ef6512735e12bc316ff19307f6edfb4fc';
+String _$orderInfoHash() => r'b1593cf480582240a6ea983132ef8a55a202dfe0';
 
 /// See also [orderInfo].
 @ProviderFor(orderInfo)

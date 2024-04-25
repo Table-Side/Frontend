@@ -57,25 +57,25 @@ class _EditMenuState extends ConsumerState<EditOrders> {
                                       const SizedBox(height: 15),
                                     ],
                                   ),
-                                  // Column(
-                                  //   children: [
-                                  //     IconButton(
-                                  //       onPressed: () async {
-                                  //         await getApiService<KitchenService>()
-                                  //             .done(
-                                  //           orderId: transaction.orderId,
-                                  //           restaurantId:
-                                  //               transaction.restaurantId,
-                                  //         );
-                                  //
-                                  //         ref.invalidate(orderInfoProvider(
-                                  //             widget.restaurantId,
-                                  //             transaction.id));
-                                  //       },
-                                  //       icon: const Icon(Icons.delete),
-                                  //     ),
-                                  //   ],
-                                  // ),
+                                  Column(
+                                    children: [
+                                      IconButton(
+                                        onPressed: () async {
+                                          await getApiService<KitchenService>()
+                                              .finish(
+                                            orderId: transaction.id,
+                                            restaurantId:
+                                                transaction.restaurantId,
+                                          );
+
+                                          ref.invalidate(ordersProvider(
+                                            widget.restaurantId,
+                                          ));
+                                        },
+                                        icon: const Icon(Icons.done),
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                               const Divider(
