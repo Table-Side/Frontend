@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:table_side/const/api.dart';
 import 'package:table_side/network/authentication.dart';
 import 'package:table_side/network/item.dart';
+import 'package:table_side/network/kitchen.dart';
 import 'package:table_side/network/menu.dart';
 import 'package:table_side/network/network.dart';
 import 'package:table_side/network/order.dart';
@@ -44,15 +45,18 @@ Future<void> setupLocator() async {
   await authenticator.loadFromStorage();
 
   locator.registerSingleton(authenticator, instanceName: "authenticator");
-  locator.registerSingleton(setUpClient(
-    authenticator: authenticator,
-    services: [
-      AuthenticationService.$create(),
-      RestaurantService.$create(),
-      MenuService.$create(),
-      ItemService.$create(),
-      UserService.$create(),
-      OrderService.$create(),
-    ],
-  ));
+  locator.registerSingleton(
+    setUpClient(
+      authenticator: authenticator,
+      services: [
+        AuthenticationService.$create(),
+        RestaurantService.$create(),
+        MenuService.$create(),
+        ItemService.$create(),
+        UserService.$create(),
+        OrderService.$create(),
+        KitchenService.$create(),
+      ],
+    ),
+  );
 }

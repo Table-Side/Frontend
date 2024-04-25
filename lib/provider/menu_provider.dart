@@ -1,4 +1,3 @@
-// Selects the selected menu from the list of restaurants
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:table_side/locator.dart';
 import 'package:table_side/models/api.dart';
@@ -7,6 +6,7 @@ import 'package:table_side/network/menu.dart';
 
 part 'menu_provider.g.dart';
 
+// Selects the selected menu from the list of restaurants
 @riverpod
 Future<List<Menu>> menus(
   final MenusRef ref,

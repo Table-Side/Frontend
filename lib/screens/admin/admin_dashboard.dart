@@ -418,49 +418,7 @@ class _AdminDashboardState extends ConsumerState<AdminDashboard> {
                                                             ),
                                                             child: const Center(
                                                               child: Text(
-                                                                "View Current Orders",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        30,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const SizedBox(width: 50),
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        // TODO: Open list of completed orders
-                                                      },
-                                                      child: Material(
-                                                        color: Colors.white,
-                                                        child: Center(
-                                                          child: Ink(
-                                                            width: constraints
-                                                                    .maxWidth *
-                                                                0.25,
-                                                            height: constraints
-                                                                    .maxHeight *
-                                                                0.5,
-                                                            decoration:
-                                                                ShapeDecoration(
-                                                              color:
-                                                                  purpleColor,
-                                                              shape: Border.all(
-                                                                color:
-                                                                    purpleColor,
-                                                                width: 5.0,
-                                                              ),
-                                                            ),
-                                                            child: const Center(
-                                                              child: Text(
-                                                                "View Completed Orders",
+                                                                "View Orders",
                                                                 style: TextStyle(
                                                                     fontSize:
                                                                         30,

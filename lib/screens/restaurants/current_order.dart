@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:table_side/components/async_builder.dart';
 import 'package:table_side/const/design.dart';
 import 'package:table_side/models/restaurant.dart';
@@ -19,6 +20,7 @@ class CurrentOrder extends ConsumerWidget {
   @override
   Widget build(final BuildContext context, final WidgetRef ref) {
     var currentOrder = ref.watch(currentOrderProvider(restaurantId, menuId));
+    bool orderPlaced = false;
 
     return AsyncBuilder(
       selector: (final ref) =>
@@ -72,13 +74,35 @@ class CurrentOrder extends ConsumerWidget {
                     ),
                     color: purpleColor,
                     onPressed: () async {
-                      // TODO: Call checkout function from order microservice
-                      await ref
+                      final testing = await ref
                           .read(currentOrderProvider(restaurantId, menuId)
                               .notifier)
                           .createOrder(restaurantId, currentOrder);
 
-                      print(currentOrder);
+                      if (testing[1] == 200) {
+                        orderPlaced = true;
+                      }
+
+                      if (orderPlaced) {
+                        if (context.mounted) {
+                          showDialog(
+                            context: context,
+                            builder: (final context) => AlertDialog(
+                              title: const Center(
+                                  child: Text("Order placed successfully!")),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    context.pushReplacement(
+                                        '/restaurant/$restaurantId/details');
+                                  },
+                                  child: const Text("OK"),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      }
                     },
                     child: const Padding(
                       padding: EdgeInsets.all(10.0),
@@ -101,6 +125,9 @@ class CurrentOrder extends ConsumerWidget {
                   },
                   icon: const Icon(Icons.delete, size: 30),
                 ),
+
+                // TODO: Add pop-up "order successful" message
+                // TODO: Go back to restaurant view
               ],
             ),
           ],

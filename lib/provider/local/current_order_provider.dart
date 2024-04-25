@@ -32,7 +32,6 @@ class CurrentOrder extends _$CurrentOrder {
     final newQuantity = state[item.id]! - 1;
 
     if (newQuantity == 0) {
-      // state.remove(item.id);
       final newState = {...state};
       newState.remove(item.id);
       state = newState;
@@ -44,7 +43,7 @@ class CurrentOrder extends _$CurrentOrder {
   /// Resets the order.
   void reset() => state = {};
 
-  Future<Order> createOrder(
+  Future<List> createOrder(
     String restaurantId,
     Map<String, dynamic> items,
   ) async {
@@ -59,15 +58,14 @@ class CurrentOrder extends _$CurrentOrder {
     final response = await getApiService<OrderService>()
         .createOrder(restaurantId: restaurantId, items: convertedItems);
 
-    // print(response);
-
     String id = response.body?['data']['id'];
-    print(id);
 
     final response2 = await getApiService<OrderService>().checkout(orderId: id);
 
-    print(response2);
+    List<dynamic> finalResponse = [];
+    finalResponse.add(Api.unwrap(Order.fromJson, response));
+    finalResponse.add(response2.statusCode);
 
-    return Api.unwrap(Order.fromJson, response);
+    return finalResponse;
   }
 }
