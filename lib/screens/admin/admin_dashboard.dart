@@ -5,6 +5,7 @@ import 'package:table_side/components/custom_app_bar.dart';
 import 'package:table_side/const/design.dart';
 import 'package:table_side/locator.dart';
 import 'package:table_side/network/restaurant.dart';
+import 'package:table_side/partials/kitchen_orders.dart';
 import 'package:table_side/provider/menu_provider.dart';
 import 'package:table_side/provider/restaurant_provider.dart';
 import 'package:table_side/screens/admin/add_new_menu_item.dart';
@@ -394,7 +395,16 @@ class _AdminDashboardState extends ConsumerState<AdminDashboard> {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: () {
-                                                        // TODO: Open list of orders
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                KitchenOrders(
+                                                                    restaurantId:
+                                                                        restaurant
+                                                                            .id),
+                                                          ),
+                                                        );
                                                       },
                                                       child: Material(
                                                         color: Colors.white,
@@ -418,7 +428,7 @@ class _AdminDashboardState extends ConsumerState<AdminDashboard> {
                                                             ),
                                                             child: const Center(
                                                               child: Text(
-                                                                "View Orders",
+                                                                "View Order History",
                                                                 style: TextStyle(
                                                                     fontSize:
                                                                         30,

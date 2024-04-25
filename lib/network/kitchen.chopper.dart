@@ -21,7 +21,7 @@ final class _$KitchenService extends KitchenService {
   Future<Response<Map<String, dynamic>>> getAll(
       {required String restaurantId}) {
     final Uri $url =
-        Uri.parse('https://api.tableside.site/kitchen/{restaurantId}/');
+        Uri.parse('https://api.tableside.site/kitchen/${restaurantId}');
     final Request $request = Request(
       'GET',
       $url,
@@ -36,7 +36,7 @@ final class _$KitchenService extends KitchenService {
     required String orderId,
   }) {
     final Uri $url = Uri.parse(
-        'https://api.tableside.site/kitchen/{restaurantId}/${orderId}/');
+        'https://api.tableside.site/kitchen/${restaurantId}/${orderId}');
     final Request $request = Request(
       'GET',
       $url,
@@ -51,7 +51,7 @@ final class _$KitchenService extends KitchenService {
     required String orderId,
   }) {
     final Uri $url = Uri.parse(
-        'https://api.tableside.site/kitchen/{restaurantId}/${orderId}/done/');
+        'https://api.tableside.site/kitchen/${restaurantId}/${orderId}/done');
     final Request $request = Request(
       'PUT',
       $url,

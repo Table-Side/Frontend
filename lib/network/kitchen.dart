@@ -10,22 +10,22 @@ abstract class KitchenService extends ChopperService {
       _$KitchenService(client);
 
   ///List of all orders for a restaurant
-  @Get(path: '/{restaurantId}/')
+  @Get(path: '/{restaurantId}')
   Future<RawResponse> getAll({
-    @Path('forRestaurant') required String restaurantId,
+    @Path('restaurantId') required String restaurantId,
   });
 
   /// Get specific order by ID
-  @Get(path: '/{restaurantId}/{orderId}/')
+  @Get(path: '/{restaurantId}/{orderId}')
   Future<RawResponse> get({
-    @Path('forRestaurant') required String restaurantId,
+    @Path('restaurantId') required String restaurantId,
     @Path('orderId') required String orderId,
   });
 
   /// Order is complete
-  @Put(path: '/{restaurantId}/{orderId}/done/')
+  @Put(path: '/{restaurantId}/{orderId}/done')
   Future<RawResponse> done({
-    @Path('forRestaurant') required String restaurantId,
+    @Path('restaurantId') required String restaurantId,
     @Path('orderId') required String orderId,
   });
 }

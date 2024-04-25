@@ -14,6 +14,7 @@ Future<List<Menu>> menus(
 ) async {
   final response =
       await getApiService<MenuService>().getAll(restaurantId: restaurantId);
+
   return Api.unwrapList(Menu.fromJson, response);
 }
 
