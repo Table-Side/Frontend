@@ -10,7 +10,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Table Side'),
+      appBar: const CustomAppBar(text: 'Tableside'),
       body: Consumer(
         builder: (final context, final ref, final child) {
           final restaurantsState = ref.watch(restaurantsProvider);

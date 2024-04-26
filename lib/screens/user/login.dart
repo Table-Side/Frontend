@@ -50,12 +50,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ),
                   ),
 
-                  //Welcome message
-                  Text(
-                    'Welcome to Table Side',
-                    style: AuthShared.textTitle2,
-                    textAlign: TextAlign.center,
-                  ),
+                    //Welcome message
+                    Text(
+                      'Welcome to Tableside',
+                      style: AuthShared.textTitle2,
+                      textAlign: TextAlign.center,
+                    ),
 
                   const SizedBox(height: 25),
 
@@ -108,43 +108,44 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
 
                   const SizedBox(height: 50),
+                    // const SizedBox(height: 50),
 
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Wrap(
-                      alignment: WrapAlignment.center,
-                      children: [
-                        Divider(
-                          thickness: 0.5,
-                          color: purpleColor.withOpacity(0.6),
-                        ),
-                        const SizedBox(width: 4),
-                        Text('Don\'t have an account?',
-                            style: AuthShared.textDefault),
-                        const SizedBox(width: 4),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (final context) =>
-                                    const RegisterScreen(),
-                              ),
-                            );
-                          },
-                          child:
-                              Text('Register now', style: AuthShared.textLink),
-                        ),
-                        const SizedBox(width: 4),
-                        Divider(
-                          thickness: 0.5,
-                          color: purpleColor.withOpacity(0.6),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    //   child: Wrap(
+                    //     alignment: WrapAlignment.center,
+                    //     children: [
+                    //       Divider(
+                    //         thickness: 0.5,
+                    //         color: purpleColor.withOpacity(0.6),
+                    //       ),
+                    //       const SizedBox(width: 4),
+                    //       Text('Don\'t have an account?',
+                    //           style: AuthShared.textDefault),
+                    //       const SizedBox(width: 4),
+                    //       GestureDetector(
+                    //         onTap: () {},
+                    //         // onTap: () {
+                    //         //   Navigator.push(
+                    //         //     context,
+                    //         //     MaterialPageRoute(
+                    //         //       builder: (final context) =>
+                    //         //           const RegisterScreen(),
+                    //         //     ),
+                    //         //   );
+                    //         // },
+                    //         child: Text('Register now',
+                    //             style: AuthShared.textLink),
+                    //       ),
+                    //       const SizedBox(width: 4),
+                    //       Divider(
+                    //         thickness: 0.5,
+                    //         color: purpleColor.withOpacity(0.6),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                  ]),
             ),
           ),
         ),

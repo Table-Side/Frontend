@@ -20,7 +20,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     if (account == null) {
       return const Scaffold(
         backgroundColor: Colors.white,
-        appBar: CustomAppBar(text: "Table Side"),
+        appBar: CustomAppBar(text: "Tableside"),
         body: Center(
           child: CircularProgressIndicator(),
         ),
@@ -29,7 +29,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const CustomAppBar(text: "Table Side"),
+      appBar: const CustomAppBar(text: "Tableside"),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -83,30 +83,30 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                           thickness: 0.5,
                           color: purpleColor.withOpacity(0.6),
                         ),
-                        const SizedBox(width: 4),
-                        GestureDetector(
-                          onTap: () => context.push('/profile/editProfile'),
-                          child: Text('Edit details',
-                              style: AuthShared.textLinkBig),
-                        ),
-                        const SizedBox(width: 4),
-                        Divider(
-                          thickness: 0.5,
-                          color: purpleColor.withOpacity(0.6),
-                        ),
-                        const SizedBox(width: 4),
-                        GestureDetector(
-                          onTap: () {
-                            // Where the account can be deleted
-                          },
-                          child: Text('Delete account',
-                              style: AuthShared.textLinkBig),
-                        ),
-                        const SizedBox(width: 4),
-                        Divider(
-                          thickness: 0.5,
-                          color: purpleColor.withOpacity(0.6),
-                        ),
+                        // const SizedBox(width: 4),
+                        // GestureDetector(
+                        //   onTap: () => context.push('/profile/editProfile'),
+                        //   child: Text('Edit details',
+                        //       style: AuthShared.textLinkBig),
+                        // ),
+                        // const SizedBox(width: 4),
+                        // Divider(
+                        //   thickness: 0.5,
+                        //   color: purpleColor.withOpacity(0.6),
+                        // ),
+                        // const SizedBox(width: 4),
+                        // GestureDetector(
+                        //   onTap: () {
+                        //     // TODO: MAKE DELETE REQUEST
+                        //   },
+                        //   child: Text('Delete account',
+                        //       style: AuthShared.textLinkBig),
+                        // ),
+                        // const SizedBox(width: 4),
+                        // Divider(
+                        //   thickness: 0.5,
+                        //   color: purpleColor.withOpacity(0.6),
+                        // ),
                       ],
                     ),
                   ),

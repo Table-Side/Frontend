@@ -30,7 +30,7 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const CustomAppBar(text: "Table Side"),
+      appBar: const CustomAppBar(text: "Tableside"),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
