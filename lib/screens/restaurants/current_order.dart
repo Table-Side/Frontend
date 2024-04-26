@@ -74,14 +74,17 @@ class CurrentOrder extends ConsumerWidget {
                     ),
                     color: purpleColor,
                     onPressed: () async {
-                      final testing = await ref
+                      final success = await ref
                           .read(currentOrderProvider(restaurantId, menuId)
                               .notifier)
                           .createOrder(restaurantId, currentOrder);
 
-                      if (testing[1] == 200) {
+                      if (success[1] == 200) {
                         orderPlaced = true;
                       }
+
+                      print(success[1]);
+                      print(orderPlaced);
 
                       if (orderPlaced) {
                         if (context.mounted) {
@@ -162,14 +165,11 @@ class CurrentOrderItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 15),
-                    // name - need to get from db
                     Text(
                       item.shortName,
                       textAlign: TextAlign.start,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-
-                    // price - need to get from db
                     Text(
                       "£${(double.parse(item.price) * quantity).toStringAsFixed(2)} ($quantity @ £${item.price})",
                       textAlign: TextAlign.start,

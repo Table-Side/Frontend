@@ -6,6 +6,7 @@ import 'package:table_side/network/kitchen.dart';
 
 part 'kitchen_provider.g.dart';
 
+/// List all orders for a restaurant
 @riverpod
 Future<List<Transaction>> orders(
   final OrdersRef ref,
@@ -17,6 +18,7 @@ Future<List<Transaction>> orders(
   return Api.unwrapList(Transaction.fromJson, response);
 }
 
+/// Get information about a specific order
 @riverpod
 Future<Order> orderInfo(
   final OrderInfoRef ref,

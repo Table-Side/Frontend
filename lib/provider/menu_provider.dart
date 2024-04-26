@@ -6,7 +6,7 @@ import 'package:table_side/network/menu.dart';
 
 part 'menu_provider.g.dart';
 
-// Selects the selected menu from the list of restaurants
+/// List all menus for a restaurant
 @riverpod
 Future<List<Menu>> menus(
   final MenusRef ref,
@@ -18,6 +18,7 @@ Future<List<Menu>> menus(
   return Api.unwrapList(Menu.fromJson, response);
 }
 
+/// Get information about a specific menu
 @riverpod
 Future<Menu> menuInfo(
   final MenuInfoRef ref,
@@ -28,7 +29,6 @@ Future<Menu> menuInfo(
     restaurantId: restaurantId,
     menuId: menuId,
   );
-  // print(response);
 
   return Api.unwrap(Menu.fromJson, response);
 }

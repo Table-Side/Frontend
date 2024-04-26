@@ -48,31 +48,54 @@ class _EditMenuState extends ConsumerState<EditOrders> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const SizedBox(height: 15),
-                                      Text("Order ID: ${transaction.orderId}"),
-                                      Text(
-                                          "Ordered at: ${DateFormat('yyyy-MM-dd HH:mm:ss').format(transaction.createdAt)}"),
-                                      for (var item in transaction.items)
-                                        Text(
-                                            "Item: ${item.shortName} - Quantity: ${item.quantity}"),
+                                      const Text("Order ID:",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      Text(transaction.orderId),
+                                      const Text("Ordered:",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      Text(DateFormat('yyyy-MM-dd HH:mm:ss')
+                                          .format(transaction.createdAt)),
+                                      const Text("Order Items and Quantity:",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      for (var item in transaction.items) ...[
+                                        Row(
+                                          children: [
+                                            Text(
+                                              item.shortName,
+                                            ),
+                                            const SizedBox(width: 15),
+                                            Text(
+                                              "x${item.quantity}",
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                       const SizedBox(height: 15),
                                     ],
                                   ),
                                   Column(
                                     children: [
-                                      IconButton(
-                                        onPressed: () async {
-                                          await getApiService<KitchenService>()
-                                              .finish(
-                                            orderId: transaction.id,
-                                            restaurantId:
-                                                transaction.restaurantId,
-                                          );
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 100),
+                                        child: IconButton(
+                                          onPressed: () async {
+                                            await getApiService<
+                                                    KitchenService>()
+                                                .finish(
+                                              orderId: transaction.id,
+                                              restaurantId:
+                                                  transaction.restaurantId,
+                                            );
 
-                                          ref.invalidate(ordersProvider(
-                                            widget.restaurantId,
-                                          ));
-                                        },
-                                        icon: const Icon(Icons.done),
+                                            ref.invalidate(ordersProvider(
+                                                widget.restaurantId));
+                                          },
+                                          icon: const Icon(Icons.done),
+                                        ),
                                       ),
                                     ],
                                   ),

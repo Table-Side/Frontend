@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 const purpleColor = Color(0xff5603AD);
 
 class AuthShared {
-  // static Color color1 = const Color(0xff5603AD);
-  // static double fontSize1 = 16;
   static TextStyle textTitle0 =
       TextStyle(fontSize: 16 * 6, color: purpleColor.withOpacity(0.6));
   static TextStyle textTitle1 =

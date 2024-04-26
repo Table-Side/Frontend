@@ -10,17 +10,17 @@ abstract class AuthenticationService extends ChopperService {
   static AuthenticationService $create() {
     final client = ChopperClient(
       services: [_$AuthenticationService()],
-      // Set the FormUrlEncodedConverter here
       converter: const FormUrlEncodedConverter(),
     );
     return _$AuthenticationService(client);
   }
 
+  /// Get the current user
   @Get(path: '/userinfo')
   @FormUrlEncoded()
   Future<RawResponse> getCurrentUser();
 
-  // Define a method to obtain access token
+  /// Obtain access token
   @Post(path: '/token')
   @FormUrlEncoded()
   Future<RawResponse> login({
@@ -32,7 +32,7 @@ abstract class AuthenticationService extends ChopperService {
     @Field('scope') String scope = kOIDCScope,
   });
 
-  // Logout
+  /// Logout the current user
   @Post(path: '/', optionalBody: true)
   Future<Response<void>> logout();
 }

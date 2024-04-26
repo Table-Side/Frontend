@@ -12,11 +12,18 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  //Controllers
-  final emailController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
-  final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   //Email input
                   AuthInputField(
-                    controller: emailController,
+                    controller: _emailController,
                     hintText: 'Email',
                     obscureText: false,
                   ),
@@ -58,7 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   //Password input
                   AuthInputField(
-                    controller: passwordController,
+                    controller: _passwordController,
                     hintText: 'Password',
                     obscureText: true,
                   ),
@@ -67,7 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   //Conform password input
                   AuthInputField(
-                    controller: confirmPasswordController,
+                    controller: _confirmPasswordController,
                     hintText: 'Confirm Password',
                     obscureText: true,
                   ),
@@ -77,21 +84,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   //Sign In Button
                   AuthButton(
                     text: "Register",
-                    // onTap: userSignUp,
                     onTap: () {
-                      if (emailController.text == "") //Empty field email
+                      if (_emailController.text == "") //Empty field email
                       {
                         Navigator.pop(context);
                         AuthShared.errorMessage(
                             context, "Email field cannot be empty");
-                      } else if (passwordController.text ==
+                      } else if (_passwordController.text ==
                           "") //Empty field password
                       {
                         Navigator.pop(context);
                         AuthShared.errorMessage(
                             context, "Password field cannot be empty");
-                      } else if (passwordController.text !=
-                          confirmPasswordController.text) {
+                      } else if (_passwordController.text !=
+                          _confirmPasswordController.text) {
                         //Password fields not matching
                         Navigator.pop(context);
                         AuthShared.errorMessage(
@@ -119,7 +125,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             style: AuthShared.textDefault),
                         const SizedBox(width: 4),
                         GestureDetector(
-                          // onTap: widget.onTapLogin,
                           onTap: () {
                             Navigator.push(
                               context,

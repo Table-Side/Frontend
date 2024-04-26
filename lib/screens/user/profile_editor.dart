@@ -12,11 +12,19 @@ class ProfileEditorScreen extends StatefulWidget {
 }
 
 class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
-  //Controllers
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +50,7 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
 
                   //Name input
                   AuthInputField(
-                    controller: nameController,
+                    controller: _nameController,
                     hintText: 'Name',
                     obscureText: false,
                   ),
@@ -51,7 +59,7 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
 
                   //Email input
                   AuthInputField(
-                    controller: emailController,
+                    controller: _emailController,
                     hintText: 'Email',
                     obscureText: false,
                   ),
@@ -60,7 +68,7 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
 
                   //Password input
                   AuthInputField(
-                    controller: passwordController,
+                    controller: _passwordController,
                     hintText: 'Password',
                     obscureText: true,
                   ),
@@ -69,7 +77,7 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
 
                   //Conform password input
                   AuthInputField(
-                    controller: confirmPasswordController,
+                    controller: _confirmPasswordController,
                     hintText: 'Confirm Password',
                     obscureText: true,
                   ),
@@ -80,25 +88,26 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
                   AuthButton(
                     text: "Save Changes",
                     onTap: () {
-                      if (nameController.text == "") //Empty field name
+                      if (_nameController.text == "") //Empty field name
                       {
                         Navigator.pop(context);
                         AuthShared.errorMessage(
                             context, "Name field cannot be empty");
-                      } else if (emailController.text == "") //Empty field email
+                      } else if (_emailController.text ==
+                          "") //Empty field email
                       {
                         Navigator.pop(context);
                         AuthShared.errorMessage(
                             context, "Email field cannot be empty");
-                      } else if (passwordController.text !=
-                          confirmPasswordController.text) {
+                      } else if (_passwordController.text !=
+                          _confirmPasswordController.text) {
                         //Password fields not matching
                         Navigator.pop(context);
                         AuthShared.errorMessage(
                             context, "Passwords must match");
                       } else //Try to save changes
                       {
-                        // REQUEST TO UPDATE PROFILE DETAILS
+                        // TODO: REQUEST TO UPDATE PROFILE DETAILS
                       }
                     },
                   ),

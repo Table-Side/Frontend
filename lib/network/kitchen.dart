@@ -9,7 +9,7 @@ abstract class KitchenService extends ChopperService {
   static KitchenService $create([final ChopperClient? client]) =>
       _$KitchenService(client);
 
-  ///List of all orders for a restaurant
+  /// List of all orders for a restaurant
   @Get(path: '/{restaurantId}')
   Future<RawResponse> getAll({
     @Path('restaurantId') required String restaurantId,

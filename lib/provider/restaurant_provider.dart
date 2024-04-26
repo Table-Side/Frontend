@@ -13,7 +13,7 @@ Future<List<Restaurant>> restaurants(final RestaurantsRef ref) async {
   return Api.unwrapList(Restaurant.fromJson, response);
 }
 
-// Selects the selected restaurant from the list of restaurants
+/// Selects the selected restaurant from the list of restaurants
 @riverpod
 Future<Restaurant> restaurantInfo(
   final RestaurantInfoRef ref,
@@ -24,13 +24,14 @@ Future<Restaurant> restaurantInfo(
       .first));
 }
 
-// Get owned restaurant
+/// Gets the list of restaurants owned by the user
 @riverpod
 Future<List<Restaurant>> ownedRestaurants(final OwnedRestaurantsRef ref) async {
   final response = await getApiService<UserService>().ownedRestaurants();
   return Api.unwrapList(Restaurant.fromJson, response);
 }
 
+/// Gets the primary owned restaurant of the user
 @riverpod
 AsyncValue<Restaurant?> primaryOwnedRestaurant(
     final PrimaryOwnedRestaurantRef ref) {

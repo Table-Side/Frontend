@@ -5,7 +5,7 @@ import 'package:table_side/components/custom_app_bar.dart';
 import 'package:table_side/const/design.dart';
 import 'package:table_side/locator.dart';
 import 'package:table_side/network/restaurant.dart';
-import 'package:table_side/partials/kitchen_orders.dart';
+import 'package:table_side/screens/admin/kitchen_orders.dart';
 import 'package:table_side/provider/menu_provider.dart';
 import 'package:table_side/provider/restaurant_provider.dart';
 import 'package:table_side/screens/admin/add_new_menu_item.dart';

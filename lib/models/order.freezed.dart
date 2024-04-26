@@ -754,3 +754,788 @@ abstract class _Transaction implements Transaction {
   _$$TransactionImplCopyWith<_$TransactionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+CheckoutOrder _$CheckoutOrderFromJson(Map<String, dynamic> json) {
+  return _CheckoutOrder.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CheckoutOrder {
+  String get id => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
+  String get forUser => throw _privateConstructorUsedError;
+  String get forRestaurant => throw _privateConstructorUsedError;
+  List<CheckoutOrderItem> get items => throw _privateConstructorUsedError;
+  CheckoutTransaction? get transaction => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CheckoutOrderCopyWith<CheckoutOrder> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CheckoutOrderCopyWith<$Res> {
+  factory $CheckoutOrderCopyWith(
+          CheckoutOrder value, $Res Function(CheckoutOrder) then) =
+      _$CheckoutOrderCopyWithImpl<$Res, CheckoutOrder>;
+  @useResult
+  $Res call(
+      {String id,
+      DateTime createdAt,
+      DateTime updatedAt,
+      String forUser,
+      String forRestaurant,
+      List<CheckoutOrderItem> items,
+      CheckoutTransaction? transaction});
+
+  $CheckoutTransactionCopyWith<$Res>? get transaction;
+}
+
+/// @nodoc
+class _$CheckoutOrderCopyWithImpl<$Res, $Val extends CheckoutOrder>
+    implements $CheckoutOrderCopyWith<$Res> {
+  _$CheckoutOrderCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? forUser = null,
+    Object? forRestaurant = null,
+    Object? items = null,
+    Object? transaction = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      forUser: null == forUser
+          ? _value.forUser
+          : forUser // ignore: cast_nullable_to_non_nullable
+              as String,
+      forRestaurant: null == forRestaurant
+          ? _value.forRestaurant
+          : forRestaurant // ignore: cast_nullable_to_non_nullable
+              as String,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<CheckoutOrderItem>,
+      transaction: freezed == transaction
+          ? _value.transaction
+          : transaction // ignore: cast_nullable_to_non_nullable
+              as CheckoutTransaction?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CheckoutTransactionCopyWith<$Res>? get transaction {
+    if (_value.transaction == null) {
+      return null;
+    }
+
+    return $CheckoutTransactionCopyWith<$Res>(_value.transaction!, (value) {
+      return _then(_value.copyWith(transaction: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$CheckoutOrderImplCopyWith<$Res>
+    implements $CheckoutOrderCopyWith<$Res> {
+  factory _$$CheckoutOrderImplCopyWith(
+          _$CheckoutOrderImpl value, $Res Function(_$CheckoutOrderImpl) then) =
+      __$$CheckoutOrderImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      DateTime createdAt,
+      DateTime updatedAt,
+      String forUser,
+      String forRestaurant,
+      List<CheckoutOrderItem> items,
+      CheckoutTransaction? transaction});
+
+  @override
+  $CheckoutTransactionCopyWith<$Res>? get transaction;
+}
+
+/// @nodoc
+class __$$CheckoutOrderImplCopyWithImpl<$Res>
+    extends _$CheckoutOrderCopyWithImpl<$Res, _$CheckoutOrderImpl>
+    implements _$$CheckoutOrderImplCopyWith<$Res> {
+  __$$CheckoutOrderImplCopyWithImpl(
+      _$CheckoutOrderImpl _value, $Res Function(_$CheckoutOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? forUser = null,
+    Object? forRestaurant = null,
+    Object? items = null,
+    Object? transaction = freezed,
+  }) {
+    return _then(_$CheckoutOrderImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      forUser: null == forUser
+          ? _value.forUser
+          : forUser // ignore: cast_nullable_to_non_nullable
+              as String,
+      forRestaurant: null == forRestaurant
+          ? _value.forRestaurant
+          : forRestaurant // ignore: cast_nullable_to_non_nullable
+              as String,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<CheckoutOrderItem>,
+      transaction: freezed == transaction
+          ? _value.transaction
+          : transaction // ignore: cast_nullable_to_non_nullable
+              as CheckoutTransaction?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CheckoutOrderImpl implements _CheckoutOrder {
+  const _$CheckoutOrderImpl(
+      {required this.id,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.forUser,
+      required this.forRestaurant,
+      required final List<CheckoutOrderItem> items,
+      this.transaction})
+      : _items = items;
+
+  factory _$CheckoutOrderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CheckoutOrderImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
+  @override
+  final String forUser;
+  @override
+  final String forRestaurant;
+  final List<CheckoutOrderItem> _items;
+  @override
+  List<CheckoutOrderItem> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
+
+  @override
+  final CheckoutTransaction? transaction;
+
+  @override
+  String toString() {
+    return 'CheckoutOrder(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, forUser: $forUser, forRestaurant: $forRestaurant, items: $items, transaction: $transaction)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckoutOrderImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.forUser, forUser) || other.forUser == forUser) &&
+            (identical(other.forRestaurant, forRestaurant) ||
+                other.forRestaurant == forRestaurant) &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.transaction, transaction) ||
+                other.transaction == transaction));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      createdAt,
+      updatedAt,
+      forUser,
+      forRestaurant,
+      const DeepCollectionEquality().hash(_items),
+      transaction);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckoutOrderImplCopyWith<_$CheckoutOrderImpl> get copyWith =>
+      __$$CheckoutOrderImplCopyWithImpl<_$CheckoutOrderImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CheckoutOrderImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CheckoutOrder implements CheckoutOrder {
+  const factory _CheckoutOrder(
+      {required final String id,
+      required final DateTime createdAt,
+      required final DateTime updatedAt,
+      required final String forUser,
+      required final String forRestaurant,
+      required final List<CheckoutOrderItem> items,
+      final CheckoutTransaction? transaction}) = _$CheckoutOrderImpl;
+
+  factory _CheckoutOrder.fromJson(Map<String, dynamic> json) =
+      _$CheckoutOrderImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  DateTime get createdAt;
+  @override
+  DateTime get updatedAt;
+  @override
+  String get forUser;
+  @override
+  String get forRestaurant;
+  @override
+  List<CheckoutOrderItem> get items;
+  @override
+  CheckoutTransaction? get transaction;
+  @override
+  @JsonKey(ignore: true)
+  _$$CheckoutOrderImplCopyWith<_$CheckoutOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+CheckoutOrderItem _$CheckoutOrderItemFromJson(Map<String, dynamic> json) {
+  return _CheckoutOrderItem.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CheckoutOrderItem {
+  String get id => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
+  String get itemId => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
+  String get price => throw _privateConstructorUsedError;
+  String get orderId => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CheckoutOrderItemCopyWith<CheckoutOrderItem> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CheckoutOrderItemCopyWith<$Res> {
+  factory $CheckoutOrderItemCopyWith(
+          CheckoutOrderItem value, $Res Function(CheckoutOrderItem) then) =
+      _$CheckoutOrderItemCopyWithImpl<$Res, CheckoutOrderItem>;
+  @useResult
+  $Res call(
+      {String id,
+      DateTime createdAt,
+      DateTime updatedAt,
+      String itemId,
+      int quantity,
+      String price,
+      String orderId});
+}
+
+/// @nodoc
+class _$CheckoutOrderItemCopyWithImpl<$Res, $Val extends CheckoutOrderItem>
+    implements $CheckoutOrderItemCopyWith<$Res> {
+  _$CheckoutOrderItemCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? itemId = null,
+    Object? quantity = null,
+    Object? price = null,
+    Object? orderId = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      itemId: null == itemId
+          ? _value.itemId
+          : itemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CheckoutOrderItemImplCopyWith<$Res>
+    implements $CheckoutOrderItemCopyWith<$Res> {
+  factory _$$CheckoutOrderItemImplCopyWith(_$CheckoutOrderItemImpl value,
+          $Res Function(_$CheckoutOrderItemImpl) then) =
+      __$$CheckoutOrderItemImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      DateTime createdAt,
+      DateTime updatedAt,
+      String itemId,
+      int quantity,
+      String price,
+      String orderId});
+}
+
+/// @nodoc
+class __$$CheckoutOrderItemImplCopyWithImpl<$Res>
+    extends _$CheckoutOrderItemCopyWithImpl<$Res, _$CheckoutOrderItemImpl>
+    implements _$$CheckoutOrderItemImplCopyWith<$Res> {
+  __$$CheckoutOrderItemImplCopyWithImpl(_$CheckoutOrderItemImpl _value,
+      $Res Function(_$CheckoutOrderItemImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? itemId = null,
+    Object? quantity = null,
+    Object? price = null,
+    Object? orderId = null,
+  }) {
+    return _then(_$CheckoutOrderItemImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      itemId: null == itemId
+          ? _value.itemId
+          : itemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CheckoutOrderItemImpl implements _CheckoutOrderItem {
+  const _$CheckoutOrderItemImpl(
+      {required this.id,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.itemId,
+      required this.quantity,
+      required this.price,
+      required this.orderId});
+
+  factory _$CheckoutOrderItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CheckoutOrderItemImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
+  @override
+  final String itemId;
+  @override
+  final int quantity;
+  @override
+  final String price;
+  @override
+  final String orderId;
+
+  @override
+  String toString() {
+    return 'CheckoutOrderItem(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, itemId: $itemId, quantity: $quantity, price: $price, orderId: $orderId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckoutOrderItemImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.itemId, itemId) || other.itemId == itemId) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, id, createdAt, updatedAt, itemId, quantity, price, orderId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckoutOrderItemImplCopyWith<_$CheckoutOrderItemImpl> get copyWith =>
+      __$$CheckoutOrderItemImplCopyWithImpl<_$CheckoutOrderItemImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CheckoutOrderItemImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CheckoutOrderItem implements CheckoutOrderItem {
+  const factory _CheckoutOrderItem(
+      {required final String id,
+      required final DateTime createdAt,
+      required final DateTime updatedAt,
+      required final String itemId,
+      required final int quantity,
+      required final String price,
+      required final String orderId}) = _$CheckoutOrderItemImpl;
+
+  factory _CheckoutOrderItem.fromJson(Map<String, dynamic> json) =
+      _$CheckoutOrderItemImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  DateTime get createdAt;
+  @override
+  DateTime get updatedAt;
+  @override
+  String get itemId;
+  @override
+  int get quantity;
+  @override
+  String get price;
+  @override
+  String get orderId;
+  @override
+  @JsonKey(ignore: true)
+  _$$CheckoutOrderItemImplCopyWith<_$CheckoutOrderItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+CheckoutTransaction _$CheckoutTransactionFromJson(Map<String, dynamic> json) {
+  return _CheckoutTransaction.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CheckoutTransaction {
+  String get id => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  String get currency => throw _privateConstructorUsedError;
+  double get amount => throw _privateConstructorUsedError;
+  String get orderId => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CheckoutTransactionCopyWith<CheckoutTransaction> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CheckoutTransactionCopyWith<$Res> {
+  factory $CheckoutTransactionCopyWith(
+          CheckoutTransaction value, $Res Function(CheckoutTransaction) then) =
+      _$CheckoutTransactionCopyWithImpl<$Res, CheckoutTransaction>;
+  @useResult
+  $Res call(
+      {String id,
+      DateTime createdAt,
+      String currency,
+      double amount,
+      String orderId});
+}
+
+/// @nodoc
+class _$CheckoutTransactionCopyWithImpl<$Res, $Val extends CheckoutTransaction>
+    implements $CheckoutTransactionCopyWith<$Res> {
+  _$CheckoutTransactionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? createdAt = null,
+    Object? currency = null,
+    Object? amount = null,
+    Object? orderId = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CheckoutTransactionImplCopyWith<$Res>
+    implements $CheckoutTransactionCopyWith<$Res> {
+  factory _$$CheckoutTransactionImplCopyWith(_$CheckoutTransactionImpl value,
+          $Res Function(_$CheckoutTransactionImpl) then) =
+      __$$CheckoutTransactionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      DateTime createdAt,
+      String currency,
+      double amount,
+      String orderId});
+}
+
+/// @nodoc
+class __$$CheckoutTransactionImplCopyWithImpl<$Res>
+    extends _$CheckoutTransactionCopyWithImpl<$Res, _$CheckoutTransactionImpl>
+    implements _$$CheckoutTransactionImplCopyWith<$Res> {
+  __$$CheckoutTransactionImplCopyWithImpl(_$CheckoutTransactionImpl _value,
+      $Res Function(_$CheckoutTransactionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? createdAt = null,
+    Object? currency = null,
+    Object? amount = null,
+    Object? orderId = null,
+  }) {
+    return _then(_$CheckoutTransactionImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CheckoutTransactionImpl implements _CheckoutTransaction {
+  const _$CheckoutTransactionImpl(
+      {required this.id,
+      required this.createdAt,
+      required this.currency,
+      required this.amount,
+      required this.orderId});
+
+  factory _$CheckoutTransactionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CheckoutTransactionImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final DateTime createdAt;
+  @override
+  final String currency;
+  @override
+  final double amount;
+  @override
+  final String orderId;
+
+  @override
+  String toString() {
+    return 'CheckoutTransaction(id: $id, createdAt: $createdAt, currency: $currency, amount: $amount, orderId: $orderId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckoutTransactionImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, createdAt, currency, amount, orderId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckoutTransactionImplCopyWith<_$CheckoutTransactionImpl> get copyWith =>
+      __$$CheckoutTransactionImplCopyWithImpl<_$CheckoutTransactionImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CheckoutTransactionImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CheckoutTransaction implements CheckoutTransaction {
+  const factory _CheckoutTransaction(
+      {required final String id,
+      required final DateTime createdAt,
+      required final String currency,
+      required final double amount,
+      required final String orderId}) = _$CheckoutTransactionImpl;
+
+  factory _CheckoutTransaction.fromJson(Map<String, dynamic> json) =
+      _$CheckoutTransactionImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  DateTime get createdAt;
+  @override
+  String get currency;
+  @override
+  double get amount;
+  @override
+  String get orderId;
+  @override
+  @JsonKey(ignore: true)
+  _$$CheckoutTransactionImplCopyWith<_$CheckoutTransactionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

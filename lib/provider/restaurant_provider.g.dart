@@ -44,16 +44,24 @@ class _SystemHash {
   }
 }
 
-/// See also [restaurantInfo].
+/// Selects the selected restaurant from the list of restaurants
+///
+/// Copied from [restaurantInfo].
 @ProviderFor(restaurantInfo)
 const restaurantInfoProvider = RestaurantInfoFamily();
 
-/// See also [restaurantInfo].
+/// Selects the selected restaurant from the list of restaurants
+///
+/// Copied from [restaurantInfo].
 class RestaurantInfoFamily extends Family<AsyncValue<Restaurant>> {
-  /// See also [restaurantInfo].
+  /// Selects the selected restaurant from the list of restaurants
+  ///
+  /// Copied from [restaurantInfo].
   const RestaurantInfoFamily();
 
-  /// See also [restaurantInfo].
+  /// Selects the selected restaurant from the list of restaurants
+  ///
+  /// Copied from [restaurantInfo].
   RestaurantInfoProvider call(
     String restaurantId,
   ) {
@@ -86,9 +94,13 @@ class RestaurantInfoFamily extends Family<AsyncValue<Restaurant>> {
   String? get name => r'restaurantInfoProvider';
 }
 
-/// See also [restaurantInfo].
+/// Selects the selected restaurant from the list of restaurants
+///
+/// Copied from [restaurantInfo].
 class RestaurantInfoProvider extends AutoDisposeFutureProvider<Restaurant> {
-  /// See also [restaurantInfo].
+  /// Selects the selected restaurant from the list of restaurants
+  ///
+  /// Copied from [restaurantInfo].
   RestaurantInfoProvider(
     String restaurantId,
   ) : this._internal(
@@ -174,7 +186,9 @@ class _RestaurantInfoProviderElement
 
 String _$ownedRestaurantsHash() => r'83807688ef3323f0ad837cee9a1a1e91b462cec1';
 
-/// See also [ownedRestaurants].
+/// Gets the list of restaurants owned by the user
+///
+/// Copied from [ownedRestaurants].
 @ProviderFor(ownedRestaurants)
 final ownedRestaurantsProvider =
     AutoDisposeFutureProvider<List<Restaurant>>.internal(
@@ -191,7 +205,9 @@ typedef OwnedRestaurantsRef = AutoDisposeFutureProviderRef<List<Restaurant>>;
 String _$primaryOwnedRestaurantHash() =>
     r'6ff8d49f79c5098aae066aa9e0dc3492f95cff2e';
 
-/// See also [primaryOwnedRestaurant].
+/// Gets the primary owned restaurant of the user
+///
+/// Copied from [primaryOwnedRestaurant].
 @ProviderFor(primaryOwnedRestaurant)
 final primaryOwnedRestaurantProvider =
     AutoDisposeProvider<AsyncValue<Restaurant?>>.internal(

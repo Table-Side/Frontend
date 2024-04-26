@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'account.freezed.dart';
 part 'account.g.dart';
 
+/// A users [Account]
 @immutable
 @freezed
 class Account with _$Account {

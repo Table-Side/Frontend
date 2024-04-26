@@ -9,7 +9,7 @@ abstract class OrderService extends ChopperService {
   static OrderService $create([final ChopperClient? client]) =>
       _$OrderService(client);
 
-  // Create a new order
+  /// Create a new order
   @FactoryConverter(request: JsonConverter.requestFactory)
   @Post(path: '/')
   Future<RawResponse> createOrder({
@@ -17,7 +17,7 @@ abstract class OrderService extends ChopperService {
     @Field('items') required List<Map<String, dynamic>> items,
   });
 
-// checkout
+  /// Checkout an order
   @Post(path: '/{orderId}/checkout')
   Future<RawResponse> checkout({
     @Path('orderId') required String orderId,

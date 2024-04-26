@@ -29,16 +29,24 @@ class _SystemHash {
   }
 }
 
-/// See also [menus].
+/// List all menus for a restaurant
+///
+/// Copied from [menus].
 @ProviderFor(menus)
 const menusProvider = MenusFamily();
 
-/// See also [menus].
+/// List all menus for a restaurant
+///
+/// Copied from [menus].
 class MenusFamily extends Family<AsyncValue<List<Menu>>> {
-  /// See also [menus].
+  /// List all menus for a restaurant
+  ///
+  /// Copied from [menus].
   const MenusFamily();
 
-  /// See also [menus].
+  /// List all menus for a restaurant
+  ///
+  /// Copied from [menus].
   MenusProvider call(
     String restaurantId,
   ) {
@@ -71,9 +79,13 @@ class MenusFamily extends Family<AsyncValue<List<Menu>>> {
   String? get name => r'menusProvider';
 }
 
-/// See also [menus].
+/// List all menus for a restaurant
+///
+/// Copied from [menus].
 class MenusProvider extends AutoDisposeFutureProvider<List<Menu>> {
-  /// See also [menus].
+  /// List all menus for a restaurant
+  ///
+  /// Copied from [menus].
   MenusProvider(
     String restaurantId,
   ) : this._internal(
@@ -156,16 +168,24 @@ class _MenusProviderElement extends AutoDisposeFutureProviderElement<List<Menu>>
 
 String _$menuInfoHash() => r'5cd47a4dc2423695f14e1bdc591152cf9ecc60fb';
 
-/// See also [menuInfo].
+/// Get information about a specific menu
+///
+/// Copied from [menuInfo].
 @ProviderFor(menuInfo)
 const menuInfoProvider = MenuInfoFamily();
 
-/// See also [menuInfo].
+/// Get information about a specific menu
+///
+/// Copied from [menuInfo].
 class MenuInfoFamily extends Family<AsyncValue<Menu>> {
-  /// See also [menuInfo].
+  /// Get information about a specific menu
+  ///
+  /// Copied from [menuInfo].
   const MenuInfoFamily();
 
-  /// See also [menuInfo].
+  /// Get information about a specific menu
+  ///
+  /// Copied from [menuInfo].
   MenuInfoProvider call(
     String restaurantId,
     String menuId,
@@ -201,9 +221,13 @@ class MenuInfoFamily extends Family<AsyncValue<Menu>> {
   String? get name => r'menuInfoProvider';
 }
 
-/// See also [menuInfo].
+/// Get information about a specific menu
+///
+/// Copied from [menuInfo].
 class MenuInfoProvider extends AutoDisposeFutureProvider<Menu> {
-  /// See also [menuInfo].
+  /// Get information about a specific menu
+  ///
+  /// Copied from [menuInfo].
   MenuInfoProvider(
     String restaurantId,
     String menuId,

@@ -29,16 +29,24 @@ class _SystemHash {
   }
 }
 
-/// See also [orders].
+/// List all orders for a restaurant
+///
+/// Copied from [orders].
 @ProviderFor(orders)
 const ordersProvider = OrdersFamily();
 
-/// See also [orders].
+/// List all orders for a restaurant
+///
+/// Copied from [orders].
 class OrdersFamily extends Family<AsyncValue<List<Transaction>>> {
-  /// See also [orders].
+  /// List all orders for a restaurant
+  ///
+  /// Copied from [orders].
   const OrdersFamily();
 
-  /// See also [orders].
+  /// List all orders for a restaurant
+  ///
+  /// Copied from [orders].
   OrdersProvider call(
     String restaurantId,
   ) {
@@ -71,9 +79,13 @@ class OrdersFamily extends Family<AsyncValue<List<Transaction>>> {
   String? get name => r'ordersProvider';
 }
 
-/// See also [orders].
+/// List all orders for a restaurant
+///
+/// Copied from [orders].
 class OrdersProvider extends AutoDisposeFutureProvider<List<Transaction>> {
-  /// See also [orders].
+  /// List all orders for a restaurant
+  ///
+  /// Copied from [orders].
   OrdersProvider(
     String restaurantId,
   ) : this._internal(
@@ -156,16 +168,24 @@ class _OrdersProviderElement
 
 String _$orderInfoHash() => r'b1593cf480582240a6ea983132ef8a55a202dfe0';
 
-/// See also [orderInfo].
+/// Get information about a specific order
+///
+/// Copied from [orderInfo].
 @ProviderFor(orderInfo)
 const orderInfoProvider = OrderInfoFamily();
 
-/// See also [orderInfo].
+/// Get information about a specific order
+///
+/// Copied from [orderInfo].
 class OrderInfoFamily extends Family<AsyncValue<Order>> {
-  /// See also [orderInfo].
+  /// Get information about a specific order
+  ///
+  /// Copied from [orderInfo].
   const OrderInfoFamily();
 
-  /// See also [orderInfo].
+  /// Get information about a specific order
+  ///
+  /// Copied from [orderInfo].
   OrderInfoProvider call(
     String restaurantId,
     String orderId,
@@ -201,9 +221,13 @@ class OrderInfoFamily extends Family<AsyncValue<Order>> {
   String? get name => r'orderInfoProvider';
 }
 
-/// See also [orderInfo].
+/// Get information about a specific order
+///
+/// Copied from [orderInfo].
 class OrderInfoProvider extends AutoDisposeFutureProvider<Order> {
-  /// See also [orderInfo].
+  /// Get information about a specific order
+  ///
+  /// Copied from [orderInfo].
   OrderInfoProvider(
     String restaurantId,
     String orderId,
