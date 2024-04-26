@@ -83,9 +83,6 @@ class CurrentOrder extends ConsumerWidget {
                         orderPlaced = true;
                       }
 
-                      print(success[1]);
-                      print(orderPlaced);
-
                       if (orderPlaced) {
                         if (context.mounted) {
                           showDialog(

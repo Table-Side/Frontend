@@ -6,7 +6,7 @@ part of 'current_order_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$currentOrderHash() => r'8e1c98957e9004c6167c48144afb7b6c5bc4c384';
+String _$currentOrderHash() => r'd877da790deffb80525447ec9e207b1ad94c5aa9';
 
 /// Copied from Dart SDK
 class _SystemHash {

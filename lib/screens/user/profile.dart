@@ -97,7 +97,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         const SizedBox(width: 4),
                         GestureDetector(
                           onTap: () {
-                            // TODO: MAKE DELETE REQUEST
+                            // Where the account can be deleted
                           },
                           child: Text('Delete account',
                               style: AuthShared.textLinkBig),

@@ -59,22 +59,13 @@ class CurrentOrder extends _$CurrentOrder {
     final response = await getApiService<OrderService>()
         .createOrder(restaurantId: restaurantId, items: convertedItems);
 
-    print("response: $response");
-
     String id = response.body?['data']['id'];
 
-    print("id: $id");
-
     final response2 = await getApiService<OrderService>().checkout(orderId: id);
-
-    print("response2: $response2");
-    print(response2.statusCode);
 
     List<dynamic> finalResponse = [];
     finalResponse.add(Api.unwrap(CheckoutOrder.fromJson, response));
     finalResponse.add(response2.statusCode);
-
-    print("finalResponse: $finalResponse");
 
     return finalResponse;
   }

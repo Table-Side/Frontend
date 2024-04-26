@@ -20,37 +20,38 @@ class OrderForm extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(text: 'Order'),
       body: AsyncBuilder(
-          selector: (final ref) =>
-              ref.watch(menuInfoProvider(restaurantId, menuId)),
-          builder: (context, menu) {
-            return SingleChildScrollView(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 40, bottom: 40),
-                    child: Container(
-                      color: Colors.grey.withOpacity(0.2),
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      child: OrderMenu(menu: menu),
+        selector: (final ref) =>
+            ref.watch(menuInfoProvider(restaurantId, menuId)),
+        builder: (context, menu) {
+          return SingleChildScrollView(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 40),
+                  child: Container(
+                    color: Colors.grey.withOpacity(0.2),
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    child: OrderMenu(menu: menu),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 40),
+                  child: Container(
+                    color: Colors.grey.withOpacity(0.2),
+                    width: MediaQuery.of(context).size.width * 0.3,
+                    child: CurrentOrder(
+                      restaurantId: restaurantId,
+                      menuId: menuId,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 40, bottom: 40),
-                    child: Container(
-                      color: Colors.grey.withOpacity(0.2),
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      child: CurrentOrder(
-                        restaurantId: restaurantId,
-                        menuId: menuId,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

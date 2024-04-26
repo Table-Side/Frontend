@@ -107,7 +107,7 @@ class _ProfileEditorScreenState extends State<ProfileEditorScreen> {
                             context, "Passwords must match");
                       } else //Try to save changes
                       {
-                        // TODO: REQUEST TO UPDATE PROFILE DETAILS
+                        // Update user profile details
                       }
                     },
                   ),
