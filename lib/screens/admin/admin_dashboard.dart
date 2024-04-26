@@ -29,268 +29,214 @@ class _AdminDashboardState extends ConsumerState<AdminDashboard> {
 
   @override
   Widget build(BuildContext context) {
-    return AsyncBuilder(
-      selector: (final ref) => ref.watch(primaryOwnedRestaurantProvider),
-      builder: (context, final restaurant) {
-        if (restaurant == null) {
-          return const Scaffold(
-            body: Center(
-              child: Text("You do not own any restaurants"),
-            ),
-          );
-        }
+    return Scaffold(
+      appBar: const CustomAppBar(text: 'Tableside'),
+      body: AsyncBuilder(
+        selector: (final ref) => ref.watch(primaryOwnedRestaurantProvider),
+        builder: (context, final restaurant) {
+          if (restaurant == null) {
+            return const Scaffold(
+              body: Center(
+                child: Text(
+                  "You do not own any restaurants",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                ),
+              ),
+            );
+          }
 
-        return Scaffold(
-          appBar: CustomAppBar(text: "${restaurant.name} - Admin Dashboard"),
-          body: CustomScrollView(
-            slivers: [
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 40),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            color: Colors.grey.withOpacity(0.2),
-                            width: MediaQuery.of(context).size.width * 0.8,
-                            height: MediaQuery.of(context).size.height * 0.6,
-                            child: LayoutBuilder(
-                              builder: (context, constraints) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      const Text(
-                                        "Edit About Us",
-                                        style: TextStyle(
-                                            fontSize: 35,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      const SizedBox(height: 15),
-                                      Expanded(
-                                        child: SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.6,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.4,
-                                          child: ListView(
-                                            shrinkWrap: true,
-                                            children: [
-                                              Text(
-                                                restaurant.description,
-                                                style: const TextStyle(
-                                                    fontSize: 25),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 20),
-                                        child: MaterialButton(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5)),
-                                          color: purpleColor,
-                                          minWidth: 200,
-                                          onPressed: () {
-                                            _aboutUsController.text =
-                                                restaurant.description;
-                                            showDialog(
-                                              context: context,
-                                              builder: (final context) =>
-                                                  AlertDialog(
-                                                title:
-                                                    const Text("Edit About Us"),
-                                                content: TextFormField(
-                                                  controller:
-                                                      _aboutUsController,
-                                                  decoration:
-                                                      const InputDecoration(
-                                                    labelText: "Enter About Us",
-                                                    border:
-                                                        UnderlineInputBorder(),
-                                                  ),
-                                                ),
-                                                actions: [
-                                                  OutlinedButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: const Text("Cancel"),
-                                                  ),
-                                                  OutlinedButton(
-                                                    onPressed: () async {
-                                                      await getApiService<
-                                                              RestaurantService>()
-                                                          .update(
-                                                              id: restaurant.id,
-                                                              name: restaurant
-                                                                  .name,
-                                                              description:
-                                                                  _aboutUsController
-                                                                      .text);
-                                                      ref.invalidate(
-                                                          ownedRestaurantsProvider);
-
-                                                      if (context.mounted) {
-                                                        Navigator.pop(context);
-                                                      }
-                                                    },
-                                                    child: const Text("Save"),
-                                                  )
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                          child: const Padding(
-                                            padding: EdgeInsets.all(10.0),
-                                            child: Text(
-                                              "Edit Text",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 30,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            color: Colors.grey.withOpacity(0.2),
-                            width: MediaQuery.of(context).size.width * 0.8,
-                            height: MediaQuery.of(context).size.height * 0.4,
-                            child: LayoutBuilder(
-                              builder: (context, constraints) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.only(left: 30.0),
-                                        child: Text(
-                                          "Menu",
+          return Scaffold(
+            appBar: CustomAppBar(text: "${restaurant.name} - Admin Dashboard"),
+            body: CustomScrollView(
+              slivers: [
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 40),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              color: Colors.grey.withOpacity(0.2),
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.6,
+                              child: LayoutBuilder(
+                                builder: (context, constraints) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        const Text(
+                                          "Edit About Us",
                                           style: TextStyle(
                                               fontSize: 35,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 20.0, top: 20),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                        const SizedBox(height: 15),
+                                        Expanded(
+                                          child: SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.6,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.4,
+                                            child: ListView(
+                                              shrinkWrap: true,
                                               children: [
-                                                Row(
-                                                  children: [
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        // Open menu to view items and edit/remove individual items
-                                                        Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                MenuView(
-                                                                    restaurantId:
-                                                                        restaurant
-                                                                            .id),
-                                                          ),
-                                                        );
-                                                      },
-                                                      child: Material(
-                                                        color: Colors.white,
-                                                        child: Center(
-                                                          child: Ink(
-                                                            width: constraints
-                                                                    .maxWidth *
-                                                                0.25,
-                                                            height: constraints
-                                                                    .maxHeight *
-                                                                0.5,
-                                                            decoration:
-                                                                ShapeDecoration(
-                                                              color:
-                                                                  purpleColor,
-                                                              shape: Border.all(
-                                                                color:
-                                                                    purpleColor,
-                                                                width: 5.0,
-                                                              ),
-                                                            ),
-                                                            child: const Center(
-                                                              child: Text(
-                                                                "View Menu",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        30,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
+                                                Text(
+                                                  restaurant.description,
+                                                  style: const TextStyle(
+                                                      fontSize: 25),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 20),
+                                          child: MaterialButton(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5)),
+                                            color: purpleColor,
+                                            minWidth: 200,
+                                            onPressed: () {
+                                              _aboutUsController.text =
+                                                  restaurant.description;
+                                              showDialog(
+                                                context: context,
+                                                builder: (final context) =>
+                                                    AlertDialog(
+                                                  title: const Text(
+                                                      "Edit About Us"),
+                                                  content: TextFormField(
+                                                    controller:
+                                                        _aboutUsController,
+                                                    decoration:
+                                                        const InputDecoration(
+                                                      labelText:
+                                                          "Enter About Us",
+                                                      border:
+                                                          UnderlineInputBorder(),
                                                     ),
-                                                    const SizedBox(width: 50),
-                                                    AsyncBuilder(
-                                                      selector:
-                                                          (final ref) =>
-                                                              ref.watch(
-                                                                  menusProvider(
-                                                                      restaurant
-                                                                          .id)),
-                                                      builder:
-                                                          (context, menus) =>
-                                                              GestureDetector(
-                                                        onTap: () async {
+                                                  ),
+                                                  actions: [
+                                                    OutlinedButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child:
+                                                          const Text("Cancel"),
+                                                    ),
+                                                    OutlinedButton(
+                                                      onPressed: () async {
+                                                        await getApiService<
+                                                                RestaurantService>()
+                                                            .update(
+                                                                id: restaurant
+                                                                    .id,
+                                                                name: restaurant
+                                                                    .name,
+                                                                description:
+                                                                    _aboutUsController
+                                                                        .text);
+                                                        ref.invalidate(
+                                                            ownedRestaurantsProvider);
+
+                                                        if (context.mounted) {
+                                                          Navigator.pop(
+                                                              context);
+                                                        }
+                                                      },
+                                                      child: const Text("Save"),
+                                                    )
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                            child: const Padding(
+                                              padding: EdgeInsets.all(10.0),
+                                              child: Text(
+                                                "Edit Text",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 30,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              color: Colors.grey.withOpacity(0.2),
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.4,
+                              child: LayoutBuilder(
+                                builder: (context, constraints) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 30.0),
+                                          child: Text(
+                                            "Menu",
+                                            style: TextStyle(
+                                                fontSize: 35,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 20.0, top: 20),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          // Open menu to view items and edit/remove individual items
                                                           Navigator.push(
                                                             context,
                                                             MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  AddNewMenuItem(
-                                                                      restaurantId:
-                                                                          restaurant
-                                                                              .id,
-                                                                      menuId: menus
-                                                                          .first
+                                                              builder: (context) => MenuView(
+                                                                  restaurantId:
+                                                                      restaurant
                                                                           .id),
                                                             ),
                                                           );
@@ -319,7 +265,7 @@ class _AdminDashboardState extends ConsumerState<AdminDashboard> {
                                                               child:
                                                                   const Center(
                                                                 child: Text(
-                                                                  "Add New Item to Menu",
+                                                                  "View Menu",
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           30,
@@ -334,139 +280,204 @@ class _AdminDashboardState extends ConsumerState<AdminDashboard> {
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            color: Colors.grey.withOpacity(0.2),
-                            width: MediaQuery.of(context).size.width * 0.8,
-                            height: MediaQuery.of(context).size.height * 0.4,
-                            child: LayoutBuilder(
-                              builder: (context, constraints) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.only(left: 30.0),
-                                        child: Text(
-                                          "Orders",
-                                          style: TextStyle(
-                                              fontSize: 35,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 20.0, top: 20),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                KitchenOrders(
+                                                      const SizedBox(width: 50),
+                                                      AsyncBuilder(
+                                                        selector: (final ref) =>
+                                                            ref.watch(
+                                                                menusProvider(
+                                                                    restaurant
+                                                                        .id)),
+                                                        builder:
+                                                            (context, menus) =>
+                                                                GestureDetector(
+                                                          onTap: () async {
+                                                            Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                builder: (context) => AddNewMenuItem(
                                                                     restaurantId:
                                                                         restaurant
-                                                                            .id),
-                                                          ),
-                                                        );
-                                                      },
-                                                      child: Material(
-                                                        color: Colors.white,
-                                                        child: Center(
-                                                          child: Ink(
-                                                            width: constraints
-                                                                    .maxWidth *
-                                                                0.25,
-                                                            height: constraints
-                                                                    .maxHeight *
-                                                                0.5,
-                                                            decoration:
-                                                                ShapeDecoration(
-                                                              color:
-                                                                  purpleColor,
-                                                              shape: Border.all(
-                                                                color:
-                                                                    purpleColor,
-                                                                width: 5.0,
+                                                                            .id,
+                                                                    menuId: menus
+                                                                        .first
+                                                                        .id),
                                                               ),
-                                                            ),
-                                                            child: const Center(
-                                                              child: Text(
-                                                                "Manage Orders",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        30,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold),
+                                                            );
+                                                          },
+                                                          child: Material(
+                                                            color: Colors.white,
+                                                            child: Center(
+                                                              child: Ink(
+                                                                width: constraints
+                                                                        .maxWidth *
+                                                                    0.25,
+                                                                height: constraints
+                                                                        .maxHeight *
+                                                                    0.5,
+                                                                decoration:
+                                                                    ShapeDecoration(
+                                                                  color:
+                                                                      purpleColor,
+                                                                  shape: Border
+                                                                      .all(
+                                                                    color:
+                                                                        purpleColor,
+                                                                    width: 5.0,
+                                                                  ),
+                                                                ),
+                                                                child:
+                                                                    const Center(
+                                                                  child: Text(
+                                                                    "Add New Item to Menu",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            30,
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                  ),
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 40),
-                  ],
-                ),
-              )
-            ],
-          ),
-        );
-      },
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              color: Colors.grey.withOpacity(0.2),
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.4,
+                              child: LayoutBuilder(
+                                builder: (context, constraints) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 30.0),
+                                          child: Text(
+                                            "Orders",
+                                            style: TextStyle(
+                                                fontSize: 35,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 20.0, top: 20),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  KitchenOrders(
+                                                                      restaurantId:
+                                                                          restaurant
+                                                                              .id),
+                                                            ),
+                                                          );
+                                                        },
+                                                        child: Material(
+                                                          color: Colors.white,
+                                                          child: Center(
+                                                            child: Ink(
+                                                              width: constraints
+                                                                      .maxWidth *
+                                                                  0.25,
+                                                              height: constraints
+                                                                      .maxHeight *
+                                                                  0.5,
+                                                              decoration:
+                                                                  ShapeDecoration(
+                                                                color:
+                                                                    purpleColor,
+                                                                shape:
+                                                                    Border.all(
+                                                                  color:
+                                                                      purpleColor,
+                                                                  width: 5.0,
+                                                                ),
+                                                              ),
+                                                              child:
+                                                                  const Center(
+                                                                child: Text(
+                                                                  "Manage Orders",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          30,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 40),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
