@@ -30,12 +30,12 @@ class _AdminDashboardState extends ConsumerState<AdminDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Tableside'),
       body: AsyncBuilder(
         selector: (final ref) => ref.watch(primaryOwnedRestaurantProvider),
         builder: (context, final restaurant) {
           if (restaurant == null) {
             return const Scaffold(
+              appBar: CustomAppBar(text: 'Tableside'),
               body: Center(
                 child: Text(
                   "You do not own any restaurants",
